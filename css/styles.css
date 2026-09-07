@@ -62,7 +62,9 @@ h3 { color: var(--purple-dark); margin-top: 2.5rem; }
   overflow: hidden;
   padding: clamp(2.5rem, 8vw, 6rem);
   border-radius: 28px;
-  background: linear-gradient(120deg, rgba(111, 63, 165, 0.98), rgba(180, 143, 224, 0.92));
+  background:
+    linear-gradient(120deg, rgba(61, 34, 94, 0.95), rgba(111, 63, 165, 0.86)),
+    url("../assets/zodiac-banner.png") center / cover no-repeat;
   box-shadow: var(--shadow);
   color: var(--white);
 }
@@ -77,6 +79,7 @@ h3 { color: var(--purple-dark); margin-top: 2.5rem; }
   border-radius: 50%;
 }
 .hero h2, .hero p { position: relative; z-index: 1; max-width: 680px; }
+.hero h2 { white-space: nowrap; font-size: clamp(1rem, 6vw, 3.5rem); letter-spacing: -0.03em; }
 .hero p { color: #f8f1ff; font-size: 1.1rem; }
 
 .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 1rem; }
@@ -196,4 +199,5 @@ button:hover { background: var(--purple-dark); }
   .event-item { grid-template-columns: 64px 1fr; gap: 0.75rem; }
   .event-date { min-height: 64px; }
   .announcement-card { grid-template-columns: 1fr; }
+  .hero { padding: 2rem 1.25rem; }
 }
