@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-labelledby="title">
+  <title>Zodiac Esports logo</title>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#6f3fa5"/>
+      <stop offset="1" stop-color="#b48fe0"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="46" fill="url(#g)"/>
+  <path d="M25 30h50L35 70h40" fill="none" stroke="#fffaf1" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="76" cy="22" r="4" fill="#fffaf1"/>
+</svg>

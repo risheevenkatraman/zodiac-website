@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Zodiac Esports</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="home-page">
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html"><img src="assets/zodiac-logo.png" alt="Zodiac Esports logo"><span class="logo">Zodiac Esports</span></a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="teams.html">Teams</a>
+        <a href="staff.html">Staff</a>
+        <a href="store.html">Store</a>
+        <a href="socials.html">Socials</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Welcome to Zodiac Esports</h2>
+      <p>We’re a community-driven esports organization competing in Overwatch and VALORANT. Our mission is to develop players, foster teamwork, and entertain fans.</p>
+    </section>
+
+    <section>
+      <div class="section-heading">
+        <div><h3>Flagship teams</h3><p>Follow Zodiac across Overwatch and VALORANT.</p></div>
+        <a href="teams.html">View all teams →</a>
+      </div>
+      <div class="team-grid">
+        <a class="team-card" href="overwatch-team1.html"><img src="assets/zodiac-logo.png" alt="Zodiac team logo"><h4>Zodiac</h4><p>Overwatch flagship</p></a>
+        <a class="team-card" href="valorant-team1.html"><img src="assets/zodiac-logo.png" alt="Zodiac team logo"><h4>Zodiac</h4><p>VALORANT flagship</p></a>
+      </div>
+    </section>
+
+    <section class="announcement">
+      <div class="section-heading">
+        <div><h3>Pinned announcement</h3><p>Share the latest news from Zodiac Esports.</p></div>
+      </div>
+      <article id="pinned-announcement" class="announcement-card">
+        <p class="event-status">Loading announcement...</p>
+      </article>
+    </section>
+
+    <section class="events">
+      <div class="section-heading">
+        <div><h3>Events calendar</h3><p>Upcoming matches, announcements, and community moments.</p></div>
+      </div>
+      <div id="event-timeline" class="event-timeline" aria-live="polite">
+        <p class="event-status">Loading events...</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© Zodiac Esports — All rights reserved<p class="disclaimer">Overwatch and its hero icons are property of Blizzard Entertainment. They are used here for non-commercial purposes only.</p></div>
+  </footer>
+  <script src="js/events.js"></script>
+  <script src="js/announcement.js"></script>
+</body>
+</html>

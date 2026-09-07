@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="title">
+  <title>VALORANT agent image placeholder</title>
+  <rect width="240" height="240" rx="28" fill="#d9c7f1"/>
+  <path d="M120 35 190 75v90l-70 40-70-40V75z" fill="#6f3fa5" opacity=".8"/>
+  <path d="m120 72 38 24-38 72-38-72z" fill="#fffaf1" opacity=".85"/>
+  <text x="120" y="222" fill="#3d225e" font-family="Arial,sans-serif" font-size="16" text-anchor="middle">AGENT IMAGE</text>
+</svg>
