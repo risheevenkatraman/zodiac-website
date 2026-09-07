@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title">
+  <title>Announcement image placeholder</title>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#6f3fa5"/>
+      <stop offset="1" stop-color="#b48fe0"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" rx="28" fill="url(#g)"/>
+  <circle cx="520" cy="70" r="110" fill="#fffaf1" opacity=".12"/>
+  <text x="320" y="185" fill="#fffaf1" font-family="Arial,sans-serif" font-size="30" text-anchor="middle">ANNOUNCEMENT IMAGE</text>
+</svg>

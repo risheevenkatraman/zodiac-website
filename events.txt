@@ -1,0 +1,3 @@
+# Add one event per line using: event name | short description | YYYY-MM-DD
+# Example:
+Season kickoff | Follow our opening matches live. | 2026-09-07
