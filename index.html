@@ -7,11 +7,12 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="home-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
     <div class="container">
-      <a class="brand" href="index.html"><img src="assets/zodiac-logo.png" alt="Zodiac Esports logo"><span class="logo">Zodiac Esports</span></a>
-      <nav>
-        <a href="index.html">Home</a>
+      <a class="brand" href="index.html" aria-current="page"><img src="assets/zodiac-logo.png" alt="Zodiac Esports logo" width="42" height="42"><span class="logo">Zodiac Esports</span></a>
+      <nav aria-label="Main navigation">
+        <a href="index.html" aria-current="page">Home</a>
         <a href="teams.html">Teams</a>
         <a href="staff.html">Staff</a>
         <a href="store.html">Store</a>
@@ -20,9 +21,9 @@
     </div>
   </header>
 
-  <main class="container">
+  <main class="container" id="main-content" tabindex="-1">
     <section class="hero">
-      <h2>Welcome to Zodiac Esports</h2>
+      <h1>Welcome to Zodiac Esports</h1>
       <p>We’re a community-driven esports organization competing in Overwatch and VALORANT. Our mission is to develop players, foster teamwork, and entertain fans.</p>
     </section>
 
@@ -32,8 +33,8 @@
         <a href="teams.html">View all teams →</a>
       </div>
       <div class="team-grid">
-        <a class="team-card" href="overwatch-team1.html"><img src="assets/zodiac-logo.png" alt="Zodiac team logo"><h4>Zodiac</h4><p>Overwatch flagship</p></a>
-        <a class="team-card" href="valorant-team1.html"><img src="assets/zodiac-logo.png" alt="Zodiac team logo"><h4>Zodiac</h4><p>VALORANT flagship</p></a>
+        <a class="team-card" href="teams/overwatch-team1.html"><img src="assets/zodiac-logo.png" alt="Zodiac team logo"><h4>Zodiac</h4><p>Overwatch flagship</p></a>
+        <a class="team-card" href="teams/valorant-team1.html"><img src="assets/zodiac-logo.png" alt="Zodiac team logo"><h4>Zodiac</h4><p>VALORANT flagship</p></a>
       </div>
     </section>
 
@@ -42,7 +43,7 @@
         <div><h3>Pinned announcement</h3><p>Share the latest news from Zodiac Esports.</p></div>
       </div>
       <article id="pinned-announcement" class="announcement-card">
-        <p class="event-status">Loading announcement...</p>
+        <p class="event-status">Welcome to Zodiac Esports. Follow our teams for the latest updates.</p>
       </article>
     </section>
 
@@ -51,7 +52,7 @@
         <div><h3>Events calendar</h3><p>Upcoming matches, announcements, and community moments.</p></div>
       </div>
       <div id="event-timeline" class="event-timeline" aria-live="polite">
-        <p class="event-status">Loading events...</p>
+        <p class="event-status">Check our <a href="data/events.json">events schedule</a> for upcoming matches and community nights.</p>
       </div>
     </section>
   </main>

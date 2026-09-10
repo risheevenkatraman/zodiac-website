@@ -1,0 +1,375 @@
+[
+  {
+    "page": "teams/overwatch-team1.html",
+    "name": "Zodiac",
+    "game": "Overwatch",
+    "players": [
+      {
+        "id": "overwatch-team1-gap",
+        "name": "Gap",
+        "role": "Tank",
+        "introduction": "",
+        "pool": [
+          {
+            "name": "Ramattra",
+            "image": "assets/Icon-Ramattra.webp"
+          }
+        ],
+        "socials": []
+      },
+      {
+        "id": "overwatch-team1-winter",
+        "name": "winter",
+        "role": "Damage",
+        "introduction": "",
+        "pool": [
+          {
+            "name": "Freja",
+            "image": "assets/Freja_Hero.webp"
+          }
+        ],
+        "socials": []
+      },
+      {
+        "id": "overwatch-team1-m3ws",
+        "name": "M3WS",
+        "role": "Damage",
+        "introduction": "",
+        "pool": [
+          {
+            "name": "Tracer",
+            "image": "assets/Icon-Tracer.webp"
+          }
+        ],
+        "socials": []
+      },
+      {
+        "id": "overwatch-team1-ewan",
+        "name": "Ewan",
+        "role": "Support",
+        "introduction": "",
+        "pool": [
+          {
+            "name": "Jetpack Cat",
+            "image": "assets/Jetpack_Cat_Hero.webp"
+          }
+        ],
+        "socials": []
+      },
+      {
+        "id": "overwatch-team1-hutch",
+        "name": "Hutch",
+        "role": "Support",
+        "introduction": "",
+        "pool": [
+          {
+            "name": "Baptiste",
+            "image": "assets/Icon-Baptiste.webp"
+          }
+        ],
+        "socials": []
+      }
+    ]
+  },
+  {
+    "page": "teams/overwatch-team2.html",
+    "name": "Piggies",
+    "game": "Overwatch",
+    "players": [
+      {
+        "id": "overwatch-team2-samir",
+        "name": "SamiR",
+        "role": "Tank",
+        "introduction": "",
+        "pool": [
+          {
+            "name": "Hazard",
+            "image": "assets/Hazard_Hero.webp"
+          }
+        ],
+        "socials": []
+      },
+      {
+        "id": "overwatch-team2-deatorean",
+        "name": "Deatorean",
+        "role": "Damage",
+        "introduction": "",
+        "pool": [
+          {
+            "name": "Sojourn",
+            "image": "assets/Icon-Sojourn.webp"
+          }
+        ],
+        "socials": []
+      },
+      {
+        "id": "overwatch-team2-cristehn",
+        "name": "Cristehn",
+        "role": "Damage",
+        "introduction": "",
+        "pool": [
+          {
+            "name": "Tracer",
+            "image": "assets/Icon-Tracer.webp"
+          }
+        ],
+        "socials": []
+      },
+      {
+        "id": "overwatch-team2-sealceo",
+        "name": "SealCEO",
+        "role": "Support",
+        "introduction": "",
+        "pool": [
+          {
+            "name": "Jetpack Cat",
+            "image": "assets/Jetpack_Cat_Hero.webp"
+          }
+        ],
+        "socials": []
+      },
+      {
+        "id": "overwatch-team2-penguingamer",
+        "name": "Penguingamer",
+        "role": "Support",
+        "introduction": "",
+        "pool": [
+          {
+            "name": "Lucio",
+            "image": "assets/Lucio.webp"
+          }
+        ],
+        "socials": []
+      },
+      {
+        "id": "overwatch-team2-georan",
+        "name": "Georan",
+        "role": "Support",
+        "introduction": "",
+        "pool": [
+          {
+            "name": "Baptiste",
+            "image": "assets/Icon-Baptiste.webp"
+          }
+        ],
+        "socials": []
+      }
+    ]
+  },
+  {
+    "page": "teams/overwatch-team3.html",
+    "name": "Ox",
+    "game": "Overwatch",
+    "players": [
+      {
+        "id": "overwatch-team3-alright",
+        "name": "ALright",
+        "role": "Tank",
+        "introduction": "",
+        "pool": [
+          {
+            "name": "Wrecking Ball",
+            "image": "assets/Wrecking_Ball_Hero.webp"
+          }
+        ],
+        "socials": []
+      },
+      {
+        "id": "overwatch-team3-xdnoo6",
+        "name": "XDnoo6",
+        "role": "Damage",
+        "introduction": "",
+        "pool": [
+          {
+            "name": "Hanzo",
+            "image": "assets/Hanzo_Hero.webp"
+          }
+        ],
+        "socials": []
+      },
+      {
+        "id": "overwatch-team3-v-id",
+        "name": "Vøid",
+        "role": "Damage",
+        "introduction": "",
+        "pool": [
+          {
+            "name": "Tracer",
+            "image": "assets/Icon-Tracer.webp"
+          }
+        ],
+        "socials": []
+      },
+      {
+        "id": "overwatch-team3-baksa",
+        "name": "Baksa",
+        "role": "Support",
+        "introduction": "",
+        "pool": [
+          {
+            "name": "Lifeweaver",
+            "image": "assets/Icon-Lifeweaver.webp"
+          }
+        ],
+        "socials": []
+      },
+      {
+        "id": "overwatch-team3-zeusa",
+        "name": "zeusa",
+        "role": "Support",
+        "introduction": "",
+        "pool": [
+          {
+            "name": "Ana",
+            "image": "assets/Ana_Hero.webp"
+          }
+        ],
+        "socials": []
+      }
+    ]
+  },
+  {
+    "page": "teams/overwatch-team4.html",
+    "name": "Goats",
+    "game": "Overwatch",
+    "players": [
+      {
+        "id": "overwatch-team4-thena",
+        "name": "thena",
+        "role": "Tank",
+        "introduction": "",
+        "pool": [
+          {
+            "name": "Sigma",
+            "image": "assets/Icon-Sigma.webp"
+          }
+        ],
+        "socials": []
+      },
+      {
+        "id": "overwatch-team4-nahj1x",
+        "name": "Nahj1x",
+        "role": "Damage",
+        "introduction": "",
+        "pool": [
+          {
+            "name": "Sojourn",
+            "image": "assets/Icon-Sojourn.webp"
+          }
+        ],
+        "socials": []
+      },
+      {
+        "id": "overwatch-team4-hara",
+        "name": "hara",
+        "role": "Damage",
+        "introduction": "",
+        "pool": [
+          {
+            "name": "Tracer",
+            "image": "assets/Icon-Tracer.webp"
+          }
+        ],
+        "socials": []
+      },
+      {
+        "id": "overwatch-team4-lanni",
+        "name": "Lanni",
+        "role": "Support",
+        "introduction": "",
+        "pool": [
+          {
+            "name": "Lucio",
+            "image": "assets/Lucio.webp"
+          }
+        ],
+        "socials": []
+      },
+      {
+        "id": "overwatch-team4-hideki",
+        "name": "Hideki",
+        "role": "Support",
+        "introduction": "",
+        "pool": [
+          {
+            "name": "Baptiste",
+            "image": "assets/Icon-Baptiste.webp"
+          }
+        ],
+        "socials": []
+      }
+    ]
+  },
+  {
+    "page": "teams/valorant-team2.html",
+    "name": "Tigers",
+    "game": "VALORANT",
+    "players": [
+      {
+        "id": "valorant-team2-neightus",
+        "name": "Neightus",
+        "role": "Controller",
+        "introduction": "",
+        "pool": [
+          {
+            "name": "Omen",
+            "image": "assets/agent-placeholder.svg"
+          }
+        ],
+        "socials": []
+      },
+      {
+        "id": "valorant-team2-tr3nt",
+        "name": "TR3NT",
+        "role": "Duelist",
+        "introduction": "",
+        "pool": [
+          {
+            "name": "Jett",
+            "image": "assets/agent-placeholder.svg"
+          }
+        ],
+        "socials": []
+      },
+      {
+        "id": "valorant-team2-5am",
+        "name": "5AM",
+        "role": "Initiator",
+        "introduction": "",
+        "pool": [
+          {
+            "name": "Fade",
+            "image": "assets/agent-placeholder.svg"
+          }
+        ],
+        "socials": []
+      },
+      {
+        "id": "valorant-team2-nooy",
+        "name": "Nooy",
+        "role": "Flex",
+        "introduction": "",
+        "pool": [
+          {
+            "name": "Phoenix",
+            "image": "assets/agent-placeholder.svg"
+          }
+        ],
+        "socials": []
+      },
+      {
+        "id": "valorant-team2-placeholder",
+        "name": "Placeholder",
+        "role": "Sentinel",
+        "introduction": "",
+        "pool": [
+          {
+            "name": "Cypher",
+            "image": "assets/agent-placeholder.svg"
+          }
+        ],
+        "socials": []
+      }
+    ]
+  }
+]
