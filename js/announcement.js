@@ -4,38 +4,51 @@ const fallbackAnnouncement = {
   image: "assets/announcement-placeholder.svg"
 };
 
-function parseAnnouncement(text) {
-  const announcement = {};
-  text.split(/\r?\n/).forEach((line) => {
-    const separator = line.indexOf("=");
-    if (separator > 0 && !line.trim().startsWith("#")) {
-      const key = line.slice(0, separator).trim();
-      announcement[key] = line.slice(separator + 1).trim();
-    }
-  });
+function parseAnnouncement(announcement) {
+  if (!announcement || typeof announcement !== 'object' || Array.isArray(announcement)) {
+    return { ...fallbackAnnouncement };
+  }
+  const field = key => typeof announcement[key] === 'string' && announcement[key].trim()
+    ? announcement[key].trim() : fallbackAnnouncement[key];
   return {
-    title: announcement.title || fallbackAnnouncement.title,
-    message: announcement.message || fallbackAnnouncement.message,
-    image: announcement.image || fallbackAnnouncement.image
+    title: field('title'),
+    message: field('message'),
+    image: field('image')
   };
 }
 
 function renderAnnouncement(announcement) {
   const container = document.querySelector("#pinned-announcement");
-  container.innerHTML = `
-    <img src="${announcement.image}" alt="">
-    <div>
-      <p class="eyebrow">Pinned update</p>
-      <h4>${announcement.title}</h4>
-      <p>${announcement.message}</p>
-    </div>
-  `;
+  if (!container) return;
+  const image = document.createElement('img');
+  image.alt = '';
+  image.decoding = 'async';
+  image.loading = 'lazy';
+  image.addEventListener('error', () => {
+    image.src = fallbackAnnouncement.image;
+  }, { once: true });
+  try {
+    const url = new URL(announcement.image, document.baseURI);
+    image.src = ['https:', 'http:', 'file:'].includes(url.protocol) ? url.href : fallbackAnnouncement.image;
+  } catch {
+    image.src = fallbackAnnouncement.image;
+  }
+  const content = document.createElement('div');
+  const label = document.createElement('p');
+  label.className = 'eyebrow';
+  label.textContent = 'Pinned update';
+  const title = document.createElement('h4');
+  title.textContent = announcement.title;
+  const message = document.createElement('p');
+  message.textContent = announcement.message;
+  content.append(label, title, message);
+  container.replaceChildren(image, content);
 }
 
-fetch("announcement.txt")
+fetch("data/announcement.json")
   .then((response) => {
-    if (!response.ok) throw new Error("Unable to load announcement.txt");
-    return response.text();
+    if (!response.ok) throw new Error("Unable to load announcement JSON");
+    return response.json();
   })
-  .then((text) => renderAnnouncement(parseAnnouncement(text)))
+  .then((data) => renderAnnouncement(parseAnnouncement(data)))
   .catch(() => renderAnnouncement(fallbackAnnouncement));

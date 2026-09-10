@@ -7,12 +7,13 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
     <div class="container">
-      <a class="brand" href="index.html"><img src="assets/zodiac-logo.png" alt="Zodiac Esports logo"><span class="logo">Zodiac Esports</span></a>
-      <nav>
+      <a class="brand" href="index.html"><img src="assets/zodiac-logo.png" alt="Zodiac Esports logo" width="42" height="42"><span class="logo">Zodiac Esports</span></a>
+      <nav aria-label="Main navigation">
         <a href="index.html">Home</a>
-        <a href="teams.html">Teams</a>
+        <a href="teams.html" aria-current="page">Teams</a>
         <a href="staff.html">Staff</a>
         <a href="store.html">Store</a>
         <a href="socials.html">Socials</a>
@@ -20,25 +21,25 @@
     </div>
   </header>
 
-  <main class="container">
-    <h2>Our Teams</h2>
+  <main class="container" id="main-content" tabindex="-1">
+    <h1>Our Teams</h1>
     <p>Our flagship and academy rosters across Overwatch and VALORANT.</p>
 
     <section>
       <h3>Overwatch</h3>
       <div class="team-grid">
-        <a class="team-card" href="overwatch-team1.html"><img src="assets/zodiac-logo.png" alt="Zodiac team logo"><h4>Zodiac</h4><p>Flagship team</p></a>
-        <a class="team-card" href="overwatch-team2.html"><img src="assets/piggies-logo.png" alt="Piggies team logo"><h4>Piggies</h4><p>Academy team</p></a>
-        <a class="team-card" href="overwatch-team3.html"><img src="assets/ox-logo.png" alt="Ox team logo"><h4>Ox</h4><p>Academy team</p></a>
-        <a class="team-card" href="overwatch-team4.html"><img src="assets/goats-logo.png" alt="Goats team logo"><h4>Goats</h4><p>Academy team</p></a>
+        <a class="team-card" href="teams/overwatch-team1.html"><img src="assets/zodiac-logo.png" alt="Zodiac team logo"><h4>Zodiac</h4><p>Flagship team</p></a>
+        <a class="team-card" href="teams/overwatch-team2.html"><img src="assets/piggies-logo.png" alt="Piggies team logo"><h4>Piggies</h4><p>Academy team</p></a>
+        <a class="team-card" href="teams/overwatch-team3.html"><img src="assets/ox-logo.png" alt="Ox team logo"><h4>Ox</h4><p>Academy team</p></a>
+        <a class="team-card" href="teams/overwatch-team4.html"><img src="assets/goats-logo.png" alt="Goats team logo"><h4>Goats</h4><p>Academy team</p></a>
       </div>
     </section>
 
     <section>
       <h3>VALORANT</h3>
       <div class="team-grid">
-        <a class="team-card" href="valorant-team1.html"><img src="assets/zodiac-logo.png" alt="Zodiac team logo"><h4>Zodiac</h4><p>Flagship team</p></a>
-        <a class="team-card" href="valorant-team2.html"><img src="assets/tigers-logo.png" alt="Tigers team logo"><h4>Tigers</h4><p>Academy team</p></a>
+        <a class="team-card" href="teams/valorant-team1.html"><img src="assets/zodiac-logo.png" alt="Zodiac team logo"><h4>Zodiac</h4><p>Flagship team</p></a>
+        <a class="team-card" href="teams/valorant-team2.html"><img src="assets/tigers-logo.png" alt="Tigers team logo"><h4>Tigers</h4><p>Academy team</p></a>
       </div>
     </section>
   </main>

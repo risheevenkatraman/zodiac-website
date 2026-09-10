@@ -7,20 +7,21 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
     <div class="container">
-    <a class="brand" href="index.html"><img src="assets/zodiac-logo.png" alt="Zodiac Esports logo"><span class="logo">Zodiac Esports</span></a>
-    <nav>
+    <a class="brand" href="index.html"><img src="assets/zodiac-logo.png" alt="Zodiac Esports logo" width="42" height="42"><span class="logo">Zodiac Esports</span></a>
+    <nav aria-label="Main navigation">
       <a href="index.html">Home</a>
       <a href="teams.html">Teams</a>
       <a href="staff.html">Staff</a>
-      <a href="store.html">Store</a>
+      <a href="store.html" aria-current="page">Store</a>
       <a href="socials.html">Socials</a>
     </nav></div>
   </header>
 
-  <main class="container">
-    <h2>Store (Coming Soon)</h2>
+  <main class="container" id="main-content" tabindex="-1">
+    <h1>Store (Coming Soon)</h1>
     <p>We plan to launch a merch store with jerseys, hoodies, and accessories. Sign up to be notified:</p>
     <form>
       <input type="email" placeholder="Your email" aria-label="email">
