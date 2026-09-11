@@ -58,7 +58,7 @@ function renderEvents(events) {
   timeline.replaceChildren(fragment);
 }
 
-fetch('data/events.json')
+fetch('data/events.json', { cache: 'no-cache' })
   .then(response => {
     if (!response.ok) throw new Error('Unable to load events');
     return response.json();
