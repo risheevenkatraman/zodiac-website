@@ -12,6 +12,7 @@
   },
   {
     "team": "Goats",
+    "reference_match_id": "1-90338cf6-7787-4a96-91ef-1406237790b6",
     "game": "Overwatch",
     "provider": "faceit",
     "season": 10,
@@ -21,6 +22,7 @@
   },
   {
     "team": "Ox",
+    "reference_match_id": "1-e8bd2a02-75bb-42fd-83e7-8379b4608e96",
     "game": "Overwatch",
     "provider": "faceit",
     "season": 10,
@@ -30,6 +32,7 @@
   },
   {
     "team": "Piggies",
+    "reference_match_id": "1-82317c54-3c87-42ee-af8c-0286c09961e3",
     "game": "Overwatch",
     "provider": "faceit",
     "season": 10,

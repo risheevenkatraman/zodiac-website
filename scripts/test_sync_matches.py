@@ -52,9 +52,12 @@ class MatchSyncTests(unittest.TestCase):
             if path == '/matches/match-1':
                 return fixture
             raise SyncError('HTTP 404')
-        source = dict(SOURCE, reference_match_id='match-1', championship_ids=['competition-1'])
-        with patch.object(client, 'get', side_effect=get):
-            self.assertEqual(len(merge_events([], [source], client)), 1)
+        for configured in ({}, {'championship_ids': ['competition-1']}):
+            source = dict(SOURCE, reference_match_id='match-1', **configured)
+            with self.subTest(configured=configured), patch.object(client, 'get', side_effect=get), patch.object(
+                    client, 'items', wraps=client.items) as items:
+                self.assertEqual(len(merge_events([], [source], client)), 1)
+                items.assert_called_once_with('/championships/competition-1/matches', type='all')
 
     def test_fixture_metadata_rejects_wrong_game_season_or_competition(self):
         for changes in ({'game': 'cs2'}, {'competition_name': 'S11 NA'},

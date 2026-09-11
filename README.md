@@ -102,7 +102,10 @@ the season, and filters matches by the exact FACEIT team ID. Descriptions are
 FACEIT's team `/leagues` webpage is not scraped. Zodiac's supplied match metadata
 identifies championship `35b0ad84-0125-424b-811c-29eaa02e7096`, named
 `S10 NA Master Central - Regular Season`; this ID is configured directly.
-Other teams use discovery that searches both `Season 10` and `S10` names.
+All four teams have a `reference_match_id` from their Season 10 schedules.
+Goats, Ox, and Piggies derive their championship IDs from those matches,
+bypassing competition-name search. The importer validates each reference's
+game, season, and team ID before loading that championship's match list.
 Team IDs determine membership even when FACEIT uses a different team name.
 An Actions run must still verify the full fixture lists for all four teams.
 If discovery fails, the workflow reports an error and leaves the live site
