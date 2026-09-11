@@ -33,7 +33,6 @@ def build():
         <img class="hero-image" src="{portrait}" alt="" width="88" height="88" loading="lazy" decoding="async">
         <div><h4>{name}</h4><p class="role">{role}</p><p>Signature {pool_label.lower()}: {escape(signature['name'])}</p><span class="profile-link">View profile →</span></div>
       </a>''')
-            pool = ''.join(f'<li class="pool-card"><img src="{asset_url(hero["image"])}" alt="" width="88" height="88" loading="lazy"><div><strong>{escape(hero["name"])}</strong>{"<small>Signature pick</small>" if i == 0 else ""}</div></li>' for i, hero in enumerate(player['pool']))
             socials = []
             for social in player['socials']:
                 url = social['url']
@@ -50,7 +49,7 @@ def build():
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>{name} — {escape(team['name'])} {escape(team['game'])} | Zodiac Esports</title>
-  <meta name="description" content="Meet {name}, {role} for {escape(team['name'])} in {escape(team['game'])}. Explore their {pool_label.lower()} pool and social links.">
+  <meta name="description" content="Meet {name}, {role} for {escape(team['name'])} in {escape(team['game'])}. Read their introduction and find their social links.">
   <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
@@ -64,7 +63,6 @@ def build():
     </section>
     <div class="profile-sections">
       <section class="profile-section" aria-labelledby="intro-heading"><h2 id="intro-heading">Introduction</h2><p>{introduction}</p></section>
-      <section class="profile-section" aria-labelledby="pool-heading"><h2 id="pool-heading">{pool_label} pool</h2><ul class="pool-grid">{pool}</ul></section>
       <section class="profile-section" aria-labelledby="social-heading"><h2 id="social-heading">Social links</h2><div class="player-socials">{social_content}</div></section>
     </div>
   </main>

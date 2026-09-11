@@ -3,5 +3,138 @@
     "name": "Season kickoff",
     "description": "Follow our opening matches live.",
     "date": "2026-09-07"
+  },
+  {
+    "name": "Overwatch — FACEIT Season 10",
+    "description": "Goats vs Agave Cornucopia",
+    "date": "2026-09-14",
+    "source": "faceit",
+    "match_id": "1-90338cf6-7787-4a96-91ef-1406237790b6"
+  },
+  {
+    "name": "Overwatch — FACEIT Season 10",
+    "description": "Ox vs NEONDREAM",
+    "date": "2026-09-14",
+    "source": "faceit",
+    "match_id": "1-e8bd2a02-75bb-42fd-83e7-8379b4608e96"
+  },
+  {
+    "name": "Overwatch — FACEIT Season 10",
+    "description": "Ox vs Agave Meowls",
+    "date": "2026-09-16",
+    "source": "faceit",
+    "match_id": "1-5992bd57-b3e4-4704-adea-9ad9ae5603b2"
+  },
+  {
+    "name": "Overwatch — FACEIT Season 10",
+    "description": "Goats vs LKA Meows",
+    "date": "2026-09-16",
+    "source": "faceit",
+    "match_id": "1-5b953aa2-abb4-4ef6-8e68-24e2c237800d"
+  },
+  {
+    "name": "Overwatch — FACEIT Season 10",
+    "description": "Piggies vs Green bean alliance",
+    "date": "2026-09-16",
+    "source": "faceit",
+    "match_id": "1-82317c54-3c87-42ee-af8c-0286c09961e3"
+  },
+  {
+    "name": "Overwatch — FACEIT Season 10",
+    "description": "Zodiac vs VTY Truth Nuke",
+    "date": "2026-09-16",
+    "source": "faceit",
+    "match_id": "1-aab749c9-f0e9-488d-a77c-a2953f383fa6"
+  },
+  {
+    "name": "Overwatch — FACEIT Season 10",
+    "description": "Zodiac vs Extinction",
+    "date": "2026-09-18",
+    "source": "faceit",
+    "match_id": "1-8d602834-7e05-412e-9836-6ea675e21ab7"
+  },
+  {
+    "name": "Overwatch — FACEIT Season 10",
+    "description": "Zodiac vs The Kafe",
+    "date": "2026-09-23",
+    "source": "faceit",
+    "match_id": "1-6aa2d07c-81be-4861-9bfd-bb3d191b879d"
+  },
+  {
+    "name": "Overwatch — FACEIT Season 10",
+    "description": "Zodiac vs Tanuki",
+    "date": "2026-09-25",
+    "source": "faceit",
+    "match_id": "1-b0bd5109-7b4e-4825-b3cd-69486c07dff9"
+  },
+  {
+    "name": "Overwatch — FACEIT Season 10",
+    "description": "Zodiac vs Dominion Esports",
+    "date": "2026-09-27",
+    "source": "faceit",
+    "match_id": "1-5e6afee4-6eba-4b8a-9344-e8a4ce7d3f07"
+  },
+  {
+    "name": "Overwatch — FACEIT Season 10",
+    "description": "Zodiac vs RIG x Perish Trap",
+    "date": "2026-09-28",
+    "source": "faceit",
+    "match_id": "1-393871d8-93f4-419f-915d-43f7249e67d9"
+  },
+  {
+    "name": "Overwatch — FACEIT Season 10",
+    "description": "Zodiac vs Listen to Him",
+    "date": "2026-09-30",
+    "source": "faceit",
+    "match_id": "1-cf826560-2e50-490c-961e-ba0ae937a6cc"
+  },
+  {
+    "name": "Overwatch — FACEIT Season 10",
+    "description": "Zodiac vs ILIAD ARTEMIS",
+    "date": "2026-10-02",
+    "source": "faceit",
+    "match_id": "1-2b879cfb-32d2-4c41-a277-2a05a5c060f1"
+  },
+  {
+    "name": "Overwatch — FACEIT Season 10",
+    "description": "Zodiac vs DarkMode",
+    "date": "2026-10-07",
+    "source": "faceit",
+    "match_id": "1-24448b51-cd68-4d39-aae4-664060d14003"
+  },
+  {
+    "name": "Overwatch — FACEIT Season 10",
+    "description": "Zodiac vs Kafe Kinstugi",
+    "date": "2026-10-09",
+    "source": "faceit",
+    "match_id": "1-5915a02d-0018-4fb8-8fcb-db8498664580"
+  },
+  {
+    "name": "Overwatch — FACEIT Season 10",
+    "description": "Zodiac vs THATSTHAYNOSE",
+    "date": "2026-10-14",
+    "source": "faceit",
+    "match_id": "1-936ea2dd-412f-4bd0-9703-228978a83152"
+  },
+  {
+    "name": "Overwatch — FACEIT Season 10",
+    "description": "Zodiac vs WAY2THANUS",
+    "date": "2026-10-16",
+    "source": "faceit",
+    "match_id": "1-d8dea751-d1c7-48e0-895d-89eea315d144"
+  },
+  {
+    "name": "Overwatch — FACEIT Season 10",
+    "description": "Zodiac vs The Fallen",
+    "date": "2026-10-21",
+    "source": "faceit",
+    "match_id": "1-5ebea9e9-ffab-4a95-a91c-b43d3e9e87e2"
+  },
+  {
+    "name": "Overwatch — FACEIT Season 10",
+    "description": "Zodiac vs LAIKA",
+    "date": "2026-10-23",
+    "source": "faceit",
+    "match_id": "1-d1ffdf2d-d2fa-4ea2-a9e5-cb557bca8e39"
   }
 ]
