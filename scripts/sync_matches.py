@@ -103,6 +103,18 @@ def source_matches(client, source):
         raise SyncError('FACEIT team response is missing the game ID')
     season = source['season']
     competitions = source.get('championship_ids')
+    if source.get('reference_match_id'):
+        reference = client.get('/matches/' + identifier(source['reference_match_id']))
+        if (reference.get('game') != game
+                or reference.get('competition_type') != 'championship'
+                or not season_matches(reference.get('competition_name'), season)
+                or not includes_team(reference, team_id)):
+            raise SyncError(f'Reference match does not match {source["team"]}, game and season')
+        reference_competition = identifier(reference.get('competition_id'))
+        if competitions and reference_competition not in competitions:
+            raise SyncError('Reference match does not belong to the configured championships')
+        if not competitions:
+            competitions = [reference_competition]
     if not competitions:
         competitions = []
         for query in (f'Season {season}', f'S{season}'):
@@ -113,11 +125,14 @@ def source_matches(client, source):
     found = {}
     for competition in sorted(set(competitions)):
         path = '/championships/' + identifier(competition)
-        details = client.get(path)
-        if details.get('game_id') != game or not season_matches(details.get('name', ''), season):
-            raise SyncError(f'Competition {competition} does not match the team game and Season {season}')
+        # League championships may return 404 for details while listing matches
+        # successfully. Validate the fixture metadata instead of fetching details.
         for match in client.items(path + '/matches', type='all'):
             if includes_team(match, team_id):
+                if (match.get('competition_id') != competition
+                        or match.get('game') != game
+                        or not season_matches(match.get('competition_name'), season)):
+                    raise SyncError(f'Fixture in {competition} does not match the game and Season {season}')
                 match_id = identifier(match.get('match_id'))
                 found[match_id] = match
     if not found:

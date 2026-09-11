@@ -14,6 +14,9 @@ SOURCE = {'provider': 'faceit', 'team': 'Zodiac', 'team_id': 'zodiac-id',
 
 def match(day=15, **changes):
     result = {'match_id': 'match-1', 'status': 'SCHEDULED',
+              'game': 'ow2', 'competition_id': 'competition-1',
+              'competition_type': 'championship',
+              'competition_name': 'S10 NA Master Central - Regular Season',
               'scheduled_at': int(datetime(2026, 10, day, 1, tzinfo=timezone.utc).timestamp()),
               'teams': {'faction1': {'faction_id': 'zodiac-id', 'name': 'Zodiac'},
                         'faction2': {'faction_id': 'opponent-id', 'name': 'Opponent'}}}
@@ -40,6 +43,25 @@ class FixtureClient:
 
 
 class MatchSyncTests(unittest.TestCase):
+    def test_reference_match_bypasses_unavailable_championship_details(self):
+        fixture = match()
+        client = FixtureClient([fixture])
+        def get(path):
+            if path == '/teams/zodiac-id':
+                return {'game': 'ow2'}
+            if path == '/matches/match-1':
+                return fixture
+            raise SyncError('HTTP 404')
+        source = dict(SOURCE, reference_match_id='match-1', championship_ids=['competition-1'])
+        with patch.object(client, 'get', side_effect=get):
+            self.assertEqual(len(merge_events([], [source], client)), 1)
+
+    def test_fixture_metadata_rejects_wrong_game_season_or_competition(self):
+        for changes in ({'game': 'cs2'}, {'competition_name': 'S11 NA'},
+                        {'competition_id': 'wrong-id'}):
+            with self.assertRaises(SyncError):
+                merge_events([], [SOURCE], FixtureClient([match(**changes)]))
+
     def test_reschedule_replaces_same_match_and_keeps_manual_events(self):
         manual = {'name': 'Community night', 'description': 'Games', 'date': '2026-10-01'}
         first = merge_events([manual], [SOURCE], FixtureClient([match()]))
