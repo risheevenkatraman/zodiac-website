@@ -83,6 +83,45 @@ Both files load directly when the homepage opens: save and refresh your local
 preview, or commit and deploy for the live site. No player build command is needed.
 Announcement and event text is rendered as plain text, not HTML.
 
+## Automatic FACEIT matches
+
+The deployment workflow runs on pushes to `main`, manually from the Actions tab,
+and daily at 10:17 UTC (GitHub may delay scheduled runs). It reads the server-side
+key from the repository Actions secret `FACEIT_API_KEY`, runs
+`scripts/sync_matches.py`, and publishes the merged events to `gh-pages`.
+The imported events are generated in the deployment checkout; they are not
+committed back to `main`. Keep editing manual events in `data/events.json`.
+
+`data/match_sources.json` currently configures Zodiac's flagship Overwatch team, Goats, Ox, and Piggies
+for Season 10. Add other teams once their FACEIT team IDs and seasons are known.
+The importer discovers the game's ID from the team, searches championships for
+the season, and filters matches by the exact FACEIT team ID. Descriptions are
+`Zodiac vs Opponent`. Dates use the configured `timezone` (currently
+`America/New_York`); change this if the organization uses another calendar zone.
+
+FACEIT's team `/leagues` webpage is not scraped. Its Season 10 fixtures have not
+yet been verified against the authenticated Data API. The first Actions run
+must establish whether they are exposed through the championship endpoints.
+If discovery fails, the workflow reports an error and leaves the live site
+unchanged. An optional `championship_ids` array can identify verified competitions
+directly; those must still match the configured game and season. If FACEIT does
+not expose this league through that API, another supported source is needed.
+
+Every run rebuilds imported matches, so changed dates replace old dates and
+cancelled, finished, or undated matches are omitted. Manual events are preserved.
+Any API or parsing failure stops deployment before publishing partial results.
+Do not add `source: "faceit"` to manual events: that marks imported records.
+
+After these changes are pushed to `main`, open **Actions → Deploy to GitHub Pages
+→ Run workflow** to perform the first live check. Review the **Update FACEIT
+match schedules** step for the match count or an actionable error. Saving the
+secret alone does not activate the workflow.
+
+Offline importer checks: `python -m unittest discover -s scripts -p "test_sync_matches.py"`.
+For a local sync, supply `FACEIT_API_KEY` through your environment; it is never
+included in the website JavaScript. Windows Python may require `tzdata` installed
+to use IANA time zones; the Linux Actions runner supplies them.
+
 Run `python scripts/check_site.py` to verify local links, profile coverage, and
 generated output. Run `node scripts/check_events.cjs` and
 `node scripts/check_roster.cjs` for date handling and roster search checks.

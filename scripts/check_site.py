@@ -50,7 +50,8 @@ for team in teams:
         target = f'players/player-{player["id"]}.html'
         assert '../' + target in pages[team['page']].links, f'Unlinked player: {target}'
         assert '../' + team['page'] in pages[target].links, f'Missing team return link: {target}'
-        assert {'intro-heading', 'pool-heading', 'social-heading'} <= pages[target].ids
+        assert {'intro-heading', 'social-heading'} <= pages[target].ids
+        assert 'pool-heading' not in pages[target].ids
 
 staff = json.loads((ROOT / 'data/staff.json').read_text(encoding='utf-8'))
 staff_ids = set()

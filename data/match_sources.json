@@ -1,0 +1,38 @@
+[
+  {
+    "team": "Zodiac",
+    "game": "Overwatch",
+    "provider": "faceit",
+    "season": 10,
+    "timezone": "America/New_York",
+    "team_id": "c34ba98e-8985-4140-903a-82ecacdf1485",
+    "schedule_url": "https://www.faceit.com/en/teams/c34ba98e-8985-4140-903a-82ecacdf1485/leagues"
+  },
+  {
+    "team": "Goats",
+    "game": "Overwatch",
+    "provider": "faceit",
+    "season": 10,
+    "timezone": "America/New_York",
+    "team_id": "7c018bc3-1780-408c-ae44-5daf879f22a4",
+    "schedule_url": "https://www.faceit.com/en/teams/7c018bc3-1780-408c-ae44-5daf879f22a4/leagues"
+  },
+  {
+    "team": "Ox",
+    "game": "Overwatch",
+    "provider": "faceit",
+    "season": 10,
+    "timezone": "America/New_York",
+    "team_id": "f9f433bc-4f08-459b-bc52-e8166276d5af",
+    "schedule_url": "https://www.faceit.com/en/teams/f9f433bc-4f08-459b-bc52-e8166276d5af/leagues"
+  },
+  {
+    "team": "Piggies",
+    "game": "Overwatch",
+    "provider": "faceit",
+    "season": 10,
+    "timezone": "America/New_York",
+    "team_id": "be0b253a-e419-4378-94ea-5bb55fc0cf18",
+    "schedule_url": "https://www.faceit.com/en/teams/be0b253a-e419-4378-94ea-5bb55fc0cf18/leagues"
+  }
+]
