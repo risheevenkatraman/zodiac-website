@@ -88,7 +88,10 @@ Announcement and event text is rendered as plain text, not HTML.
 The deployment workflow runs on pushes to `main`, manually from the Actions tab,
 and daily at 10:17 UTC (GitHub may delay scheduled runs). It reads the server-side
 key from the repository Actions secret `FACEIT_API_KEY`, runs
-`scripts/sync_matches.py`, and publishes the merged events to `gh-pages`.
+`scripts/sync_matches.py`, and publishes the merged events directly to GitHub Pages
+using `actions/upload-pages-artifact` and `actions/deploy-pages`.
+In repository **Settings → Pages → Build and deployment**, set **Source** to
+**GitHub Actions**. The workflow no longer publishes by committing to `gh-pages`.
 The imported events are generated in the deployment checkout; they are not
 committed back to `main`. Keep editing manual events in `data/events.json`.
 
