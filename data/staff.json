@@ -1,0 +1,74 @@
+[
+  {
+    "id": "finrixsta",
+    "name": "Finrixsta (Rixi Liu)",
+    "role": "Owner/Founder",
+    "image": "assets/rixi-pfp.png",
+    "introduction": "I started gaming in college and absolutely fell in love with it like a child with new type of candy. Throughout my collegiate years I played mostly Overwatch with a sprinkle of Valorant. I started playing on teams and managing, but sadly life took me elsewhere so I couldn't compete anymore. I started Zodiac eSports to create a better environment for gamers, managers, coaches and just for the scene in general. I'm excited to see where Zodiac takes me and continue to meet new people. ",
+    "socials": [
+      {
+        "label": "X/Twitter",
+        "url": "https://x.com/finrixsta"
+      }
+    ]
+  },
+  {
+    "id": "zexo2k",
+    "name": "Zexo2k",
+    "role": "Co-Owner",
+    "image": "assets/zexo-pfp.jpg",
+    "introduction": "Absolutely love competition, overwatch has let me do that while also building friendships along the way",
+    "socials": [
+      {
+        "label": "X/Twitter",
+        "url": "https://x.com/Zexo2k?s=20"
+      },
+      {
+        "label": "Twitch",
+        "url": "https://www.twitch.tv/zexo2k"
+      }
+    ]
+  },
+  {
+    "id": "deer",
+    "name": "Deer",
+    "role": "Overwatch GM/Director",
+    "image": "assets/deer-pfp.jpeg",
+    "introduction": "I love the connections I’m able to make, and the friends that I gain along the way.",
+    "socials": [
+      {
+        "label": "X/Twitter",
+        "url": "https://x.com/me7onyy?s=11"
+      }
+    ]
+  },
+  {
+    "id": "lux",
+    "name": "Lux",
+    "role": "Analyst/Parsertime Owner",
+    "image": "assets/profile-placeholder.svg",
+    "introduction": "",
+    "socials": []
+  },
+  {
+    "id": "j0yfal",
+    "name": "J0yfal",
+    "role": "Lead Graphic Designer",
+    "image": "assets/profile-placeholder.svg",
+    "introduction": "",
+    "socials": []
+  },
+  {
+    "id": "aurelia",
+    "name": "Aurelia",
+    "role": "Social Media Manager",
+    "image": "assets/aurelia-pfp.jpg",
+    "introduction": "I've loved Overwatch since before it even came out. When my high school years and the formative years of Overwatch esports coincided, it set me up to love working for esports. Add a comms degree, a love for writing, and social media knowhow to the mix, and you get someone whose passion for esports gets turned into productive living. Who knew that loving what you do for work makes for a good life?",
+    "socials": [
+      {
+        "label": "X/Twitter",
+        "url": "https://x.com/c4idari"
+      }
+    ]
+  }
+]

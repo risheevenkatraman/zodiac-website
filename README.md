@@ -28,6 +28,18 @@ Use verified accounts only. Empty introductions and social lists display friendl
 placeholders. Initial pools contain only the signature picks from the original site.
 The existing Placeholder roster slot remains a placeholder profile.
 
+## Updating staff
+
+Edit `data/staff.json`, then run `python scripts/build_staff.py` (Python 3).
+Commit the JSON and generated HTML together, just like player updates.
+Each staff card links to `staff/staff-<id>.html`; keep IDs stable when renaming staff.
+
+Each entry has `id`, `name`, `role`, `image`, `introduction`, and `socials`.
+Image paths use `assets/...`. Social entries use
+`{"label": "Twitch", "url": "https://www.twitch.tv/your-handle"}`.
+Use verified accounts only. Empty introductions and social lists show placeholders.
+Both the directory and profiles work without JavaScript.
+
 ## Local preview
 
 Run `python -m http.server 8000` and open `http://localhost:8000` so announcements

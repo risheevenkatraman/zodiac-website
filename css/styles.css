@@ -182,7 +182,9 @@ h3 { color: var(--purple-dark); margin-top: 2.5rem; }
 .event-details p { margin: 0.25rem 0 0; color: var(--muted); }
 .event-details .event-readable-date { margin: 0 0 0.3rem; color: var(--purple); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
 .event-status { padding: 1rem; color: var(--muted); }
-.staff-card { padding: 1.2rem; text-align: center; }
+.staff-card { display: block; padding: 1.2rem; text-align: center; color: var(--ink); text-decoration: none; overflow-wrap: anywhere; }
+.staff-card:hover { box-shadow: var(--shadow); border-color: var(--purple); }
+.staff-card h2 { font-size: 1rem; }
 .staff-card img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 0.5rem; }
 .coming-soon { padding: 1.5rem; }
 .site-footer { padding: 1.5rem 1.25rem; border-top: 1px solid var(--line); color: var(--muted); text-align: center; }

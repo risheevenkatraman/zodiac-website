@@ -6,6 +6,7 @@ from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
 from build_players import build
+from build_staff import build as build_staff
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -51,7 +52,18 @@ for team in teams:
         assert '../' + team['page'] in pages[target].links, f'Missing team return link: {target}'
         assert {'intro-heading', 'pool-heading', 'social-heading'} <= pages[target].ids
 
+staff = json.loads((ROOT / 'data/staff.json').read_text(encoding='utf-8'))
+staff_ids = set()
+for member in staff:
+    assert member['id'] not in staff_ids, 'Staff IDs must be unique'
+    staff_ids.add(member['id'])
+    target = f'staff/staff-{member["id"]}.html'
+    assert target in pages['staff.html'].links, f'Unlinked staff member: {target}'
+    assert '../staff.html' in pages[target].links, f'Missing staff return link: {target}'
+    assert {'intro-heading', 'social-heading'} <= pages[target].ids
+
 before = {path: path.read_bytes() for path in ROOT.rglob('*.html')}
 build()
+build_staff()
 assert all(path.read_bytes() == content for path, content in before.items()), 'Generated pages were out of date'
-print(f'Checked {len(pages)} pages, all local links/assets, and {len(ids)} player profiles. Generation is reproducible.')
+print(f'Checked {len(pages)} pages, all local links/assets, {len(ids)} player profiles, and {len(staff_ids)} staff profiles. Generation is reproducible.')
