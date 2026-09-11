@@ -99,9 +99,12 @@ the season, and filters matches by the exact FACEIT team ID. Descriptions are
 `Zodiac vs Opponent`. Dates use the configured `timezone` (currently
 `America/New_York`); change this if the organization uses another calendar zone.
 
-FACEIT's team `/leagues` webpage is not scraped. Its Season 10 fixtures have not
-yet been verified against the authenticated Data API. The first Actions run
-must establish whether they are exposed through the championship endpoints.
+FACEIT's team `/leagues` webpage is not scraped. Zodiac's supplied match metadata
+identifies championship `35b0ad84-0125-424b-811c-29eaa02e7096`, named
+`S10 NA Master Central - Regular Season`; this ID is configured directly.
+Other teams use discovery that searches both `Season 10` and `S10` names.
+Team IDs determine membership even when FACEIT uses a different team name.
+An Actions run must still verify the full fixture lists for all four teams.
 If discovery fails, the workflow reports an error and leaves the live site
 unchanged. An optional `championship_ids` array can identify verified competitions
 directly; those must still match the configured game and season. If FACEIT does

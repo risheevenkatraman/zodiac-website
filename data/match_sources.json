@@ -1,6 +1,7 @@
 [
   {
     "team": "Zodiac",
+    "championship_ids": ["35b0ad84-0125-424b-811c-29eaa02e7096"],
     "game": "Overwatch",
     "provider": "faceit",
     "season": 10,

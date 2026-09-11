@@ -91,6 +91,40 @@ class MatchSyncTests(unittest.TestCase):
     def test_season_number_has_boundaries(self):
         self.assertTrue(season_matches('OW League SEASON 10 EU', 10))
         self.assertFalse(season_matches('OW League Season 100', 10))
+        self.assertTrue(season_matches('S10 NA Master Central - Regular Season', 10))
+        self.assertFalse(season_matches('S100 NA Master Central', 10))
+        self.assertFalse(season_matches('S11 NA Master Central', 10))
+
+    def test_short_season_discovery(self):
+        client = FixtureClient([match()])
+        original_items = client.items
+        def items(path, **params):
+            if path == '/search/championships':
+                if params['name'] == 'Season 10':
+                    return []
+                self.assertEqual(params['name'], 'S10')
+                return [{'competition_id': 'competition-1',
+                         'name': 'S10 NA Master Central - Regular Season'}]
+            return original_items(path, **params)
+        with patch.object(client, 'items', side_effect=items), patch.object(
+                client, 'get', side_effect=lambda path: {'game': 'ow2'}
+                if path.startswith('/teams/') else {
+                    'game_id': 'ow2', 'name': 'S10 NA Master Central - Regular Season'}):
+            self.assertEqual(len(merge_events([], [SOURCE], client)), 1)
+
+    def test_verified_championship_and_team_alias(self):
+        fixture = match(scheduled_at=1789606800)
+        fixture['teams']['faction1']['name'] = 'Grimoire'
+        fixture['teams']['faction2']['name'] = 'VTY Truth Nuke'
+        client = FixtureClient([fixture])
+        source = dict(SOURCE, championship_ids=['competition-1'], timezone='America/New_York')
+        with patch.object(client, 'items', wraps=client.items) as items, patch.object(
+                client, 'get', side_effect=lambda path: {'game': 'ow2'}
+                if path.startswith('/teams/') else {
+                    'game_id': 'ow2', 'name': 'S10 NA Master Central - Regular Season'}):
+            result = merge_events([], [source], client)
+            items.assert_called_once_with('/championships/competition-1/matches', type='all')
+            self.assertEqual(result[0]['description'], 'Zodiac vs VTY Truth Nuke')
 
     def test_failure_does_not_write_partial_events(self):
         with tempfile.TemporaryDirectory() as directory:

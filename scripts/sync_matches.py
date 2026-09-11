@@ -80,7 +80,7 @@ def identifier(value):
 
 
 def season_matches(name, season):
-    return bool(re.search(rf'\bseason\s*{season}\b', name, re.I))
+    return isinstance(name, str) and bool(re.search(rf'\b(?:season\s*|s){season}\b', name, re.I))
 
 
 def team_factions(match):
@@ -103,10 +103,12 @@ def source_matches(client, source):
     season = source['season']
     competitions = source.get('championship_ids')
     if not competitions:
-        candidates = client.items('/search/championships',
-                                  name=f'Season {season}', game=game, type='all')
-        competitions = [c['competition_id'] for c in candidates
-                        if season_matches(c.get('name', ''), season)]
+        competitions = []
+        for query in (f'Season {season}', f'S{season}'):
+            candidates = client.items('/search/championships',
+                                      name=query, game=game, type='all')
+            competitions.extend(c['competition_id'] for c in candidates
+                                if season_matches(c.get('name', ''), season))
     found = {}
     for competition in sorted(set(competitions)):
         path = '/championships/' + identifier(competition)
