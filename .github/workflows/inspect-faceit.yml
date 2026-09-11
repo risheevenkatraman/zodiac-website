@@ -1,0 +1,28 @@
+name: Inspect FACEIT match
+
+on:
+  workflow_dispatch:
+    inputs:
+      match_id:
+        description: FACEIT match ID from the match-room URL
+        required: true
+        default: 1-aab749c9-f0e9-488d-a77c-a2953f383fa6
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Inspect match metadata
+        env:
+          FACEIT_API_KEY: ${{ secrets.FACEIT_API_KEY }}
+          FACEIT_MATCH_ID: ${{ inputs.match_id }}
+        run: python scripts/inspect_faceit_match.py

@@ -118,6 +118,13 @@ match schedules** step for the match count or an actionable error. Saving the
 secret alone does not activate the workflow.
 
 Offline importer checks: `python -m unittest discover -s scripts -p "test_sync_matches.py"`.
+
+To diagnose fixture discovery, run **Actions → Inspect FACEIT match → Run workflow**.
+The default match ID is the Zodiac Season 10 example supplied from its schedule.
+The **Inspect match metadata** step logs only match/competition metadata and team
+names/IDs, using the existing repository secret. It does not deploy or edit events.
+Use this output to identify the actual competition type before changing discovery.
+
 For a local sync, supply `FACEIT_API_KEY` through your environment; it is never
 included in the website JavaScript. Windows Python may require `tzdata` installed
 to use IANA time zones; the Linux Actions runner supplies them.
