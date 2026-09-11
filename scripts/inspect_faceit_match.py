@@ -19,6 +19,29 @@ def inspect_match(client, match_id):
         side: {field: team.get(field) for field in ('faction_id', 'name')}
         for side, team in teams.items() if isinstance(team, dict)
     }
+    competition_id = identifier(match.get('competition_id'))
+    probes = {}
+    # Match metadata can reference a competition that is unavailable through
+    # the public competition API. Test listing separately from details.
+    for path, params in (
+        (f'/championships/{competition_id}', {}),
+        (f'/championships/{competition_id}/matches', {'type': 'all', 'offset': 0, 'limit': 1}),
+    ):
+        try:
+            data = client.get(path, **params)
+            if path.endswith('/matches'):
+                items = data.get('items')
+                if not isinstance(items, list):
+                    raise SyncError('Response is missing the items array')
+                probes[path] = {'accessible': True, 'sample_count': len(items),
+                                'sample_match_ids': [x.get('match_id') for x in items
+                                                     if isinstance(x, dict)]}
+            else:
+                probes[path] = {'accessible': True, 'name': data.get('name'),
+                                'game_id': data.get('game_id')}
+        except SyncError as error:
+            probes[path] = {'accessible': False, 'error': str(error)}
+    result['competition_probes'] = probes
     return result
 
 

@@ -45,8 +45,9 @@ class Faceit:
                 if error.code in (429, 500, 502, 503, 504) and attempt < 2:
                     time.sleep(2 ** (attempt + 1))
                     continue
-                raise SyncError(f'FACEIT returned HTTP {error.code} for {path}. '
-                                'For 401/403, check the FACEIT_API_KEY server-side secret.') from None
+                hint = (' Check the FACEIT_API_KEY server-side secret.'
+                        if error.code in (401, 403) else '')
+                raise SyncError(f'FACEIT returned HTTP {error.code} for {path}.{hint}') from None
             except (URLError, TimeoutError):
                 if attempt < 2:
                     time.sleep(2 ** (attempt + 1))
