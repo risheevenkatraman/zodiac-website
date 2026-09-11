@@ -23,6 +23,14 @@ assert.equal(events[0].value.getHours(), 12);
 assert.equal(parse([event('2026-10-01', '<img onerror=alert(1)>')])[0].name, '<img onerror=alert(1)>');
 assert.equal(parse([event(' 2026-10-01 ', ' Trimmed ')])[0].name, 'Trimmed');
 const saved = JSON.parse(fs.readFileSync('data/events.json', 'utf8'));
+const calendar = parse(['2026-09-10', '2026-09-11', '2026-09-30', '2026-10-01',
+  '2026-12-31', '2027-01-01'].map(date => event(date)));
+const visibleDates = now => Array.from(context.currentMonthEvents(calendar, now), e => e.date);
+assert.deepEqual(visibleDates(new Date(2026, 8, 11, 23)), ['2026-09-11', '2026-09-30']);
+assert.deepEqual(visibleDates(new Date(2026, 9, 1)), ['2026-10-01']);
+assert.deepEqual(visibleDates(new Date(2026, 11, 31)), ['2026-12-31']);
+assert.deepEqual(visibleDates(new Date(2027, 0, 1)), ['2027-01-01']);
+assert.deepEqual(visibleDates(new Date(2027, 1, 1)), []);
 assert.equal(parse(saved).length, saved.length);
 vm.runInContext(fs.readFileSync('js/announcement.js', 'utf8'), context);
 const announcement = JSON.parse(fs.readFileSync('data/announcement.json', 'utf8'));

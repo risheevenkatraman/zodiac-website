@@ -16,14 +16,18 @@ function parseEvents(data) {
   }).sort((a, b) => a.value - b.value);
 }
 
+function currentMonthEvents(events, now = new Date()) {
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+  return events.filter(event => event.value >= today && event.value < nextMonth);
+}
+
 function renderEvents(events) {
   const timeline = document.querySelector('#event-timeline');
   if (!timeline) return;
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const upcoming = events.filter(event => event.value >= today);
+  const upcoming = currentMonthEvents(events);
   if (!upcoming.length) {
-    timeline.textContent = 'No upcoming events. Check back soon for our next matches and community nights.';
+    timeline.textContent = 'No upcoming events this month. Check back soon for our next matches and community nights.';
     return;
   }
   const monthFormat = new Intl.DateTimeFormat(undefined, { month: 'short' });

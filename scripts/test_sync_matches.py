@@ -43,6 +43,13 @@ class FixtureClient:
 
 
 class MatchSyncTests(unittest.TestCase):
+    def test_event_title_includes_faceit_division(self):
+        for division in ('Master', 'Expert', 'Intermediate'):
+            competition = f'S10 NA {division} Central - Regular Season'
+            result = merge_events([], [SOURCE], FixtureClient([match(competition_name=competition)]))
+            self.assertEqual(result[0]['name'], f'Overwatch — FACEIT {competition}')
+            self.assertEqual(result[0]['description'], 'Zodiac vs Opponent')
+
     def test_reference_match_bypasses_unavailable_championship_details(self):
         fixture = match()
         client = FixtureClient([fixture])

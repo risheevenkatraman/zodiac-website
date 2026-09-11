@@ -4,11 +4,24 @@ Zodiac Esports is a static organization website for showcasing the organization'
 
 ## Stack
 
-- HTML5
-- CSS3
-- Vanilla JavaScript
-- SVG, PNG, and WebP assets
-- GitHub Pages deployment through GitHub Actions
+- **Frontend:** HTML5, CSS3, and vanilla JavaScript for roster search, announcements,
+  and the current-month events calendar.
+- **Content:** JSON files in `data/` for players, staff, announcements, manual events,
+  and FACEIT match sources; SVG, PNG, JPEG, and WebP assets.
+- **Generation and automation:** Python 3 (3.12 in CI) with standard-library scripts
+  to generate player/staff pages and sync match schedules.
+- **Match data:** FACEIT Data API, authenticated with the `FACEIT_API_KEY` GitHub
+  Actions secret. Reference matches identify each team's championship; imported
+  events include opponents, dates, and competition/division names.
+- **Hosting and deployment:** GitHub Pages, published directly from GitHub Actions
+  with `configure-pages`, `upload-pages-artifact`, and `deploy-pages`. Deployments
+  run on pushes to `main`, manual runs, and a daily 10:17 UTC schedule.
+- **Validation:** Python `unittest` for the importer, Python site/link checks, and
+  Node.js scripts for event parsing and roster search.
+
+The deployed site is static: it has no application server or database. Python
+runs during content generation and automation; browsers load the resulting HTML,
+assets, and JSON. Local Windows Python may need `tzdata` for match time zones.
 
 ## Updating players
 
@@ -75,8 +88,9 @@ Edit `data/events.json` for the event list. Add an object for each event:
 ```
 
 Use `YYYY-MM-DD` dates and `[]` for no events. Events are sorted by date;
-invalid entries are ignored and past events are hidden using the visitor's local
-calendar date. Failed event loads show an unavailable message.
+invalid entries are ignored. The calendar shows only upcoming events in the
+visitor's current local month (including today), updating the month on each page
+load. Failed event loads show an unavailable message.
 
 Use double quotes, commas between entries, and no trailing commas or comments.
 Both files load directly when the homepage opens: save and refresh your local
@@ -97,9 +111,12 @@ committed back to `main`. Keep editing manual events in `data/events.json`.
 
 `data/match_sources.json` currently configures Zodiac's flagship Overwatch team, Goats, Ox, and Piggies
 for Season 10. Add other teams once their FACEIT team IDs and seasons are known.
-The importer discovers the game's ID from the team, searches championships for
-the season, and filters matches by the exact FACEIT team ID. Descriptions are
-`Zodiac vs Opponent`. Dates use the configured `timezone` (currently
+The importer discovers the game's ID from the team, resolves championships from
+reference matches or configured IDs, and filters matches by the exact FACEIT team
+ID. Competition-name search is a fallback when neither is configured. Descriptions are
+`Zodiac vs Opponent`. Match titles include FACEIT's full competition name,
+including its division, such as `Overwatch — FACEIT S10 NA Master Central - Regular Season`.
+Dates use the configured `timezone` (currently
 `America/New_York`); change this if the organization uses another calendar zone.
 
 FACEIT's team `/leagues` webpage is not scraped. Zodiac's supplied match metadata
@@ -110,7 +127,6 @@ Goats, Ox, and Piggies derive their championship IDs from those matches,
 bypassing competition-name search. The importer validates each reference's
 game, season, and team ID before loading that championship's match list.
 Team IDs determine membership even when FACEIT uses a different team name.
-An Actions run must still verify the full fixture lists for all four teams.
 If discovery fails, the workflow reports an error and leaves the live site
 unchanged. An optional `championship_ids` array can identify verified competitions
 directly; those must still match the configured game and season. If FACEIT does

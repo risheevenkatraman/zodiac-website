@@ -161,7 +161,7 @@ def event_for(match, source):
         raise SyncError('Scheduled FACEIT match is missing its opponent')
     date = datetime.fromtimestamp(scheduled, ZoneInfo(source['timezone'])).date().isoformat()
     return {
-        'name': f'{source["game"]} — FACEIT Season {source["season"]}',
+        'name': f'{source["game"]} — FACEIT {match["competition_name"].strip()}',
         'description': f'{source["team"]} vs {opponents[0]["name"]}',
         'date': date,
         'source': 'faceit',
