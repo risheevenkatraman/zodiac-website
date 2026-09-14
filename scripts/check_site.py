@@ -52,6 +52,9 @@ for team in teams:
         assert '../' + team['page'] in pages[target].links, f'Missing team return link: {target}'
         assert {'intro-heading', 'social-heading'} <= pages[target].ids
         assert 'pool-heading' not in pages[target].ids
+        profile_image = player.get('image') or 'assets/profile-placeholder.svg'
+        expected_image = profile_image if urlsplit(profile_image).scheme or profile_image.startswith('/') else '../' + profile_image
+        assert expected_image in pages[target].links, f'Missing profile image: {target}'
 
 staff = json.loads((ROOT / 'data/staff.json').read_text(encoding='utf-8'))
 staff_ids = set()

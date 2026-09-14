@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Store — Zodiac Esports</title>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/store.css">
+  <script src="js/store.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -21,12 +23,32 @@
   </header>
 
   <main class="container" id="main-content" tabindex="-1">
-    <h1>Store (Coming Soon)</h1>
-    <p>We plan to launch a merch store with jerseys, hoodies, and accessories. Sign up to be notified:</p>
-    <form>
-      <input type="email" placeholder="Your email" aria-label="email">
-      <button type="submit">Notify me</button>
-    </form>
+    <section class="hero shop-hero">
+      <p class="eyebrow">Zodiac Esports / Store</p>
+      <h1>Wear your allegiance.</h1>
+      <p>Bring Zodiac with you. Explore the official team collection.</p>
+      <a class="shop-link" href="#collection">Explore the collection &darr;</a>
+    </section>
+    <div class="shop-layout">
+      <section id="collection" aria-labelledby="collection-heading">
+        <div class="section-heading"><h2 id="collection-heading">The collection</h2></div>
+        <p id="store-status" role="status">Loading the collection&hellip;</p>
+        <button id="store-retry" type="button" hidden>Try again</button>
+        <div id="products" class="product-grid"></div>
+        <button id="load-more" type="button" hidden>Load more products</button>
+        <noscript><p>Enable JavaScript to browse products and use the cart.</p></noscript>
+      </section>
+      <aside class="shop-cart" aria-labelledby="cart-heading">
+        <p class="eyebrow">Your selection</p>
+        <h2 id="cart-heading">Shopping bag <span id="cart-count">(0)</span></h2>
+        <div id="cart-lines"><p>Your bag is empty. Find your next favorite in the collection.</p></div>
+        <div class="cart-total"><span>Estimated subtotal</span><strong id="cart-total">&mdash;</strong></div>
+        <p class="shop-note">Shipping, taxes, and discounts are calculated at checkout.</p>
+        <button id="checkout" type="button" disabled>Checkout</button>
+        <p id="payment-note" class="shop-note">Secure checkout through Shopify.</p>
+        <p id="cart-status" role="status"></p>
+      </aside>
+    </div>
   </main>
 
   <footer class="site-footer container">© Zodiac Esports<p class="disclaimer">Overwatch and its hero icons are property of Blizzard Entertainment. They are used here for non-commercial purposes only.</p></footer>

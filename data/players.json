@@ -8,66 +8,110 @@
         "id": "overwatch-team1-gap",
         "name": "Gap",
         "role": "Tank",
-        "introduction": "",
-        "pool": [
+        "introduction": "Hello I'm Gap, the current tank for Zodiac, you might know me from my time on amplify in OWCS 2025 Stage 1 playing Mauga and taking maps of teams like SSG and Timeless. I started competing in 2023 which is also when I started college studying civil engineering so for me my two obsessions in life are competing in overwatch and studying engineering. Just between me and you I've probably spent more time in vods then studying for exams but keep that on the low.  ",
+        "socials": [
           {
-            "name": "Ramattra",
-            "image": "assets/Icon-Ramattra.webp"
+            "label": "X/Twitter",
+            "url": "https://x.com/ow_gap?s=20"
+          },
+          {
+            "label": "Twitch",
+            "url": "https://www.twitch.tv/gap_ow"
           }
         ],
-        "socials": []
+        "signature": {
+          "name": "Ramattra",
+          "image": "assets/Icon-Ramattra.webp"
+        },
+        "image": "assets/gap-pfp.jpg"
       },
       {
         "id": "overwatch-team1-winter",
         "name": "winter",
         "role": "Damage",
-        "introduction": "",
-        "pool": [
+        "introduction": "Hello I'm Winter I play Hitscan DPS for Zodiac, but you might also know me from Calling All Heroes or Amplify/Kintsugi! I still laugh at 67 jokes (sorry) and I really enjoy eating burgers and I also stream sometimes! Also don't tell GAP I put this in my bio but he kinda smells :( ",
+        "socials": [
           {
-            "name": "Freja",
-            "image": "assets/Freja_Hero.webp"
+            "label": "X/Twitter",
+            "url": "https://x.com/wiinter_ow?s=20"
+          },
+          {
+            "label": "Twitch",
+            "url": "https://www.twitch.tv/wiinter_ow"
           }
         ],
-        "socials": []
+        "signature": {
+          "name": "Freja",
+          "image": "assets/Freja_Hero.webp"
+        },
+        "image": "assets/winter-pfp.jpg"
       },
       {
         "id": "overwatch-team1-m3ws",
         "name": "M3WS",
         "role": "Damage",
-        "introduction": "",
-        "pool": [
+        "introduction": "Hello I’m M3WS. I have been playing Overwatch since 2017 and playing professionally since 2023. Some of my achievements are playing in Contenders and Faceit masters and I’m part of Team Spain 2026 for OWWC. I like burgers and pigs, good combo 🐖❤️",
+        "socials": [
           {
-            "name": "Tracer",
-            "image": "assets/Icon-Tracer.webp"
+            "label": "X/Twitter",
+            "url": "https://x.com/m3ws_ow?s=20"
+          },
+          {
+            "label": "Twitch",
+            "url": "https://www.twitch.tv/m3ws_ow"
           }
         ],
-        "socials": []
+        "signature": {
+          "name": "Tracer",
+          "image": "assets/Icon-Tracer.webp"
+        },
+        "image": "assets/profile-placeholder.svg"
       },
       {
         "id": "overwatch-team1-ewan",
         "name": "Ewan",
         "role": "Support",
-        "introduction": "",
-        "pool": [
+        "introduction": "My name is Ewan. I stream and play main support most days. I currently go to college. I am a vegetarian.",
+        "socials": [
           {
-            "name": "Jetpack Cat",
-            "image": "assets/Jetpack_Cat_Hero.webp"
+            "label": "X/Twitter",
+            "url": "https://x.com/ewan_ow?s=20"
+          },
+          {
+            "label": "Twitch",
+            "url": "https://www.twitch.tv/ewan_ow2"
+          },
+          {
+            "label": "YouTube",
+            "url": "https://www.youtube.com/@ewan_ow"
           }
         ],
-        "socials": []
+        "signature": {
+          "name": "Jetpack Cat",
+          "image": "assets/Jetpack_Cat_Hero.webp"
+        },
+        "image": "assets/ewan-pfp.png"
       },
       {
         "id": "overwatch-team1-hutch",
         "name": "Hutch",
         "role": "Support",
-        "introduction": "",
-        "pool": [
+        "introduction": "Hello my name is Hutch I play Flex Support for Zodiac. I have also played in collegiate OW with Blinn and now Bellevue. Other teams I have been on are Amplify, Kintsugi. But my highest placing team was called Rad Academy. I love shows and movies. I also adore cats :3 ",
+        "socials": [
           {
-            "name": "Baptiste",
-            "image": "assets/Icon-Baptiste.webp"
+            "label": "X/Twitter",
+            "url": "https://x.com/hutch_ow?s=20"
+          },
+          {
+            "label": "Twitch",
+            "url": "https://www.twitch.tv/hutch_ow"
           }
         ],
-        "socials": []
+        "signature": {
+          "name": "Baptiste",
+          "image": "assets/Icon-Baptiste.webp"
+        },
+        "image": "assets/hutch-pfp.jpeg"
       }
     ]
   },
@@ -80,79 +124,131 @@
         "id": "overwatch-team2-samir",
         "name": "SamiR",
         "role": "Tank",
-        "introduction": "",
-        "pool": [
+        "introduction": "One could even say, thank god for Mir. Without him, we’d have to find someone else to blame.",
+        "socials": [
           {
-            "name": "Hazard",
-            "image": "assets/Hazard_Hero.webp"
+            "label": "Twitch",
+            "url": "https://www.twitch.tv/supersamsauce"
           }
         ],
-        "socials": []
+        "signature": {
+          "name": "Hazard",
+          "image": "assets/Hazard_Hero.webp"
+        },
+        "image": "assets/samir-pfp.webp"
       },
       {
         "id": "overwatch-team2-deatorean",
         "name": "Deatorean",
         "role": "Damage",
-        "introduction": "",
-        "pool": [
+        "introduction": "A Peruvian/Korean in love with the game. A champ dps player that has been playing for 10 years. My favorite Celsius flavor is Strawberry Lemonade.",
+        "socials": [
           {
-            "name": "Sojourn",
-            "image": "assets/Icon-Sojourn.webp"
+            "label": "X/Twitter",
+            "url": "https://x.com/deatorean?s=20"
+          },
+          {
+            "label": "Twitch",
+            "url": "https://www.twitch.tv/deatorean"
+          },
+          {
+            "label": "YouTube",
+            "url": "https://www.youtube.com/@deatorean"
           }
         ],
-        "socials": []
+        "signature": {
+          "name": "Sojourn",
+          "image": "assets/Icon-Sojourn.webp"
+        },
+        "image": "assets/deat-pfp.png"
       },
       {
         "id": "overwatch-team2-cristehn",
         "name": "Cristehn",
         "role": "Damage",
-        "introduction": "",
-        "pool": [
+        "introduction": "Hello, my name is Christian, and I’m a competitive Overwatch player who enjoys improving and pushing myself to become a better player and a better version of myself. I’ve been competing since I was around 14 years old, winning multiple amateur leagues and continuing to pursue my goal of making a name for myself.",
+        "socials": [
           {
-            "name": "Tracer",
-            "image": "assets/Icon-Tracer.webp"
+            "label": "X/Twitter",
+            "url": "https://x.com/cristehn?s=20"
+          },
+          {
+            "label": "Twitch",
+            "url": "https://www.twitch.tv/cristehn"
           }
         ],
-        "socials": []
+        "signature": {
+          "name": "Tracer",
+          "image": "assets/Icon-Tracer.webp"
+        },
+        "image": "assets/cristehn-pfp.jpg"
       },
       {
         "id": "overwatch-team2-sealceo",
         "name": "SealCEO",
         "role": "Support",
-        "introduction": "",
-        "pool": [
+        "introduction": "Playing in faceit since season 2. I love jetpack cat!",
+        "socials": [
           {
-            "name": "Jetpack Cat",
-            "image": "assets/Jetpack_Cat_Hero.webp"
+            "label": "X/Twitter",
+            "url": "https://x.com/sealceo?s=20"
+          },
+          {
+            "label": "Twitch",
+            "url": "https://www.twitch.tv/sealceo"
           }
         ],
-        "socials": []
+        "signature": {
+          "name": "Jetpack Cat",
+          "image": "assets/Jetpack_Cat_Hero.webp"
+        },
+        "image": "assets/sealceo-pfp.png"
       },
       {
         "id": "overwatch-team2-penguingamer",
         "name": "Penguingamer",
         "role": "Support",
-        "introduction": "",
-        "pool": [
+        "introduction": "Im a chill passionate gamer who tries to do whatever it takes to win. I stream on the side and try to have as much fun as i can no matter what im doing. Im always aiming to improve whether its to improve in a game or in real life.",
+        "socials": [
           {
-            "name": "Lucio",
-            "image": "assets/Lucio.webp"
+            "label": "X/Twitter",
+            "url": "https://x.com/pengiswingis?s=20"
+          },
+          {
+            "label": "Twitch",
+            "url": "https://www.twitch.tv/Penguingamer552"
+          },
+          {
+            "label": "YouTube",
+            "url": "https://www.youtube.com/@empoleondynamite.8275"
+          },
+          {
+            "label": "TikTok",
+            "url": "https://www.tiktok.com/@Penguingamer123"
           }
         ],
-        "socials": []
+        "signature": {
+          "name": "Lucio",
+          "image": "assets/Lucio.webp"
+        },
+        "image": "assets/penguingamer-pfp.webp"
       },
       {
         "id": "overwatch-team2-georan",
         "name": "Georan",
         "role": "Support",
-        "introduction": "",
-        "pool": [
+        "introduction": "I’ve been playing video games for most of my life and love competing. I have a wide range of hobbies including playing the piano, working on my car, rock climbing, and of course Overwatch. I love improving in all aspects of life and am excited to prove that I can be one of the best. ",
+        "socials": [
           {
-            "name": "Baptiste",
-            "image": "assets/Icon-Baptiste.webp"
+            "label": "X/Twitter",
+            "url": "https://x.com/georan_fps?s=20"
           }
         ],
-        "socials": []
+        "signature": {
+          "name": "Baptiste",
+          "image": "assets/Icon-Baptiste.webp"
+        },
+        "image": "assets/georan-pfp.jpeg"
       }
     ]
   },
@@ -165,66 +261,106 @@
         "id": "overwatch-team3-alright",
         "name": "ALright",
         "role": "Tank",
-        "introduction": "",
-        "pool": [
+        "introduction": "Tank&Coach on Ox",
+        "socials": [
           {
-            "name": "Wrecking Ball",
-            "image": "assets/Wrecking_Ball_Hero.webp"
+            "label": "X/Twitter",
+            "url": "https://x.com/ALright_ow?s=20"
+          },
+          {
+            "label": "Instagram",
+            "url": "https://www.instagram.com/alr6_22"
           }
         ],
-        "socials": []
+        "signature": {
+          "name": "Wrecking Ball",
+          "image": "assets/Wrecking_Ball_Hero.webp"
+        },
+        "image": "assets/alright-pfp.jpeg"
       },
       {
         "id": "overwatch-team3-xdnoo6",
-        "name": "XDnoo6",
+        "name": "YUQI",
         "role": "Damage",
-        "introduction": "",
-        "pool": [
+        "introduction": "Main dps on Ox",
+        "socials": [
           {
-            "name": "Hanzo",
-            "image": "assets/Hanzo_Hero.webp"
+            "label": "X/Twitter",
+            "url": "https://x.com/ow_yuqi?s=20"
           }
         ],
-        "socials": []
+        "signature": {
+          "name": "Hanzo",
+          "image": "assets/Hanzo_Hero.webp"
+        },
+        "image": "assets/profile-placeholder.svg"
       },
       {
         "id": "overwatch-team3-v-id",
         "name": "Vøid",
         "role": "Damage",
-        "introduction": "",
-        "pool": [
+        "introduction": "New kid on the block tryna make it big and taking my team to a new level",
+        "socials": [
           {
-            "name": "Tracer",
-            "image": "assets/Icon-Tracer.webp"
+            "label": "X/Twitter",
+            "url": "https://x.com/void21948?s=20"
+          },
+          {
+            "label": "Twitch",
+            "url": "https://www.twitch.tv/void21947"
+          },
+          {
+            "label": "YouTube",
+            "url": "https://www.youtube.com/@1trickwizz839"
           }
         ],
-        "socials": []
+        "signature": {
+          "name": "Tracer",
+          "image": "assets/Icon-Tracer.webp"
+        },
+        "image": "assets/void-pfp.jpg"
       },
       {
         "id": "overwatch-team3-baksa",
         "name": "Baksa",
         "role": "Support",
-        "introduction": "",
-        "pool": [
+        "introduction": "Spt on Ox",
+        "socials": [
           {
-            "name": "Lifeweaver",
-            "image": "assets/Icon-Lifeweaver.webp"
+            "label": "X/Twitter",
+            "url": "https://x.com/baksa_0w?s=20"
           }
         ],
-        "socials": []
+        "signature": {
+          "name": "Lifeweaver",
+          "image": "assets/Icon-Lifeweaver.webp"
+        },
+        "image": "assets/profile-placeholder.svg"
       },
       {
         "id": "overwatch-team3-zeusa",
         "name": "zeusa",
         "role": "Support",
-        "introduction": "",
-        "pool": [
+        "introduction": "just the same old saudi fs growing older and older and wiser kinda",
+        "socials": [
           {
-            "name": "Ana",
-            "image": "assets/Ana_Hero.webp"
+            "label": "X/Twitter",
+            "url": "https://x.com/0Zeusa0?s=20"
+          },
+          {
+            "label": "Twitch",
+            "url": "https://www.twitch.tv/zeusa_ow"
+          },
+          {
+            "label": "TikTok",
+            "url": "https://www.tiktok.com/@zeusa_ow"
           }
         ],
-        "socials": []
+        "signature": {
+          "name": "Ana",
+          "image": "assets/Ana_Hero.webp"
+        },
+        "image": "assets/zeus-pfp.jpeg"
       }
     ]
   },
@@ -237,66 +373,114 @@
         "id": "overwatch-team4-thena",
         "name": "thena",
         "role": "Tank",
-        "introduction": "",
-        "pool": [
+        "introduction": "Tank on Goats",
+        "socials": [
           {
-            "name": "Sigma",
-            "image": "assets/Icon-Sigma.webp"
+            "label": "X/Twitter",
+            "url": "https://x.com/thena_ow?s=20"
+          },
+          {
+            "label": "Twitch",
+            "url": "https://www.twitch.tv/thena_01"
           }
         ],
-        "socials": []
+        "signature": {
+          "name": "Sigma",
+          "image": "assets/Icon-Sigma.webp"
+        },
+        "image": "assets/thena-pfp.png"
       },
       {
         "id": "overwatch-team4-nahj1x",
         "name": "Nahj1x",
         "role": "Damage",
-        "introduction": "",
-        "pool": [
+        "introduction": "Hsdps. I make clipdumps and stream occasionally. Have you ever seen nahj and thanos in the same room…",
+        "socials": [
           {
-            "name": "Sojourn",
-            "image": "assets/Icon-Sojourn.webp"
+            "label": "X/Twitter",
+            "url": "https://x.com/nahj1x?s=20"
+          },
+          {
+            "label": "Twitch",
+            "url": "https://www.twitch.tv/nahj1x"
+          },
+          {
+            "label": "YouTube",
+            "url": "https://www.youtube.com/@nahj1x"
           }
         ],
-        "socials": []
+        "signature": {
+          "name": "Sojourn",
+          "image": "assets/Icon-Sojourn.webp"
+        },
+        "image": "assets/nahj1x-pfp.jpeg"
       },
       {
         "id": "overwatch-team4-hara",
         "name": "hara",
         "role": "Damage",
-        "introduction": "",
-        "pool": [
+        "introduction": "FDPS no brain mechanics only player. I love tracer overwatch and making/watching clipdumps on youtube :D ",
+        "socials": [
           {
-            "name": "Tracer",
-            "image": "assets/Icon-Tracer.webp"
+            "label": "X/Twitter",
+            "url": "https://x.com/harax3x?s=20"
+          },
+          {
+            "label": "Twitch",
+            "url": "https://www.twitch.tv/haraow"
+          },
+          {
+            "label": "YouTube",
+            "url": "https://www.youtube.com/@haraow"
           }
         ],
-        "socials": []
+        "signature": {
+          "name": "Tracer",
+          "image": "assets/Icon-Tracer.webp"
+        },
+        "image": "assets/hara-pfp.jpg"
       },
       {
         "id": "overwatch-team4-lanni",
         "name": "Lanni",
         "role": "Support",
-        "introduction": "",
-        "pool": [
+        "introduction": "Hi I'm Lanni! I love my funky little main support characters in overwatch, but I fell in love with Lucio over all the others. Something about the wallriding and movement just causes a neuron activation, you will be finding me forcing my team to play for our Lucio rollout on Lijiang tower... ",
+        "socials": [
           {
-            "name": "Lucio",
-            "image": "assets/Lucio.webp"
+            "label": "X/Twitter",
+            "url": "https://x.com/Sadgelanni?s=20"
+          },
+          {
+            "label": "Twitch",
+            "url": "https://www.twitch.tv/lannif"
           }
         ],
-        "socials": []
+        "signature": {
+          "name": "Lucio",
+          "image": "assets/Lucio.webp"
+        },
+        "image": "assets/lanni-pfp.png"
       },
       {
         "id": "overwatch-team4-hideki",
         "name": "Hideki",
         "role": "Support",
-        "introduction": "",
-        "pool": [
+        "introduction": "I am/Hideki is an Indian flex support currently playing for Zodiac Goats. I like winning.",
+        "socials": [
           {
-            "name": "Baptiste",
-            "image": "assets/Icon-Baptiste.webp"
+            "label": "X/Twitter",
+            "url": "https://x.com/pucksok?s=20"
+          },
+          {
+            "label": "Twitch",
+            "url": "https://www.twitch.tv/rungori"
           }
         ],
-        "socials": []
+        "signature": {
+          "name": "Baptiste",
+          "image": "assets/Icon-Baptiste.webp"
+        },
+        "image": "assets/hideki-pfp.png"
       }
     ]
   },
@@ -309,66 +493,97 @@
         "id": "valorant-team2-neightus",
         "name": "Neightus",
         "role": "Controller",
-        "introduction": "",
-        "pool": [
+        "introduction": "Hello! I'm a 21-year-old Biomedical Sciences student at the University of Central Florida. I'm a very competitive person, but outside of competing in the games I'm passionate about, I enjoy going out to eat. I'm a huge foodie, and my favorite cuisine is Asian food. I also love spending time with my friends because I wouldn't be where I am today without them.",
+        "socials": [
           {
-            "name": "Omen",
-            "image": "assets/agent-placeholder.svg"
+            "label": "X/Twitter",
+            "url": "https://x.com/not_neightus?s=20"
           }
         ],
-        "socials": []
+        "signature": {
+          "name": "Omen",
+          "image": "assets/Omen_icon.webp"
+        },
+        "image": "assets/nei-pfp.jpg"
       },
       {
         "id": "valorant-team2-tr3nt",
         "name": "TR3NT",
         "role": "Duelist",
-        "introduction": "",
-        "pool": [
+        "introduction": "Hi I am Trent, and I’m a college student with a strong interest in technology and gaming. Gaming has always been one of my biggest passions, especially competitive games, and I enjoy improving, learning new strategies, and playing with friends.",
+        "socials": [
           {
-            "name": "Jett",
-            "image": "assets/agent-placeholder.svg"
+            "label": "X/Twitter",
+            "url": "https://x.com/tr3nt_val?s=20"
+          },
+          {
+            "label": "Twitch",
+            "url": "https://www.twitch.tv/TR3NT_val"
           }
         ],
-        "socials": []
+        "signature": {
+          "name": "Jett",
+          "image": "assets/Jett_icon.webp"
+        },
+        "image": "assets/trent-pfp.jpg"
       },
       {
         "id": "valorant-team2-5am",
         "name": "5AM",
         "role": "Initiator",
-        "introduction": "",
-        "pool": [
+        "introduction": "Part time Valorant player full time unc. #FreeJuDuhMan",
+        "socials": [
           {
-            "name": "Fade",
-            "image": "assets/agent-placeholder.svg"
+            "label": "X/Twitter",
+            "url": "https://x.com/sxmuelbenji?s=20"
+          },
+          {
+            "label": "Twitch",
+            "url": "https://www.twitch.tv/5amvlr"
           }
         ],
-        "socials": []
+        "signature": {
+          "name": "Fade",
+          "image": "assets/Fade_icon.webp"
+        },
+        "image": "assets/5am-pfp.jpeg"
       },
       {
         "id": "valorant-team2-nooy",
         "name": "Nooy",
         "role": "Flex",
-        "introduction": "",
-        "pool": [
+        "introduction": "Hey, I’m Nooy, also known as greg (not my real name). I’m 18 years old and the secondary duelist/flex for Zodiac Tigers. I’ve been playing VALORANT for several years, and I’m fully committed to absorbing feedback and becoming the best player I can be. Looking forward to working hard and winning some tournaments with my team.",
+        "socials": [
           {
-            "name": "Phoenix",
-            "image": "assets/agent-placeholder.svg"
+            "label": "X/Twitter",
+            "url": "https://x.com/nooyval?s=20"
+          },
+          {
+            "label": "Twitch",
+            "url": "https://www.twitch.tv/nooyval"
+          },
+          {
+            "label": "YouTube",
+            "url": "https://www.youtube.com/@nooyval"
           }
         ],
-        "socials": []
+        "signature": {
+          "name": "Phoenix",
+          "image": "assets/Phoenix_icon.webp"
+        },
+        "image": "assets/nooy-pfp.png"
       },
       {
         "id": "valorant-team2-placeholder",
         "name": "Placeholder",
         "role": "Sentinel",
         "introduction": "",
-        "pool": [
-          {
-            "name": "Cypher",
-            "image": "assets/agent-placeholder.svg"
-          }
-        ],
-        "socials": []
+        "socials": [],
+        "signature": {
+          "name": "Cypher",
+          "image": "assets/Cypher_icon.webp"
+        },
+        "image": "assets/profile-placeholder.svg"
       }
     ]
   }

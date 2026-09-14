@@ -27,7 +27,8 @@ def build():
                 raise ValueError(f'Invalid player ID: {slug}')
             page = f'players/player-{slug}.html'
             pool_label = 'Hero' if team['game'] == 'Overwatch' else 'Agent'
-            signature = player['pool'][0]
+            signature = player['signature']
+            profile_image = asset_url(player.get('image') or 'assets/profile-placeholder.svg')
             portrait = asset_url(signature['image'])
             cards.append(f'''<a class="roster-card" href="../{page}">
         <img class="hero-image" src="{portrait}" alt="" width="88" height="88" loading="lazy" decoding="async">
@@ -58,7 +59,7 @@ def build():
   <main class="container" id="main-content" tabindex="-1">
     <a class="back-link" href="../{team['page']}">← Back to {escape(team['name'])} · {escape(team['game'])}</a>
     <section class="team-header player-header" aria-labelledby="player-name">
-      <img src="../assets/profile-placeholder.svg" alt="" width="112" height="112">
+      <img src="{profile_image}" alt="" width="112" height="112">
       <div><p class="eyebrow">{escape(team['game'])} · {escape(team['name'])}</p><h1 id="player-name">{name}</h1><p class="role">{role}</p></div>
     </section>
     <div class="profile-sections">
