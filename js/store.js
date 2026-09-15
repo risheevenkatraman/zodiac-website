@@ -3,6 +3,33 @@
   const el = id => document.getElementById(id);
   const variants = new Map();
   let config, cursor = null, cart = [], busy = false;
+  const bagKey = 'zodiac.bag';
+  function saveBag() {
+    try {
+      if (config) sessionStorage.setItem(bagKey, JSON.stringify({ domain: config.domain, saved: Date.now(),
+        lines: cart.map(line => ({ ...line, variant: variants.get(line.merchandiseId) })) }));
+    } catch { /* Shopping also works when browser storage is disabled. */ }
+  }
+  function restoreBag() {
+    try {
+      const draft = JSON.parse(sessionStorage.getItem(bagKey));
+      if (!draft || draft.domain !== config.domain || Date.now() - draft.saved > 86400000 || !Array.isArray(draft.lines) || draft.lines.length > 250) return;
+      const restored = [], seen = new Set();
+      for (const line of draft.lines) {
+        const v = line.variant;
+        if (!/^gid:\/\/shopify\/ProductVariant\/[0-9]+$/.test(line.merchandiseId) || seen.has(line.merchandiseId)
+          || !Number.isInteger(line.quantity) || line.quantity < 1 || line.quantity > 99
+          || !v || typeof v.title !== 'string' || typeof v.productTitle !== 'string'
+          || !v.price || !Number.isFinite(Number(v.price.amount)) || Number(v.price.amount) < 0
+          || !/^[A-Z]{3}$/.test(v.price.currencyCode)) return;
+        seen.add(line.merchandiseId);
+        restored.push(line);
+      }
+      for (const line of restored) variants.set(line.merchandiseId, line.variant);
+      cart = restored.map(({ merchandiseId, quantity }) => ({ merchandiseId, quantity }));
+      drawCart();
+    } catch { /* Ignore an expired or malformed bag. Shopify validates checkout. */ }
+  }
   const money = value => new Intl.NumberFormat(undefined, {
     style: 'currency', currency: value.currencyCode
   }).format(Number(value.amount));
@@ -62,6 +89,7 @@
     el('cart-count').textContent = `(${count})`;
     el('cart-total').textContent = currency ? money({ amount: total, currencyCode: currency }) : '—';
     el('checkout').disabled = busy || !cart.length;
+    saveBag();
   }
   function productCard(product) {
     const card = node('article', undefined, 'product-card');
@@ -159,7 +187,9 @@
           userErrors { message }
           warnings { message }
         }
-      }`, { input: { lines: cart } });
+      }`, { input: { lines: cart, ...(window.ZodiacAccount?.session() ? {
+        buyerIdentity: { customerAccessToken: window.ZodiacAccount.session().access_token }
+      } : {}) } });
       const result = data.cartCreate;
       if (result.userErrors.length) throw new Error(result.userErrors.map(e => e.message).join(' '));
       if (result.warnings?.length) throw new Error(result.warnings.map(e => e.message).join(' '));
@@ -192,6 +222,7 @@
       }
       if (!/^[a-z0-9][a-z0-9-]*\.myshopify\.com$/.test(settings.domain) || !/^\d{4}-(01|04|07|10)$/.test(settings.apiVersion)) throw new Error('Invalid configuration');
       config = settings;
+      restoreBag();
       if (config.shopPayEnabled === true) el('payment-note').textContent = 'Secure Shopify checkout. Choose Shop Pay at checkout where available.';
       await loadProducts();
     } catch {

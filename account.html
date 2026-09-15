@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>Your Stars | Zodiac Esports</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="account-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+    <a class="brand" href="index.html"><img src="assets/zodiac-logo.png" alt="Zodiac Esports logo" width="42" height="42"><span class="logo">Zodiac Esports</span></a>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="teams.html">Teams</a>
+      <a href="staff.html">Staff</a>
+      <a href="store.html">Store</a>
+      <a href="socials.html">Socials</a>
+    <a href="account.html" aria-current="page">Account &amp; Stars</a></nav></div>
+  </header>
+  <main class="container" id="main-content" tabindex="-1">
+    <section class="hero">
+      <p class="eyebrow">The Zodiac community</p>
+      <h1>Your support. Your Stars.</h1>
+      <p>Wear the team. Earn Stars. Be part of Zodiac.</p>
+    </section>
+    <section class="profile-section" aria-label="Your account">
+      <p id="account-status" role="status">Loading your account&hellip;</p>
+      <button id="account-login" type="button" hidden>Sign in / Create account</button>
+      <div id="member-panel" hidden>
+        <h2 id="member-name">Zodiac supporter</h2>
+        <p class="eyebrow" id="member-tier"></p>
+        <p id="tier-progress"></p>
+        <p class="stars-total"><span aria-hidden="true">&#9733;</span> <strong id="stars-balance">&mdash;</strong> Stars</p>
+        <p id="stars-status" role="status"></p>
+        <button id="stars-refresh" type="button">Refresh Stars</button>
+        <h3>Redeem your Stars</h3>
+        <p id="reward-rule"></p>
+        <button id="stars-redeem" type="button" disabled>Redeem Stars</button>
+        <p id="redemption-status" role="status"></p>
+        <ul id="reward-codes"></ul>
+        <h3>Your recent purchases</h3>
+        <ul id="stars-history"></ul>
+        <button id="account-logout" type="button">Sign out</button>
+      </div>
+      <p><a href="store.html">Explore the merch store &rarr;</a></p>
+    </section>
+    <section class="profile-section">
+      <h2>What are Stars?</h2>
+      <p>Stars celebrate your support for Zodiac. Sign in before checkout so your purchases are connected to your account. Your account shows the current earning rule and confirmed Stars.</p>
+      <p>Redeem available Stars for merchandise discounts. Your lifetime Stars unlock Zodiac Bronze, Zodiac Silver, Zodiac Gold, Zodiac Diamond, and finally Zodiac Nebula. Spending Stars never lowers your tier; refunds and cancellations adjust your earned Stars.</p>
+    </section>
+  </main>
+  <footer class="site-footer container">© Zodiac Esports<p class="disclaimer">Overwatch and its hero icons are property of Blizzard Entertainment. They are used here for non-commercial purposes only.</p></footer>
+  <script src="js/account-auth.js"></script>
+  <script src="js/account.js"></script>
+</body>
+</html>

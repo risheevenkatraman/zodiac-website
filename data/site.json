@@ -1,0 +1,8 @@
+{
+  "homeTitle": "Welcome to Zodiac Esports",
+  "homeIntroduction": "We’re a community-driven esports organization competing in Overwatch and VALORANT. Our mission is to develop players, foster teamwork, and entertain fans.",
+  "socials": [
+    {"label": "X / Twitter", "description": "Follow our latest updates", "url": "https://x.com/zodiacsesport", "image": "https://logos-world.net/wp-content/uploads/2023/08/X-Logo.png"},
+    {"label": "Discord", "description": "Join the Zodiac community", "url": "https://discord.gg/R7ZJb4syjq", "image": "https://www.svgrepo.com/show/353655/discord-icon.svg"}
+  ]
+}

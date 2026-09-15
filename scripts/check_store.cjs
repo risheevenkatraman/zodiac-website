@@ -9,7 +9,7 @@ class Element {
   setAttribute() {}
 }
 const tick = () => new Promise(resolve => setImmediate(resolve));
-async function setup({ configured = true, fail = false, warnings = false } = {}) {
+async function setup({ configured = true, fail = false, warnings = false, signedIn = false } = {}) {
   const elements = new Map();
   const get = id => { if (!elements.has(id)) elements.set(id, new Element()); return elements.get(id); };
   get('checkout').disabled = true;
@@ -17,7 +17,8 @@ async function setup({ configured = true, fail = false, warnings = false } = {})
   const context = {
     document: { getElementById: get, createElement: () => new Element() },
     Intl, URL, AbortSignal,
-    window: { location: { assign: url => redirects.push(url) } },
+    window: { location: { assign: url => redirects.push(url) },
+      ZodiacAccount: { session: () => signedIn ? { access_token: 'customer-token' } : null } },
     fetch: async (url, options) => {
       if (url === 'data/store.json') return { ok: true, json: async () => configured ? {
         domain: 'zodiac-test.myshopify.com', publicStorefrontAccessToken: 'public-test', apiVersion: '2026-07'
@@ -44,6 +45,10 @@ async function setup({ configured = true, fail = false, warnings = false } = {})
   return { get, calls, redirects };
 }
 (async () => {
+  const member = await setup({ signedIn: true });
+  member.get('products').children[0].children[1].children[5].onclick();
+  await member.get('checkout').onclick();
+  assert.equal(member.calls.at(-1).variables.input.buyerIdentity.customerAccessToken, 'customer-token');
   const closed = await setup({ configured: false });
   assert.equal(closed.calls.length, 0);
   assert.equal(closed.get('checkout').disabled, true);

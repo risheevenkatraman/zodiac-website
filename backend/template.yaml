@@ -1,0 +1,179 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Zodiac content editor sign-in, customer Stars, and Shopify discounts
+Parameters:
+  SiteOrigin:
+    Type: String
+    Description: Exact HTTPS site origin, with no trailing slash or path
+    AllowedPattern: 'https://[a-zA-Z0-9.-]+'
+  ShopDomain:
+    Type: String
+    AllowedPattern: '[a-z0-9][a-z0-9-]*\.myshopify\.com'
+  CustomerApiUrl:
+    Type: String
+    Description: Customer Account GraphQL API URL from Shopify Headless settings
+    AllowedPattern: 'https://.+'
+  SecretArn:
+    Type: String
+    Description: ARN of the Secrets Manager secret containing GitHub OAuth and Shopify app credentials
+    AllowedPattern: 'arn:aws[a-z-]*:secretsmanager:.+'
+Globals:
+  Function:
+    Runtime: python3.12
+    CodeUri: .
+    MemorySize: 256
+    Timeout: 30
+    Environment:
+      Variables:
+        TABLE_NAME: !Ref Rewards
+        SECRET_ARN: !Ref SecretArn
+        SHOP_DOMAIN: !Ref ShopDomain
+        CUSTOMER_API_URL: !Ref CustomerApiUrl
+Resources:
+  Api:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      StageName: $default
+      DefaultRouteSettings:
+        ThrottlingBurstLimit: 30
+        ThrottlingRateLimit: 10
+      CorsConfiguration:
+        AllowOrigins: [!Ref SiteOrigin]
+        AllowMethods: [GET, POST]
+        AllowHeaders: [Authorization, Content-Type]
+        MaxAge: 300
+  Rewards:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - {AttributeName: pk, AttributeType: S}
+        - {AttributeName: sk, AttributeType: S}
+      KeySchema:
+        - {AttributeName: pk, KeyType: HASH}
+        - {AttributeName: sk, KeyType: RANGE}
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: true
+      SSESpecification:
+        SSEEnabled: true
+      TimeToLiveSpecification:
+        AttributeName: expires
+        Enabled: true
+      StreamSpecification:
+        StreamViewType: NEW_IMAGE
+  FailedOrders:
+    Type: AWS::SQS::Queue
+    Properties:
+      FifoQueue: true
+      MessageRetentionPeriod: 1209600
+      SqsManagedSseEnabled: true
+  OrderQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      FifoQueue: true
+      VisibilityTimeout: 360
+      MessageRetentionPeriod: 1209600
+      SqsManagedSseEnabled: true
+      RedrivePolicy:
+        deadLetterTargetArn: !GetAtt FailedOrders.Arn
+        maxReceiveCount: 8
+  FailedDiscounts:
+    Type: AWS::SQS::Queue
+    Properties:
+      MessageRetentionPeriod: 1209600
+      SqsManagedSseEnabled: true
+  WebApi:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app.handler
+      Environment:
+        Variables:
+          SITE_ORIGIN: !Ref SiteOrigin
+          PUBLIC_API_URL: !Sub 'https://${Api}.execute-api.${AWS::Region}.${AWS::URLSuffix}'
+          QUEUE_URL: !Ref OrderQueue
+      Policies:
+        - DynamoDBCrudPolicy: {TableName: !Ref Rewards}
+        - SQSSendMessagePolicy: {QueueName: !GetAtt OrderQueue.QueueName}
+        - AWSSecretsManagerGetSecretValuePolicy: {SecretArn: !Ref SecretArn}
+      Events:
+        Stars: {Type: HttpApi, Properties: {ApiId: !Ref Api, Path: /me/stars, Method: GET}}
+        Redeem: {Type: HttpApi, Properties: {ApiId: !Ref Api, Path: /me/redeem, Method: POST}}
+        Shopify: {Type: HttpApi, Properties: {ApiId: !Ref Api, Path: /webhooks/shopify, Method: POST}}
+        Auth: {Type: HttpApi, Properties: {ApiId: !Ref Api, Path: /auth, Method: GET}}
+        Callback: {Type: HttpApi, Properties: {ApiId: !Ref Api, Path: /callback, Method: GET}}
+  OrderWorker:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app.worker
+      Timeout: 60
+      Policies:
+        - DynamoDBCrudPolicy: {TableName: !Ref Rewards}
+        - AWSSecretsManagerGetSecretValuePolicy: {SecretArn: !Ref SecretArn}
+      Events:
+        Orders:
+          Type: SQS
+          Properties:
+            Queue: !GetAtt OrderQueue.Arn
+            BatchSize: 1
+  DiscountWorker:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app.discount_worker
+      Timeout: 60
+      Policies:
+        - DynamoDBCrudPolicy: {TableName: !Ref Rewards}
+        - AWSSecretsManagerGetSecretValuePolicy: {SecretArn: !Ref SecretArn}
+        - SQSSendMessagePolicy: {QueueName: !GetAtt FailedDiscounts.QueueName}
+      Events:
+        Redemptions:
+          Type: DynamoDB
+          Properties:
+            Stream: !GetAtt Rewards.StreamArn
+            StartingPosition: TRIM_HORIZON
+            BatchSize: 1
+            MaximumRetryAttempts: 10
+            MaximumRecordAgeInSeconds: 86400
+            DestinationConfig:
+              OnFailure:
+                Type: SQS
+                Destination: !GetAtt FailedDiscounts.Arn
+            FilterCriteria:
+              Filters:
+                - Pattern: '{"eventName":["INSERT"],"dynamodb":{"NewImage":{"kind":{"S":["redemption"]}}}}'
+  OrderFailureAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: Failed Stars order updates need replay after resolving the underlying error
+      Namespace: AWS/SQS
+      MetricName: ApproximateNumberOfMessagesVisible
+      Dimensions: [{Name: QueueName, Value: !GetAtt FailedOrders.QueueName}]
+      Statistic: Maximum
+      Period: 300
+      EvaluationPeriods: 1
+      Threshold: 0
+      ComparisonOperator: GreaterThanThreshold
+      TreatMissingData: notBreaching
+  DiscountFailureAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: Pending Stars discounts need operator recovery using backend/recover_discount.py
+      Namespace: AWS/SQS
+      MetricName: ApproximateNumberOfMessagesVisible
+      Dimensions: [{Name: QueueName, Value: !GetAtt FailedDiscounts.QueueName}]
+      Statistic: Maximum
+      Period: 300
+      EvaluationPeriods: 1
+      Threshold: 0
+      ComparisonOperator: GreaterThanThreshold
+      TreatMissingData: notBreaching
+Outputs:
+  ApiUrl:
+    Value: !Sub 'https://${Api}.execute-api.${AWS::Region}.${AWS::URLSuffix}'
+  RewardsTable:
+    Value: !Ref Rewards
+  OrderFailureQueue:
+    Value: !Ref FailedOrders
+  DiscountFailureQueue:
+    Value: !Ref FailedDiscounts

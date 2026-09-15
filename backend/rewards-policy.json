@@ -1,0 +1,13 @@
+{
+  "currency": "USD",
+  "redemptionStars": 100,
+  "discountAmount": "5.00",
+  "minimumPurchase": "25.00",
+  "tiers": [
+    { "name": "Zodiac Bronze", "stars": 0 },
+    { "name": "Zodiac Silver", "stars": 250 },
+    { "name": "Zodiac Gold", "stars": 750 },
+    { "name": "Zodiac Diamond", "stars": 1500 },
+    { "name": "Zodiac Nebula", "stars": 3000 }
+  ]
+}

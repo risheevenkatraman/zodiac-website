@@ -1,0 +1,313 @@
+{
+  "backend": {
+    "name": "github",
+    "repo": "risheevenkatraman/zodiac-website",
+    "branch": "main",
+    "base_url": "https://YOUR-API.execute-api.YOUR-REGION.amazonaws.com",
+    "auth_endpoint": "auth"
+  },
+  "publish_mode": "editorial_workflow",
+  "media_folder": "assets/uploads",
+  "public_folder": "assets/uploads",
+  "collections": [
+    {
+      "name": "content",
+      "label": "Website content",
+      "editor": {
+        "preview": false
+      },
+      "files": [
+        {
+          "name": "site",
+          "label": "Homepage and social links",
+          "file": "data/site.json",
+          "format": "json",
+          "fields": [
+            {
+              "name": "homeTitle",
+              "label": "Homepage heading",
+              "widget": "string"
+            },
+            {
+              "name": "homeIntroduction",
+              "label": "Homepage introduction",
+              "widget": "text"
+            },
+            {
+              "name": "socials",
+              "label": "Social links",
+              "widget": "list",
+              "fields": [
+                {
+                  "name": "label",
+                  "label": "Name",
+                  "widget": "string"
+                },
+                {
+                  "name": "description",
+                  "label": "Description",
+                  "widget": "string"
+                },
+                {
+                  "name": "url",
+                  "label": "Link",
+                  "widget": "string",
+                  "pattern": [
+                    "^https://",
+                    "Use an HTTPS link."
+                  ]
+                },
+                {
+                  "name": "image",
+                  "label": "Icon",
+                  "widget": "image",
+                  "required": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "announcement",
+          "label": "Pinned announcement",
+          "file": "data/announcement.json",
+          "format": "json",
+          "fields": [
+            {
+              "name": "title",
+              "label": "Headline",
+              "widget": "string"
+            },
+            {
+              "name": "message",
+              "label": "Message",
+              "widget": "text"
+            },
+            {
+              "name": "image",
+              "label": "Image",
+              "widget": "image"
+            }
+          ]
+        },
+        {
+          "name": "events",
+          "label": "Community events",
+          "file": "data/events.json",
+          "format": "zodiac-list",
+          "fields": [
+            {
+              "name": "items",
+              "label": "Community events",
+              "widget": "list",
+              "summary": "{{fields.name}}",
+              "fields": [
+                {
+                  "name": "name",
+                  "label": "Event name",
+                  "widget": "string"
+                },
+                {
+                  "name": "description",
+                  "label": "Description",
+                  "widget": "text",
+                  "required": true
+                },
+                {
+                  "name": "date",
+                  "label": "Event date",
+                  "widget": "datetime",
+                  "format": "YYYY-MM-DD",
+                  "date_format": "MMM D, YYYY",
+                  "time_format": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "players",
+          "label": "Team rosters",
+          "file": "data/players.json",
+          "format": "zodiac-list",
+          "fields": [
+            {
+              "name": "items",
+              "label": "Team rosters",
+              "widget": "list",
+              "summary": "{{fields.name}} - {{fields.game}}",
+              "fields": [
+                {
+                  "name": "page",
+                  "label": "Team page",
+                  "widget": "hidden"
+                },
+                {
+                  "name": "name",
+                  "label": "Team name",
+                  "widget": "hidden"
+                },
+                {
+                  "name": "game",
+                  "label": "Game",
+                  "widget": "hidden"
+                },
+                {
+                  "name": "players",
+                  "label": "Players",
+                  "widget": "list",
+                  "summary": "{{fields.name}}",
+                  "fields": [
+                    {
+                      "name": "id",
+                      "label": "Profile ID",
+                      "widget": "string",
+                      "hint": "Keep existing IDs unchanged. New IDs: lowercase letters, numbers and hyphens.",
+                      "pattern": [
+                        "^[a-z0-9-]+$",
+                        "Use lowercase letters, numbers and hyphens."
+                      ]
+                    },
+                    {
+                      "name": "name",
+                      "label": "Name",
+                      "widget": "string"
+                    },
+                    {
+                      "name": "role",
+                      "label": "Role",
+                      "widget": "string"
+                    },
+                    {
+                      "name": "image",
+                      "label": "Photo",
+                      "widget": "image",
+                      "required": false
+                    },
+                    {
+                      "name": "introduction",
+                      "label": "Introduction",
+                      "widget": "text",
+                      "required": false
+                    },
+                    {
+                      "name": "socials",
+                      "label": "Social links",
+                      "widget": "list",
+                      "required": false,
+                      "fields": [
+                        {
+                          "name": "label",
+                          "label": "Label",
+                          "widget": "string"
+                        },
+                        {
+                          "name": "url",
+                          "label": "Link",
+                          "widget": "string",
+                          "pattern": [
+                            "^https://",
+                            "Use a full HTTPS link."
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "signature",
+                      "label": "Signature hero / agent",
+                      "widget": "object",
+                      "fields": [
+                        {
+                          "name": "name",
+                          "label": "Hero / agent name",
+                          "widget": "string"
+                        },
+                        {
+                          "name": "image",
+                          "label": "Hero / agent image",
+                          "widget": "image"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "allow_add": false,
+              "minimize_collapsed": true
+            }
+          ]
+        },
+        {
+          "name": "staff",
+          "label": "Staff",
+          "file": "data/staff.json",
+          "format": "zodiac-list",
+          "fields": [
+            {
+              "name": "items",
+              "label": "Staff",
+              "widget": "list",
+              "summary": "{{fields.name}}",
+              "fields": [
+                {
+                  "name": "id",
+                  "label": "Profile ID",
+                  "widget": "string",
+                  "hint": "Keep existing IDs unchanged. New IDs: lowercase letters, numbers and hyphens.",
+                  "pattern": [
+                    "^[a-z0-9-]+$",
+                    "Use lowercase letters, numbers and hyphens."
+                  ]
+                },
+                {
+                  "name": "name",
+                  "label": "Name",
+                  "widget": "string"
+                },
+                {
+                  "name": "role",
+                  "label": "Role",
+                  "widget": "string"
+                },
+                {
+                  "name": "image",
+                  "label": "Photo",
+                  "widget": "image",
+                  "required": false
+                },
+                {
+                  "name": "introduction",
+                  "label": "Introduction",
+                  "widget": "text",
+                  "required": false
+                },
+                {
+                  "name": "socials",
+                  "label": "Social links",
+                  "widget": "list",
+                  "required": false,
+                  "fields": [
+                    {
+                      "name": "label",
+                      "label": "Label",
+                      "widget": "string"
+                    },
+                    {
+                      "name": "url",
+                      "label": "Link",
+                      "widget": "string",
+                      "pattern": [
+                        "^https://",
+                        "Use a full HTTPS link."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

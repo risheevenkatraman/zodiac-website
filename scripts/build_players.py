@@ -16,7 +16,10 @@ def asset_url(path):
 def build():
     (ROOT / 'players').mkdir(exist_ok=True)
     teams = json.loads((ROOT / 'data/players.json').read_text(encoding='utf-8'))
+    expected = set()
     for team in teams:
+        if not re.fullmatch(r'teams/[a-z0-9-]+\.html', team['page']):
+            raise ValueError('Invalid team page')
         source = ROOT / team['page']
         document = source.read_text(encoding='utf-8')
         cards = []
@@ -26,6 +29,9 @@ def build():
             if not re.fullmatch(r'[a-z0-9-]+', slug):
                 raise ValueError(f'Invalid player ID: {slug}')
             page = f'players/player-{slug}.html'
+            if page in expected:
+                raise ValueError(f'Duplicate player ID: {slug}')
+            expected.add(page)
             pool_label = 'Hero' if team['game'] == 'Overwatch' else 'Agent'
             signature = player['signature']
             profile_image = asset_url(player.get('image') or 'assets/profile-placeholder.svg')
@@ -74,6 +80,9 @@ def build():
             (ROOT / page).write_text(output, encoding='utf-8')
         document = re.sub(r'<div class="roster-grid">.*?\n    </div>', '<div class="roster-grid">\n      ' + '\n      '.join(cards) + '\n    </div>', document, flags=re.S)
         source.write_text(document, encoding='utf-8')
+    for path in (ROOT / 'players').glob('player-*.html'):
+        if path.relative_to(ROOT).as_posix() not in expected:
+            path.unlink()
 
 
 if __name__ == '__main__':

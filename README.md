@@ -1,60 +1,48 @@
-# Zodiac Esports Website
+# Zodiac Esports
 
-Zodiac Esports is a static organization website for showcasing the organization's Overwatch and VALORANT teams, rosters, staff, announcements, events, and social links.
+## Description
 
-## Stack
+Zodiac Esports is a responsive team and community website for the organization's
+Overwatch and VALORANT rosters. It combines team profiles, news, match schedules,
+merchandise, and a customer loyalty program called **Stars**.
 
-- **Frontend:** HTML5, CSS3, and vanilla JavaScript for roster search, announcements,
-  and the current-month events calendar.
-- **Content:** JSON files in `data/` for players, staff, announcements, manual events,
-  and FACEIT match sources; SVG, PNG, JPEG, and WebP assets.
-- **Generation and automation:** Python 3 (3.12 in CI) with standard-library scripts
-  to generate player/staff pages and sync match schedules.
-- **Match data:** FACEIT Data API, authenticated with the `FACEIT_API_KEY` GitHub
-  Actions secret. Reference matches identify each team's championship; imported
-  events include opponents, dates, and competition/division names.
-- **Hosting and deployment:** GitHub Pages, published directly from GitHub Actions
-  with `configure-pages`, `upload-pages-artifact`, and `deploy-pages`. Deployments
-  run on pushes to `main`, manual runs, and a daily 10:17 UTC schedule.
-- **Validation:** Python `unittest` for the importer, Python site/link checks, and
-  Node.js scripts for event parsing and roster search.
+## Features
 
-The deployed site is static: it has no application server or database. Python
-runs during content generation and automation; browsers load the resulting HTML,
-assets, and JSON. Local Windows Python may need `tzdata` for match time zones.
+- Team rosters with searchable players, roles, and signature heroes or agents.
+- Individual player and staff profiles with biographies, photos, and social links.
+- Homepage announcements, community events, and automated FACEIT match schedules.
+- A form-based content editor with image uploads, drafts, review, and publishing.
+- Merchandise collections with variant selection, availability, and a shopping bag
+  that persists within the browser tab.
+- Shopify-hosted checkout and Shop Pay where enabled by the store.
+- Shopify customer sign-in and a personal Stars dashboard.
+- Stars earned from eligible purchases and redeemable for customer-specific,
+  single-use discount codes.
+- Lifetime membership tiers: **Zodiac Bronze**, **Zodiac Silver**, **Zodiac Gold**,
+  **Zodiac Diamond**, and **Zodiac Nebula**. Redeeming Stars preserves tier progress;
+  refunds adjust eligible earnings.
+- Verified purchase notifications, duplicate protection, and retry handling for
+  rewards and discounts.
+- Responsive layouts, keyboard navigation, and reduced-motion support.
 
-## Store and Shop Pay
+Commerce, customer accounts, content publishing, and rewards require their
+associated services to be configured. The initial Stars policy supports USD shop
+currency with tax- and duty-exclusive pricing.
 
-`store.html` provides a responsive product collection, variant selection, shopping
-bag, and Shopify-hosted checkout. Products, prices, and availability come from the
-Shopify Storefront API; no payment details are collected by this site. The bag is
-kept in memory for the current page visit. Shopify rechecks inventory and calculates
-final pricing, shipping, taxes, and discounts at checkout.
+## Technology
 
-To connect the store:
-
-1. Create a Shopify store, add real merchandise with images and variants, and
-   configure shipping, payment methods, and store policies in Shopify.
-2. Add Shopify's Headless sales channel, create a storefront, and publish the
-   products to that channel. Enable Storefront API permissions for reading products
-   and creating carts/checkouts (`unauthenticated_read_product_listings`,
-   `unauthenticated_write_checkouts`, and `unauthenticated_read_checkouts`).
-3. Edit `data/store.json`: set `domain` to your `your-store.myshopify.com` hostname
-   and `publicStorefrontAccessToken` to the **public** Storefront token. This file
-   is public: never put an Admin API token, private Storefront token, or secret here.
-   The API version is pinned to `2026-07`; review it before Shopify retires it.
-4. Activate Shop Pay under Shopify Settings → Payments. Set `shopPayEnabled` to
-   `true` only once enabled; this flag controls messaging, not payment activation.
-5. Serve the site over HTTP (for example `python -m http.server 8000`) and open
-   `/store.html`. Verify products, sold-out options, cart changes, and checkout on
-   mobile and desktop. Use Shopify's payment testing setup to verify an order
-   before launch, then verify Shop Pay availability with an eligible checkout.
-
-Until configuration is supplied, the collection shows a launch message and
-checkout stays disabled. API failures show retry controls. Checkout errors or
-inventory adjustments keep shoppers on the page with their bag intact.
-
-References: [Shopify cart integration](https://shopify.dev/docs/storefronts/headless/building-with-the-storefront-api/cart/manage)
-and [activating Shop Pay](https://help.shopify.com/en/manual/payments/shop-pay/activating-shop-pay).
-
-Store checks: `node --check js/store.js` and `node scripts/check_store.cjs`.
+| Area | Implementation |
+| --- | --- |
+| Frontend | HTML5, CSS3, and vanilla JavaScript |
+| Content | JSON, local image assets, and Decap CMS |
+| Profile generation | Python scripts generating static player and staff pages |
+| Match schedules | FACEIT Data API and scheduled synchronization |
+| Commerce | Shopify Storefront API, hosted checkout, and Shop Pay |
+| Customer authentication | Shopify Customer Account API with OAuth and PKCE |
+| Backend | Python AWS Lambda functions behind Amazon API Gateway |
+| Rewards storage | Amazon DynamoDB with transactional updates and Streams |
+| Background processing | Amazon SQS with retries and dead-letter queues |
+| Secrets and monitoring | AWS Secrets Manager and Amazon CloudWatch |
+| Infrastructure | AWS SAM and CloudFormation |
+| Hosting and automation | AWS Amplify Hosting, GitHub, and GitHub Actions; an existing GitHub Pages workflow remains for migration |
+| Validation | Python unittest, Moto AWS mocks, Node.js checks, Playwright browser checks, and CloudFormation linting |

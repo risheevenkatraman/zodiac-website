@@ -69,6 +69,9 @@ def build():
     for page, content in profiles.items():
         (ROOT / page).write_text(content, encoding='utf-8')
     source.write_text(document, encoding='utf-8')
+    for path in (ROOT / 'staff').glob('staff-*.html'):
+        if path.relative_to(ROOT).as_posix() not in profiles:
+            path.unlink()
 
 
 if __name__ == '__main__':

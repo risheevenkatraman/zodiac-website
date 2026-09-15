@@ -1,0 +1,6 @@
+boto3>=1.40,<2
+moto[dynamodb,sqs,secretsmanager]>=5,<6
+PyYAML>=6,<7
+tzdata; sys_platform == "win32"
+cfn-lint>=1,<2
+aws-sam-translator>=1,<2

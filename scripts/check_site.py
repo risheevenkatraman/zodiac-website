@@ -29,7 +29,12 @@ class Page(HTMLParser):
                 self.links.append(attrs[attribute])
 
 
-pages = {path.relative_to(ROOT).as_posix(): Page(path.read_text(encoding='utf-8')) for path in ROOT.rglob('*.html')}
+def public_pages():
+    return list(ROOT.glob('*.html')) + [path for folder in ('players', 'staff', 'teams', 'admin')
+        for path in (ROOT / folder).rglob('*.html')]
+
+
+pages = {path.relative_to(ROOT).as_posix(): Page(path.read_text(encoding='utf-8')) for path in public_pages()}
 for name, page in pages.items():
     assert page.h1s == 1, f'{name}: expected one main heading'
     for link in page.links:
@@ -66,7 +71,7 @@ for member in staff:
     assert '../staff.html' in pages[target].links, f'Missing staff return link: {target}'
     assert {'intro-heading', 'social-heading'} <= pages[target].ids
 
-before = {path: path.read_bytes() for path in ROOT.rglob('*.html')}
+before = {path: path.read_bytes() for path in public_pages()}
 build()
 build_staff()
 assert all(path.read_bytes() == content for path, content in before.items()), 'Generated pages were out of date'
