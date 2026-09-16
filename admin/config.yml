@@ -13,6 +13,7 @@
     {
       "name": "content",
       "label": "Website content",
+      "format": "zodiac-json",
       "editor": {
         "preview": false
       },
@@ -21,7 +22,6 @@
           "name": "site",
           "label": "Homepage and social links",
           "file": "data/site.json",
-          "format": "json",
           "fields": [
             {
               "name": "homeTitle",
@@ -71,7 +71,6 @@
           "name": "announcement",
           "label": "Pinned announcement",
           "file": "data/announcement.json",
-          "format": "json",
           "fields": [
             {
               "name": "title",
@@ -94,7 +93,6 @@
           "name": "events",
           "label": "Community events",
           "file": "data/events.json",
-          "format": "zodiac-list",
           "fields": [
             {
               "name": "items",
@@ -129,7 +127,6 @@
           "name": "players",
           "label": "Team rosters",
           "file": "data/players.json",
-          "format": "zodiac-list",
           "fields": [
             {
               "name": "items",
@@ -241,7 +238,6 @@
           "name": "staff",
           "label": "Staff",
           "file": "data/staff.json",
-          "format": "zodiac-list",
           "fields": [
             {
               "name": "items",
