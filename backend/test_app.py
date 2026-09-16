@@ -39,6 +39,19 @@ class RewardsTests(unittest.TestCase):
         with patch.object(app, 'order_snapshot', return_value=snapshot):
             app.reconcile(oid)
 
+    def test_oauth_discovers_callback_from_gateway_context(self):
+        from urllib.parse import parse_qs, urlparse
+        os.environ.pop('PUBLIC_API_URL', None)
+        event = {'rawPath': '/auth',
+            'requestContext': {'domainName': 'abc.execute-api.us-east-1.amazonaws.com'},
+            'headers': {'host': 'untrusted.example'}}
+        with patch.object(app, 'credentials', return_value={'githubClientId': 'client'}):
+            result = app.oauth(event)
+        self.assertEqual(result['statusCode'], 302)
+        params = parse_qs(urlparse(result['headers']['Location']).query)
+        self.assertEqual(params['redirect_uri'],
+            ['https://abc.execute-api.us-east-1.amazonaws.com/callback'])
+
     def balance(self, customer=CUSTOMER):
         return self.db.get_item(Key={'pk': customer, 'sk': 'BALANCE'}, ConsistentRead=True)['Item']
 

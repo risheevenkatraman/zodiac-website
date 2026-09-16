@@ -3,7 +3,7 @@
     "name": "github",
     "repo": "risheevenkatraman/zodiac-website",
     "branch": "main",
-    "base_url": "https://YOUR-API.execute-api.YOUR-REGION.amazonaws.com",
+    "base_url": "https://q1lajbqcj7.execute-api.us-east-2.amazonaws.com",
     "auth_endpoint": "auth"
   },
   "publish_mode": "editorial_workflow",

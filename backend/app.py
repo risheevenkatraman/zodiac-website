@@ -316,7 +316,10 @@ def discount_worker(event, context):
 def oauth(event):
     path = event['rawPath']
     c = credentials()
-    callback = os.environ['PUBLIC_API_URL'] + '/callback'
+    # API Gateway supplies this context; do not trust the caller's Host header.
+    # Resolving at request time avoids a CloudFormation API <-> Lambda cycle.
+    api_url = os.environ.get('PUBLIC_API_URL') or ('https://' + event['requestContext']['domainName'])
+    callback = api_url.rstrip('/') + '/callback'
     if path == '/auth':
         state = secrets.token_urlsafe(32)
         table().put_item(Item={'pk': 'AUTH#' + state, 'sk': 'STATE', 'expires': int(time.time()) + 600})

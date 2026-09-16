@@ -1,7 +1,7 @@
 {
-  "enabled": false,
-  "shopDomain": "",
-  "clientId": "",
-  "customerApiUrl": "",
-  "rewardsApiUrl": ""
+  "enabled": true,
+  "shopDomain": "zodiacesports.myshopify.com",
+  "clientId": "96b1d14b-7405-4aa8-aeb4-44a7df2a2173",
+  "customerApiUrl": "https://shopify.com/102009504061/account/customer/api/2026-07/graphql",
+  "rewardsApiUrl": "https://q1lajbqcj7.execute-api.us-east-2.amazonaws.com"
 }

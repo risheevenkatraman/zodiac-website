@@ -91,7 +91,6 @@ Resources:
       Environment:
         Variables:
           SITE_ORIGIN: !Ref SiteOrigin
-          PUBLIC_API_URL: !Sub 'https://${Api}.execute-api.${AWS::Region}.${AWS::URLSuffix}'
           QUEUE_URL: !Ref OrderQueue
       Policies:
         - DynamoDBCrudPolicy: {TableName: !Ref Rewards}
