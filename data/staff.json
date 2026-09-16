@@ -46,9 +46,14 @@
     "id": "lux",
     "name": "Lux",
     "role": "Analyst/Parsertime Owner",
-    "image": "assets/profile-placeholder.svg",
-    "introduction": "",
-    "socials": []
+    "image": "assets/uploads/lux-pfp.jpg",
+    "introduction": "I've been playing the game since 2017. In that time, I've competed, coached, and most recently worked as an analyst. Most of my time is spent finding ways to drive the scene forward with various data analytics and coaching tools.",
+    "socials": [
+      {
+        "label": "X/Twitter",
+        "url": "https://x.com/lux_fps"
+      }
+    ]
   },
   {
     "id": "j0yfal",
