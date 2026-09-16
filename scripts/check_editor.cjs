@@ -1,18 +1,25 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
-let format;
+const formats = new Map();
 vm.runInNewContext(fs.readFileSync('admin/editor.js', 'utf8'), {
-  CMS: { registerCustomFormat: (name, extension, value) => { format = value; }, init() {} }
+  CMS: { registerCustomFormat: (name, extension, value) => { formats.set(name, value); }, init() {} }
 });
 const config = JSON.parse(fs.readFileSync('admin/config.yml', 'utf8'));
-for (const file of config.collections[0].files) {
-  const content = fs.readFileSync(file.file, 'utf8');
-  if (file.format === 'zodiac-list') {
-    assert.deepEqual(JSON.parse(format.toFile(format.fromFile(content))), JSON.parse(content));
-  } else {
-    const data = JSON.parse(content);
+for (const collection of config.collections) {
+  // Decap chooses the formatter from the collection, not individual files.
+  const format = formats.get(collection.format);
+  assert.ok(format, `Missing registered collection formatter: ${collection.name}`);
+  for (const file of collection.files) {
+    const content = fs.readFileSync(file.file, 'utf8');
+    const original = JSON.parse(content);
+    const data = format.fromFile(content);
     for (const field of file.fields) assert.ok(field.name in data, `Missing field ${file.file}: ${field.name}`);
+    if (Array.isArray(original)) {
+      assert.ok(Array.isArray(data.items), `Missing editor list: ${file.file}`);
+      assert.equal(data.items.length, original.length, `Incorrect list count: ${file.file}`);
+    }
+    assert.deepEqual(JSON.parse(format.toFile(data)), original, `Data loss: ${file.file}`);
   }
 }
 const events = config.collections[0].files.find(file => file.name === 'events');
