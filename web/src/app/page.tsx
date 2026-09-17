@@ -4,7 +4,8 @@ import { HouseRing } from "@/components/site/HouseRing";
 import { StarGlyph } from "@/components/site/StarGlyph";
 import { TeamPlate, type PlateTeam } from "@/components/site/TeamPlate";
 import { asset, discordUrl, founder, isOpenSlot, matchDate, matches, matchesFor, numerals, staffList, starsTiers, storeUrl, teams, xUrl } from "@/lib/data";
-import { SocialIcon } from "@/components/site/SocialIcon";
+import { StaffList } from "@/components/site/StaffList";
+import { HorizonBand } from "@/components/site/HorizonBand";
 
 const plates: PlateTeam[] = teams.map((t) => ({
   slug: t.slug,
@@ -105,9 +106,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* The plate — engraved paper for reading */}
+      {/* The plate — engraved paper for reading. The sky lightens into it like dawn, and back out after. */}
       <section id="about" className="plate">
-        <div className="mx-auto grid max-w-[1280px] gap-14 px-5 py-28 sm:px-8 md:grid-cols-[1.1fr_1fr] md:py-40">
+        <HorizonBand className="h-56 md:h-80" />
+        <div className="mx-auto grid max-w-[1280px] gap-14 px-5 pb-28 pt-10 sm:px-8 md:grid-cols-[1.1fr_1fr] md:pb-40 md:pt-16">
           <div>
             <div className="hairline-plate border-t" />
             <h2 className="display-caps mt-8 text-[clamp(1.9rem,4vw,3.4rem)] text-plate-ink">Built by players, for the scene</h2>
@@ -130,24 +132,7 @@ export default function Home() {
           </div>
           <div className="md:pt-20">
             <h3 className="font-text italic text-xl text-plate-ink">The staff</h3>
-            <ul className="mt-6 grid gap-px">
-              {staffList.map((s) => (
-                <li key={s.id} className="hairline-plate flex items-center gap-4 border-t py-4">
-                  <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full bg-ink/15">
-                    <Image src={asset(s.image)} alt="" fill sizes="40px" className="object-cover" />
-                  </span>
-                  <span className="flex min-w-0 flex-1 flex-wrap items-baseline gap-x-3">
-                    <span className="font-medium text-plate-ink">{s.name}</span>
-                    <span className="caps text-plate-muted">{s.role}</span>
-                  </span>
-                  {s.socials?.[0] && (
-                    <a href={s.socials[0].url} target="_blank" rel="noreferrer" className="text-ink" aria-label={`${s.name} on ${s.socials[0].label}`}>
-                      <SocialIcon label={s.socials[0].label} size={14} />
-                    </a>
-                  )}
-                </li>
-              ))}
-            </ul>
+            <StaffList staff={staffList} />
           </div>
         </div>
 
@@ -176,6 +161,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <HorizonBand dusk className="h-48 md:h-72" />
       </section>
 
       {/* Community */}

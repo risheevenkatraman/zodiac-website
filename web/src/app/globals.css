@@ -126,3 +126,16 @@
 @media (prefers-reduced-motion: reduce) {
   .rule-draw { animation: none; }
 }
+
+/* Constellations in the twilight bands: faint, breathing slowly and out of step. */
+@keyframes constellation-pulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.9; }
+}
+.constellation-pulse {
+  opacity: 0.6;
+  animation: constellation-pulse 9s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .constellation-pulse { animation: none; opacity: 0.6; }
+}

@@ -1,6 +1,7 @@
-import { clock, draw, frameLoop, geometry, init, surface } from "vgpu";
-import type { Draw, FrameLoopHandle, Geometry, Gpu, Surface } from "vgpu";
+import { clock, draw, frameLoop, geometry, surface } from "vgpu";
+import type { Draw, FrameLoopHandle, Geometry, Surface } from "vgpu";
 import { samplePoints } from "@/components/hero/sample";
+import { getSharedGpu } from "@/lib/gpu";
 
 /**
  * Plate figures as dot clouds: each mark is sampled into a few thousand stars
@@ -83,16 +84,10 @@ fn hash11(p: f32) -> f32 {
 
 type Plate = { canvasSurface: Surface; field: Draw; stars: Geometry; visible: boolean };
 
-let shared: Promise<{ gpu: Gpu; plates: Set<Plate>; loop: FrameLoopHandle | null; motion: number }> | null = null;
-function getShared() {
-  if (!shared) {
-    shared = (async () => {
-      const gpu = await init();
-      const motion = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 1;
-      return { gpu, plates: new Set<Plate>(), loop: null, motion };
-    })();
-  }
-  return shared;
+const registry: { plates: Set<Plate>; loop: FrameLoopHandle | null } = { plates: new Set(), loop: null };
+async function getShared() {
+  const { gpu, motion } = await getSharedGpu();
+  return { gpu, motion, plates: registry.plates, get loop() { return registry.loop; }, set loop(v: FrameLoopHandle | null) { registry.loop = v; } };
 }
 
 const QUAD = new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]);
