@@ -2,38 +2,27 @@
 
 ## Description
 
-Zodiac Esports is a responsive team and community website for the organization's
-Overwatch and VALORANT rosters. It combines team profiles, news, match schedules,
+Established in 2024, Zodiac Esports is an esports organization and community. This
+responsive website showcases its Overwatch and VALORANT rosters. It combines team profiles, news, match schedules,
 merchandise, and a customer loyalty program called **Stars**.
 
 ## Features
 
-- Team rosters with searchable players, roles, and signature heroes or agents.
-- Individual player and staff profiles with biographies, photos, and social links.
-- Homepage announcements, community events, and automated FACEIT match schedules.
-- A form-based content editor with image uploads, drafts, review, and publishing.
-- Merchandise collections with variant selection, availability, and a shopping bag
-  that persists within the browser tab.
-- Shopify-hosted checkout and Shop Pay where enabled by the store.
-- Shopify customer sign-in and a personal Stars dashboard.
-- Stars earned from eligible purchases and redeemable for customer-specific,
-  single-use discount codes.
-- Lifetime membership tiers: **Zodiac Bronze**, **Zodiac Silver**, **Zodiac Gold**,
-  **Zodiac Diamond**, and **Zodiac Nebula**. Redeeming Stars preserves tier progress;
-  refunds adjust eligible earnings.
-- Verified purchase notifications, duplicate protection, and retry handling for
-  rewards and discounts.
+- Flagship and academy team rosters for Overwatch and VALORANT.
+- Animated zodiac constellations with selectable player stars.
+- Player and staff profiles that open in place, with photos, biographies, and social icons.
+- Homepage announcements and a star-themed events timeline with FACEIT match updates.
+- Official merchandise store with product variants, a persistent shopping bag, and Shopify checkout.
+- Shopify customer accounts and the Stars loyalty program with five membership tiers.
+- Rewards earning, redemption, and purchase history.
+- Content editing with image uploads, drafts, review, and publishing.
 - Responsive layouts, keyboard navigation, and reduced-motion support.
 
-Commerce, customer accounts, content publishing, and rewards require their
-associated services to be configured. The initial Stars policy supports USD shop
-currency with tax- and duty-exclusive pricing.
-
-## Technology
+## Implementation stack
 
 | Area | Implementation |
 | --- | --- |
-| Frontend | HTML5, CSS3, and vanilla JavaScript |
+| Frontend | Next.js App Router, React, CSS, and static export |
 | Content | JSON, local image assets, and Decap CMS |
 | Profile generation | Python scripts generating static player and staff pages |
 | Match schedules | FACEIT Data API and scheduled synchronization |

@@ -1,8 +1,18 @@
 {
-  "homeTitle": "Welcome to Zodiac Esports",
-  "homeIntroduction": "We’re a community-driven esports organization competing in Overwatch and VALORANT. Our mission is to develop players, foster teamwork, and entertain fans.",
+  "homeTitle": "Written in the Stars",
+  "homeIntroduction": "Established in 2024, Zodiac is a community of players and fans united by a shared passion. We're making our mark in Overwatch and VALORANT.",
   "socials": [
-    {"label": "X / Twitter", "description": "Follow our latest updates", "url": "https://x.com/zodiacsesport", "image": "https://logos-world.net/wp-content/uploads/2023/08/X-Logo.png"},
-    {"label": "Discord", "description": "Join the Zodiac community", "url": "https://discord.gg/R7ZJb4syjq", "image": "https://www.svgrepo.com/show/353655/discord-icon.svg"}
+    {
+      "label": "X / Twitter",
+      "description": "Follow our latest updates",
+      "url": "https://x.com/zodiacsesport",
+      "image": "https://logos-world.net/wp-content/uploads/2023/08/X-Logo.png"
+    },
+    {
+      "label": "Discord",
+      "description": "Join the Zodiac community",
+      "url": "https://discord.gg/R7ZJb4syjq",
+      "image": "https://www.svgrepo.com/show/353655/discord-icon.svg"
+    }
   ]
 }

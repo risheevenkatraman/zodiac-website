@@ -5,6 +5,8 @@ from html import escape
 from pathlib import Path
 from urllib.parse import urlsplit
 
+from build_constellations import constellation
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -32,13 +34,13 @@ def build():
             if page in expected:
                 raise ValueError(f'Duplicate player ID: {slug}')
             expected.add(page)
-            pool_label = 'Hero' if team['game'] == 'Overwatch' else 'Agent'
             signature = player['signature']
             profile_image = asset_url(player.get('image') or 'assets/profile-placeholder.svg')
             portrait = asset_url(signature['image'])
+            role_markup = f'<p class="role player-role"><span>{role}</span><span class="role-pick"><span class="role-separator" aria-hidden="true"></span><img src="{portrait}" alt="" width="28" height="28"><span>{escape(signature["name"])}</span></span></p>'
             cards.append(f'''<a class="roster-card" href="../{page}">
-        <img class="hero-image" src="{portrait}" alt="" width="88" height="88" loading="lazy" decoding="async">
-        <div><h4>{name}</h4><p class="role">{role}</p><p>Signature {pool_label.lower()}: {escape(signature['name'])}</p><span class="profile-link">View profile →</span></div>
+        <img class="roster-portrait" src="{profile_image}" alt="" width="88" height="88" loading="lazy" decoding="async">
+        <div><h4>{name}</h4>{role_markup}<span class="profile-link">View profile →</span></div>
       </a>''')
             socials = []
             for social in player['socials']:
@@ -66,7 +68,7 @@ def build():
     <a class="back-link" href="../{team['page']}">← Back to {escape(team['name'])} · {escape(team['game'])}</a>
     <section class="team-header player-header" aria-labelledby="player-name">
       <img src="{profile_image}" alt="" width="112" height="112">
-      <div><p class="eyebrow">{escape(team['game'])} · {escape(team['name'])}</p><h1 id="player-name">{name}</h1><p class="role">{role}</p></div>
+      <div><p class="eyebrow">{escape(team['game'])} · {escape(team['name'])}</p><h1 id="player-name">{name}</h1>{role_markup}</div>
     </section>
     <div class="profile-sections">
       <section class="profile-section" aria-labelledby="intro-heading"><h2 id="intro-heading">Introduction</h2><p>{introduction}</p></section>
@@ -79,10 +81,29 @@ def build():
 '''
             (ROOT / page).write_text(output, encoding='utf-8')
         document = re.sub(r'<div class="roster-grid">.*?\n    </div>', '<div class="roster-grid">\n      ' + '\n      '.join(cards) + '\n    </div>', document, flags=re.S)
+        document = update_constellation(document, team)
         source.write_text(document, encoding='utf-8')
+    # This roster has not been announced; never invent player stars for it.
+    upcoming = ROOT / 'teams/valorant-team1.html'
+    upcoming.write_text(update_constellation(upcoming.read_text(encoding='utf-8'), {
+        'name': 'Zodiac', 'game': 'VALORANT', 'players': [],
+    }), encoding='utf-8')
     for path in (ROOT / 'players').glob('player-*.html'):
         if path.relative_to(ROOT).as_posix() not in expected:
             path.unlink()
+
+
+def update_constellation(document, team):
+    markup = constellation(team)
+    if '<!-- constellation:start -->' in document:
+        document = re.sub(r'<!-- constellation:start -->.*?<!-- constellation:end -->',
+                          lambda _: markup, document, flags=re.S)
+    else:
+        document = re.sub(r'(<section class="team-header">.*?</section>)',
+                          lambda match: match[0] + '\n    ' + markup, document, count=1, flags=re.S)
+    if '../js/constellation.js' not in document:
+        document = document.replace('</body>', '  <script src="../js/constellation.js" defer></script>\n</body>')
+    return document
 
 
 if __name__ == '__main__':

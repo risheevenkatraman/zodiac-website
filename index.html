@@ -1,67 +1,188 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Zodiac Esports</title>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body class="home-page">
-  <a class="skip-link" href="#main-content">Skip to content</a>
-  <header class="site-header">
-    <div class="container">
-      <a class="brand" href="index.html" aria-current="page"><img src="assets/zodiac-logo.png" alt="Zodiac Esports logo" width="42" height="42"><span class="logo">Zodiac Esports</span></a>
-      <nav aria-label="Main navigation">
-        <a href="index.html" aria-current="page">Home</a>
-        <a href="teams.html">Teams</a>
-        <a href="staff.html">Staff</a>
-        <a href="store.html">Store</a>
-        <a href="socials.html">Socials</a>
-      <a href="account.html">Account &amp; Stars</a></nav>
-    </div>
-  </header>
-
-  <main class="container" id="main-content" tabindex="-1">
-    <section class="hero">
-      <h1>Welcome to Zodiac Esports</h1>
-      <p>We’re a community-driven esports organization competing in Overwatch and VALORANT. Our mission is to develop players, foster teamwork, and entertain fans.</p>
-    </section>
-
-    <section>
-      <div class="section-heading">
-        <div><h3>Flagship teams</h3><p>Follow Zodiac across Overwatch and VALORANT.</p></div>
-        <a href="teams.html">View all teams →</a>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Zodiac Esports &mdash; Written in the Stars</title>
+    <meta
+      name="description"
+      content="Written in the Stars. Destined for Victory. Meet Zodiac Esports, established in 2024. Follow our teams and matches, and find your people in our Overwatch and VALORANT community."
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body class="home-page">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="index.html" aria-current="page"
+          ><img
+            src="assets/zodiac-logo.png"
+            alt="Zodiac Esports logo"
+            width="42"
+            height="42"
+          /><span class="logo">Zodiac Esports</span></a
+        >
+        <nav aria-label="Main navigation">
+          <a href="index.html" aria-current="page">Home</a>
+          <a href="teams.html">Teams</a>
+          <a href="staff.html">Staff</a>
+          <a href="store.html">Store</a>
+          <a href="socials.html">Socials</a>
+          <a href="account.html">Account &amp; Stars</a>
+        </nav>
       </div>
-      <div class="team-grid">
-        <a class="team-card" href="teams/overwatch-team1.html"><img src="assets/zodiac-logo.png" alt="Zodiac team logo"><h4>Zodiac</h4><p>Overwatch flagship</p></a>
-        <a class="team-card" href="teams/valorant-team1.html"><img src="assets/zodiac-logo.png" alt="Zodiac team logo"><h4>Zodiac</h4><p>VALORANT flagship</p></a>
-      </div>
-    </section>
+    </header>
 
-    <section class="announcement">
-      <div class="section-heading">
-        <div><h3>Pinned announcement</h3><p>Share the latest news from Zodiac Esports.</p></div>
-      </div>
-      <article id="pinned-announcement" class="announcement-card">
-        <p class="event-status">Welcome to Zodiac Esports. Follow our teams for the latest updates.</p>
-      </article>
-    </section>
+    <main class="container" id="main-content" tabindex="-1">
+      <section class="hero home-hero" aria-labelledby="home-title">
+        <div class="hero-copy">
+          <span class="eyebrow"
+            ><span aria-hidden="true">&#10022;</span> A different kind of constellation</span
+          >
+          <h1 id="home-title">Written in the Stars</h1>
+          <p class="hero-intro">
+            Established in 2024, Zodiac is a community of players and fans united by a shared
+            passion. We're making our mark in Overwatch and VALORANT.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-dark" href="teams.html"
+              >Meet the teams <span aria-hidden="true">&#8599;</span></a
+            >
+            <a class="button button-outline" href="https://discord.gg/R7ZJb4syjq"
+              >Find your people <span aria-hidden="true">&#8599;</span></a
+            >
+          </div>
+          <span class="hero-footnote"
+            >Est. 2024. Built by players. Connected by something bigger.</span
+          >
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="orbit orbit-three"></div>
+          <span class="orbit-star star-one">&#10022;</span
+          ><span class="orbit-star star-two">&#10023;</span
+          ><span class="orbit-star star-three">&#10022;</span>
+          <img src="assets/zodiac-logo.png" alt="" width="400" height="400" />
+          <span class="orbit-caption">THE FUTURE IS OURS TO WRITE</span>
+        </div>
+        <div class="hero-bottom">
+          <span>ZODIAC ESPORTS</span
+          ><span>Destined for Victory <span aria-hidden="true">&#10022;</span></span
+          ><a href="#our-teams" aria-label="Explore our teams">Explore &#8595;</a>
+        </div>
+      </section>
 
-    <section class="events">
-      <div class="section-heading">
-        <div><h3>Events calendar</h3><p>Upcoming matches, announcements, and community moments.</p></div>
+      <div class="brand-strip" aria-label="Our games and community">
+        <span>OVERWATCH</span><span aria-hidden="true">&#10022;</span><span>ONE CONSTELLATION.</span
+        ><span aria-hidden="true">&#10022;</span><span>VALORANT</span
+        ><span aria-hidden="true">&#10022;</span><span>ALL ZODIAC.</span>
       </div>
-      <div id="event-timeline" class="event-timeline" aria-live="polite">
-        <p class="event-status">Check our <a href="data/events.json">events schedule</a> for upcoming matches and community nights.</p>
-      </div>
-    </section>
-  </main>
 
-  <footer class="site-footer">
-    <div class="container">© Zodiac Esports — All rights reserved<p class="disclaimer">Overwatch and its hero icons are property of Blizzard Entertainment. They are used here for non-commercial purposes only.</p><p class="disclaimer">VALORANT and its agent icons are property of Riot Games. They are used here for non-commercial purposes only.</p></div>
-  </footer>
-  <script src="js/events.js"></script>
-  <script src="js/announcement.js"></script>
-  <script src="js/site-content.js"></script>
-</body>
+      <section class="home-teams" id="our-teams" aria-labelledby="teams-heading">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">01 / The constellation</span>
+            <h2 id="teams-heading">Different teams.<br />Same stars.</h2>
+            <p>Find your roster. Follow the climb. Be part of the story.</p>
+          </div>
+          <a class="text-link" href="teams.html"
+            >Explore all rosters <span aria-hidden="true">&#8599;</span></a
+          >
+        </div>
+        <div class="team-grid home-team-grid">
+          <a class="team-card" href="teams/overwatch-team1.html"
+            ><span class="team-game">OVERWATCH</span
+            ><img src="assets/zodiac-logo.png" alt="" width="120" height="120" />
+            <h3>Zodiac Overwatch</h3>
+            <p>Meet the flagship roster <span aria-hidden="true">&#8599;</span></p></a
+          >
+          <a class="team-card" href="teams/valorant-team1.html"
+            ><span class="team-game">VALORANT</span
+            ><img src="assets/zodiac-logo.png" alt="" width="120" height="120" />
+            <h3>Zodiac VALORANT</h3>
+            <p>Meet the flagship roster <span aria-hidden="true">&#8599;</span></p></a
+          >
+        </div>
+      </section>
+
+      <section class="manifesto" aria-labelledby="manifesto-heading">
+        <span class="eyebrow">The people behind the name</span>
+        <h2 id="manifesto-heading">More than a tag.<br /><span>A place to belong.</span></h2>
+        <div>
+          <p>
+            The late-night queues. The comeback nobody saw coming. The people who keep showing up.
+            That's what makes us Zodiac.
+          </p>
+          <p>
+            We compete together, grow together, and make room for the next player with something to
+            prove.
+          </p>
+          <a class="text-link" href="staff.html"
+            >Meet the people behind Zodiac <span aria-hidden="true">&#8599;</span></a
+          >
+        </div>
+      </section>
+
+      <div class="home-atmosphere">
+        <section class="announcement">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">02 / In our orbit</span>
+              <h2>Latest from Zodiac</h2>
+              <p>The news, the milestones, and what comes next.</p>
+            </div>
+          </div>
+          <article id="pinned-announcement" class="announcement-card">
+            <p class="event-status">
+              Welcome to Zodiac Esports. Follow our teams for the latest updates.
+            </p>
+          </article>
+        </section>
+
+        <section class="events" id="matches">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">03 / Show up. Make noise.</span>
+              <h2>On the calendar</h2>
+              <p>Match days and community nights. We'll see you there.</p>
+            </div>
+          </div>
+          <div id="event-timeline" class="event-timeline" aria-live="polite">
+            <p class="event-status">
+              Check our <a href="data/events.json">events schedule</a> for upcoming matches and
+              community nights.
+            </p>
+          </div>
+        </section>
+      </div>
+      <section class="community-banner" aria-labelledby="community-heading">
+        <span class="eyebrow">There's a place for you here</span>
+        <h2 id="community-heading">The sky is better<br /><em>with you in it.</em></h2>
+        <p>Come for the games. Stay for the people.</p>
+        <a class="button button-dark" href="https://discord.gg/R7ZJb4syjq"
+          >Join our Discord <span aria-hidden="true">&#8599;</span></a
+        >
+        <a class="community-secondary" href="account.html">Rep Zodiac. Earn Stars. &#8599;</a>
+        <span class="community-star" aria-hidden="true">&#10022;</span>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        © 2024–2026 Zodiac Esports — All rights reserved
+        <p class="disclaimer">
+          Overwatch and its hero icons are property of Blizzard Entertainment. They are used here
+          for non-commercial purposes only.
+        </p>
+        <p class="disclaimer">
+          VALORANT and its agent icons are property of Riot Games. They are used here for
+          non-commercial purposes only.
+        </p>
+      </div>
+    </footer>
+    <script src="js/events.js"></script>
+    <script src="js/announcement.js"></script>
+    <script src="js/site-content.js"></script>
+  </body>
 </html>

@@ -1,6 +1,7 @@
 """Optional browser smoke check: pip install playwright, with Microsoft Edge installed."""
 import functools
 import json
+import os
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 import threading
@@ -18,14 +19,15 @@ class QuietHandler(SimpleHTTPRequestHandler):
 server = ThreadingHTTPServer(('127.0.0.1', 0), functools.partial(QuietHandler, directory=str(ROOT)))
 thread = threading.Thread(target=server.serve_forever, daemon=True)
 thread.start()
-base = f'http://127.0.0.1:{server.server_port}'
+base = os.environ.get('ZODIAC_TEST_URL', f'http://127.0.0.1:{server.server_port}')
 try:
     with sync_playwright() as p:
         browser = p.chromium.launch(channel='msedge', headless=True)
         page = browser.new_page(viewport={'width': 390, 'height': 844})
         errors = []
         page.on('pageerror', lambda error: errors.append(str(error)))
-        page.goto(base + '/account.html')
+        page.route('**/data/account.json', lambda route: route.fulfill(json={'enabled': False}))
+        page.goto(base + os.environ.get('ZODIAC_ACCOUNT_PATH', '/account.html'))
         page.get_by_text('Customer accounts and Stars are coming soon.', exact=False).wait_for()
         assert page.locator('#account-login').is_hidden()
         assert page.evaluate('document.documentElement.scrollWidth <= innerWidth')

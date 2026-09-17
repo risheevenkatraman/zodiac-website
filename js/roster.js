@@ -1,9 +1,9 @@
 (() => {
   const search = document.querySelector('#roster-search');
   if (!search) return;
-  const cards = [...document.querySelectorAll('.roster-card')].map(card => ({
+  const cards = [...document.querySelectorAll('.roster-card')].map((card) => ({
     element: card,
-    text: card.textContent.toLocaleLowerCase()
+    text: card.textContent.toLocaleLowerCase(),
   }));
   const status = document.querySelector('#roster-status');
   document.querySelector('.roster-tools').hidden = false;
@@ -14,6 +14,8 @@
       element.hidden = !text.includes(query);
       if (!element.hidden) count++;
     });
-    status.textContent = count ? `${count} of ${cards.length} players` : 'No players found. Try another name, role, or pick.';
+    status.textContent = count
+      ? `${count} of ${cards.length} players`
+      : 'No players found. Try another name, role, or pick.';
   });
 })();

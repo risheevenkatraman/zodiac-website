@@ -33,6 +33,15 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
+      - name: Install frontend dependencies
+        run: npm ci
+
       - name: Check match importer
         run: python -m unittest discover -s scripts -p 'test_sync_matches.py'
 
@@ -44,7 +53,13 @@ jobs:
       - name: Check event data
         run: node scripts/check_events.cjs
 
+      - name: Configure GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
       - name: Generate and check edited content
+        env:
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
         run: |
           python scripts/build_players.py
           python scripts/build_staff.py
@@ -53,15 +68,12 @@ jobs:
           node scripts/check_store.cjs
           node scripts/check_account.cjs
           node scripts/check_editor.cjs
-          python scripts/package_site.py
-
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
+          npm run build
 
       - name: Upload synced site
         uses: actions/upload-pages-artifact@v4
         with:
-          path: dist
+          path: out
 
       - name: Deploy to GitHub Pages
         id: deployment

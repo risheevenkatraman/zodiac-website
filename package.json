@@ -1,0 +1,20 @@
+{
+  "name": "zodiac-website",
+  "private": true,
+  "scripts": {
+    "dev": "node scripts/prepare-next.cjs && next dev",
+    "build": "node scripts/prepare-next.cjs && next build && node scripts/export-aliases.cjs",
+    "start": "node scripts/serve-export.cjs",
+    "format": "node scripts/format.cjs",
+    "format:check": "node scripts/format.cjs --check"
+  },
+  "devDependencies": {
+    "prettier": "3.6.2"
+  },
+  "dependencies": {
+    "html-react-parser": "6.1.7",
+    "next": "16.3.5",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  }
+}

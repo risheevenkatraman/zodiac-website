@@ -1,0 +1,128 @@
+/* One-shot, lightweight space motion. Content stays visible without JavaScript. */
+.is-waiting .constellation-map > svg,
+.is-waiting .star-label {
+  opacity: 0;
+}
+.is-forming .constellation-dust circle {
+  animation: star-assemble 1700ms cubic-bezier(0.16, 1, 0.3, 1) var(--star-delay, 0ms) backwards;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.is-forming .constellation-lines {
+  animation: celestial-reveal 1000ms 1400ms backwards;
+}
+.is-forming .player-star {
+  animation: celestial-reveal 900ms 2000ms backwards;
+}
+.is-forming .star-label {
+  animation: celestial-reveal 800ms 2400ms backwards;
+}
+@keyframes star-assemble {
+  from {
+    opacity: 0;
+    transform: translate(var(--star-x), var(--star-y)) scale(0.2);
+  }
+  to {
+    transform: translate(0, 0) scale(1);
+  }
+}
+@keyframes celestial-reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.hero-art > img {
+  animation: zodiac-drift 9s ease-in-out infinite;
+}
+@keyframes zodiac-drift {
+  0%,
+  100% {
+    transform: rotate(-12deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-9deg) translateY(-9px);
+  }
+}
+.link-pending {
+  position: fixed;
+  right: 1.5rem;
+  top: 7rem;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #c9a4ff66;
+  border-radius: 50%;
+  color: #c9a4ff;
+  background: #100b19;
+  pointer-events: none;
+}
+.link-pending > span {
+  animation: orbit-turn 2s linear infinite;
+}
+@keyframes orbit-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.celestial-status {
+  animation: celestial-breathe 1.8s ease-in-out infinite;
+}
+@keyframes celestial-breathe {
+  50% {
+    opacity: 0.5;
+  }
+}
+.cosmic-not-found {
+  padding-block: 6rem;
+}
+.constellation-motion-control {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+.constellation-motion-control button {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.75rem;
+  padding: 0.55rem 0.8rem;
+}
+.constellation-motion-control button:disabled {
+  cursor: default;
+}
+.constellation-motion-control small {
+  color: var(--muted);
+}
+.site-header nav > span:last-child a {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.65rem 1rem;
+}
+.site-header nav > span:not(:last-child) a {
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .is-waiting .constellation-map > svg,
+  .is-waiting .star-label {
+    opacity: 1;
+  }
+  .is-forming:not(.motion-requested) .constellation-dust circle,
+  .is-forming:not(.motion-requested) .constellation-lines,
+  .is-forming:not(.motion-requested) .player-star,
+  .is-forming:not(.motion-requested) .star-label,
+  .hero-art > img,
+  .link-pending > span,
+  .celestial-status {
+    animation: none;
+  }
+}

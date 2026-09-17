@@ -8,3 +8,7 @@ samconfig.toml
 .test-output/
 /docs/
 /.venv/
+node_modules/
+.next/
+out/
+public/

@@ -1,14 +1,7 @@
-"""Stage only public website files; never publish backend code or configuration."""
+"""Compatibility entry point: build the Next.js static export in out/."""
+import os
 from pathlib import Path
-import shutil
+import subprocess
 
-ROOT = Path(__file__).resolve().parents[1]
-target = ROOT / 'dist'
-if target.exists():
-    shutil.rmtree(target)
-target.mkdir()
-for source in ROOT.glob('*.html'):
-    shutil.copy2(source, target / source.name)
-for name in ('assets', 'css', 'data', 'js', 'players', 'staff', 'teams', 'admin'):
-    shutil.copytree(ROOT / name, target / name)
-print('Public site staged in dist/')
+subprocess.run(['npm.cmd' if os.name == 'nt' else 'npm', 'run', 'build'],
+               cwd=Path(__file__).resolve().parents[1], check=True)

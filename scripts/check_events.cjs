@@ -14,18 +14,27 @@ assert.equal(parse([event('2026-10-01', 'Missing', '')]).length, 0);
 assert.equal(parse([]).length, 0);
 assert.throws(() => parse({}), /JSON array/);
 assert.throws(() => parse(null), /JSON array/);
-assert.equal(parse([null, 42, {}, { name: 42, description: 'Invalid', date: '2026-10-01' }]).length, 0);
+assert.equal(
+  parse([null, 42, {}, { name: 42, description: 'Invalid', date: '2026-10-01' }]).length,
+  0,
+);
 assert.equal(parse([event('2028-02-29')]).length, 1);
 assert.equal(parse([event('2026-02-29')]).length, 0);
 const events = parse([event('2026-11-01', 'Later'), event('2026-10-01', 'Earlier')]);
 assert.equal(events[0].name, 'Earlier');
 assert.equal(events[0].value.getHours(), 12);
-assert.equal(parse([event('2026-10-01', '<img onerror=alert(1)>')])[0].name, '<img onerror=alert(1)>');
+assert.equal(
+  parse([event('2026-10-01', '<img onerror=alert(1)>')])[0].name,
+  '<img onerror=alert(1)>',
+);
 assert.equal(parse([event(' 2026-10-01 ', ' Trimmed ')])[0].name, 'Trimmed');
 const saved = JSON.parse(fs.readFileSync('data/events.json', 'utf8'));
-const calendar = parse(['2026-09-10', '2026-09-11', '2026-09-30', '2026-10-01',
-  '2026-12-31', '2027-01-01'].map(date => event(date)));
-const visibleDates = now => Array.from(context.currentMonthEvents(calendar, now), e => e.date);
+const calendar = parse(
+  ['2026-09-10', '2026-09-11', '2026-09-30', '2026-10-01', '2026-12-31', '2027-01-01'].map((date) =>
+    event(date),
+  ),
+);
+const visibleDates = (now) => Array.from(context.currentMonthEvents(calendar, now), (e) => e.date);
 assert.deepEqual(visibleDates(new Date(2026, 8, 11, 23)), ['2026-09-11', '2026-09-30']);
 assert.deepEqual(visibleDates(new Date(2026, 9, 1)), ['2026-10-01']);
 assert.deepEqual(visibleDates(new Date(2026, 11, 31)), ['2026-12-31']);
@@ -39,4 +48,6 @@ for (const invalid of [null, [], 'text', { title: 42, message: {}, image: false 
   assert.equal(context.parseAnnouncement(invalid).title, 'Welcome to Zodiac Esports');
 }
 assert.equal(context.parseAnnouncement({ title: ' Custom ' }).title, 'Custom');
-console.log('JSON content, invalid shapes, defaults, date validation, ordering, and plain-text parsing passed.');
+console.log(
+  'JSON content, invalid shapes, defaults, date validation, ordering, and plain-text parsing passed.',
+);
