@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+@theme {
+  /* The sky */
+  --color-sky: #0b0716;
+  --color-void: #000000;
+  --color-ink: #6f3fa5;
+  --color-ink-deep: #3d225e;
+  --color-lavender: #c9b3e8;
+  --color-starlight: #ede9f5;
+  --color-white: #ffffff;
+  /* The plate (engraved paper, Read surfaces) */
+  --color-plate: #f3eadb;
+  --color-plate-ink: #2d2140;
+  --color-plate-muted: #6b5b80;
+  /* Stars tiers, used only where a tier is real */
+  --color-bronze: #b2764b;
+  --color-silver: #c9cbd6;
+  --color-gold: #e2b84c;
+  --color-diamond: #9fe3f0;
+
+  --font-display: var(--font-caslon-display), "Libre Caslon Display", Georgia, serif;
+  --font-text: var(--font-caslon-text), "Libre Caslon Text", Georgia, serif;
+  --font-sans: var(--font-hanken), "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --tracking-caps: 0.18em;
+  --tracking-display: 0.08em;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+  body {
+    background: var(--color-sky);
+    color: var(--color-starlight);
+    font-family: var(--font-sans);
+    font-feature-settings: "tnum" 1, "kern" 1;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    caret-color: var(--color-lavender);
+    accent-color: var(--color-ink);
+  }
+  ::selection {
+    background: var(--color-ink);
+    color: var(--color-white);
+  }
+  .plate ::selection {
+    background: var(--color-ink);
+    color: var(--color-plate);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-lavender);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+  .plate :focus-visible { outline-color: var(--color-ink); }
+  a { text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+  * { scrollbar-width: thin; scrollbar-color: var(--color-ink-deep) var(--color-sky); }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: var(--color-sky); }
+  ::-webkit-scrollbar-thumb { background: var(--color-ink-deep); border: 3px solid var(--color-sky); border-radius: 8px; }
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+}
+
+@utility hairline {
+  border-color: color-mix(in oklab, var(--color-lavender) 22%, transparent);
+}
+@utility hairline-ink {
+  border-color: color-mix(in oklab, var(--color-ink) 45%, transparent);
+}
+@utility hairline-plate {
+  border-color: color-mix(in oklab, var(--color-plate-ink) 22%, transparent);
+}
+@utility caps {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-caps);
+  font-size: 0.75rem;
+  line-height: 1.2;
+  font-weight: 500;
+}
+@utility display-caps {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-display);
+  font-weight: 400;
+  line-height: 1.02;
+}
+@utility text-plate-muted {
+  color: var(--color-plate-muted);
+}
+
+/* The plate: engraved cream paper for Read surfaces */
+.plate {
+  background: var(--color-plate);
+  color: var(--color-plate-ink);
+  color-scheme: light;
+  scrollbar-color: var(--color-ink) var(--color-plate);
+}
+
+/* Dotted constellation edge, the atlas grammar */
+.constellation-edge {
+  stroke: var(--color-starlight);
+  stroke-width: 1.4;
+  stroke-dasharray: 1.5 3.5;
+  stroke-linecap: round;
+  opacity: 0.8;
+}
+.plate .constellation-edge { stroke: var(--color-ink); opacity: 0.5; }
+
+/* Draw-on hairline: one authored moment when a section enters */
+@keyframes rule-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.rule-draw {
+  transform-origin: left center;
+  animation: rule-draw 900ms var(--ease-out-expo) both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 30%;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rule-draw { animation: none; }
+}

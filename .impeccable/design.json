@@ -1,0 +1,561 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-17T00:00:00+00:00",
+  "title": "Design System: Zodiac Esports",
+  "extensions": {
+    "colorMeta": {
+      "sky": {
+        "role": "neutral",
+        "displayName": "Night Sky",
+        "canonical": "oklch(14% 0.033 295)",
+        "tonalRamp": [
+          "#0c0817",
+          "#262233",
+          "#433f52",
+          "#625e72",
+          "#837f94",
+          "#a6a1b8",
+          "#cac5dd",
+          "#f0ebff"
+        ]
+      },
+      "void": {
+        "role": "neutral",
+        "displayName": "Hero Void",
+        "canonical": "oklch(0% 0.000 0)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "ink": {
+        "role": "primary",
+        "displayName": "Ink Purple",
+        "canonical": "oklch(48% 0.159 302)",
+        "tonalRamp": [
+          "#1c0040",
+          "#360062",
+          "#542086",
+          "#7444aa",
+          "#9567d0",
+          "#b98af7",
+          "#ddaeff",
+          "#ffd4ff"
+        ]
+      },
+      "ink-deep": {
+        "role": "primary",
+        "displayName": "Deep Ink",
+        "canonical": "oklch(32% 0.104 302)",
+        "tonalRamp": [
+          "#15002e",
+          "#2f134e",
+          "#4c326f",
+          "#6c5292",
+          "#8d73b6",
+          "#b196dc",
+          "#d5b9ff",
+          "#fbdfff"
+        ]
+      },
+      "ink-lift": {
+        "role": "primary",
+        "displayName": "Lifted Ink",
+        "canonical": "oklch(53% 0.166 301)",
+        "tonalRamp": [
+          "#1b0041",
+          "#350064",
+          "#532087",
+          "#7244ac",
+          "#9467d2",
+          "#b78af8",
+          "#dbafff",
+          "#ffd4ff"
+        ]
+      },
+      "lavender": {
+        "role": "secondary",
+        "displayName": "Lavender Hairline",
+        "canonical": "oklch(80% 0.077 304)",
+        "tonalRamp": [
+          "#130025",
+          "#2d1943",
+          "#4b3763",
+          "#6a5685",
+          "#8c77a8",
+          "#af99cd",
+          "#d4bdf3",
+          "#f9e3ff"
+        ]
+      },
+      "starlight": {
+        "role": "neutral",
+        "displayName": "Starlight",
+        "canonical": "oklch(94% 0.017 301)",
+        "tonalRamp": [
+          "#0c0a11",
+          "#26232c",
+          "#43404a",
+          "#635f69",
+          "#84808b",
+          "#a7a3ae",
+          "#cbc7d2",
+          "#f0ecf8"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Lit Star",
+        "canonical": "oklch(100% 0.000 90)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "plate": {
+        "role": "neutral",
+        "displayName": "Cream Plate",
+        "canonical": "oklch(94% 0.022 81)",
+        "tonalRamp": [
+          "#100a02",
+          "#2b2419",
+          "#484135",
+          "#686053",
+          "#898174",
+          "#aca496",
+          "#d1c8b9",
+          "#f6edde"
+        ]
+      },
+      "plate-ink": {
+        "role": "neutral",
+        "displayName": "Plate Ink",
+        "canonical": "oklch(28% 0.057 301)",
+        "tonalRamp": [
+          "#10041f",
+          "#2a1e3c",
+          "#473b5c",
+          "#665a7d",
+          "#887ba0",
+          "#ab9dc4",
+          "#cfc1ea",
+          "#f4e6ff"
+        ]
+      },
+      "plate-muted": {
+        "role": "neutral",
+        "displayName": "Plate Muted",
+        "canonical": "oklch(50% 0.061 304)",
+        "tonalRamp": [
+          "#11031f",
+          "#2c1d3d",
+          "#493a5c",
+          "#69597e",
+          "#8a7aa0",
+          "#ad9cc5",
+          "#d1c0ea",
+          "#f7e5ff"
+        ]
+      },
+      "bronze": {
+        "role": "tertiary",
+        "displayName": "Zodiac Bronze",
+        "canonical": "oklch(62% 0.096 56)",
+        "tonalRamp": [
+          "#250000",
+          "#451200",
+          "#673100",
+          "#8a5126",
+          "#ae7247",
+          "#d39569",
+          "#fab98c",
+          "#ffdeb1"
+        ]
+      },
+      "silver": {
+        "role": "tertiary",
+        "displayName": "Zodiac Silver",
+        "canonical": "oklch(84% 0.015 278)",
+        "tonalRamp": [
+          "#0a0b12",
+          "#23242d",
+          "#40414a",
+          "#5f616a",
+          "#80828c",
+          "#a2a4af",
+          "#c6c8d3",
+          "#eceef9"
+        ]
+      },
+      "gold": {
+        "role": "tertiary",
+        "displayName": "Zodiac Gold",
+        "canonical": "oklch(80% 0.133 88)",
+        "tonalRamp": [
+          "#210000",
+          "#3f1a00",
+          "#5f3900",
+          "#815a00",
+          "#a47c00",
+          "#c89f2e",
+          "#eec359",
+          "#ffe97f"
+        ]
+      },
+      "diamond": {
+        "role": "tertiary",
+        "displayName": "Zodiac Diamond",
+        "canonical": "oklch(87% 0.070 211)",
+        "tonalRamp": [
+          "#00111b",
+          "#002d38",
+          "#004c57",
+          "#276c78",
+          "#4b8e9a",
+          "#6fb1be",
+          "#92d6e3",
+          "#b7fcff"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The hero headline only; Libre Caslon Display in spaced uppercase."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings that follow the opening hairline rule; same face and caps as display, one step down."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Team plate names and, at fixed sizes, the footer wordmark (1.5rem), Stars tier names (1.25rem) and the small-screen menu (1.5rem)."
+      },
+      "atlas-label": {
+        "displayName": "Atlas Label",
+        "purpose": "The chart's own voice: house names under a team title, 'Tab. N' plate captions, roman numerals, star names and ring labels (11 to 12px in SVG). Never used for UI controls."
+      },
+      "quote": {
+        "displayName": "Quote",
+        "purpose": "The founder's words on the plate; Libre Caslon Text upright at reading size."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Hanken Grotesk with tabular figures; leads and facts in lavender on the sky, plate-ink at 80% on the plate."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Every UI control and metadata slug: buttons, nav links, roles, games, legends, and the date column of every fixture. Uppercase, 0.18em tracking, medium weight."
+      }
+    },
+    "hairlines": [
+      {
+        "name": "hairline",
+        "value": "1px solid color-mix(in oklab, #c9b3e8 22%, transparent)",
+        "purpose": "Every edge on the sky: rules, row tops, pill borders."
+      },
+      {
+        "name": "hairline-ink",
+        "value": "1px solid color-mix(in oklab, #6f3fa5 45%, transparent)",
+        "purpose": "A stronger ink edge; defined for emphasis, used sparingly."
+      },
+      {
+        "name": "hairline-plate",
+        "value": "1px solid color-mix(in oklab, #2d2140 22%, transparent)",
+        "purpose": "Every edge on the cream plate."
+      },
+      {
+        "name": "constellation-edge",
+        "value": "stroke #ede9f5; stroke-width 1.4; stroke-dasharray 1.5 3.5; stroke-linecap round; opacity 0.8 (on plate: stroke #6f3fa5, opacity 0.5)",
+        "purpose": "Dotted edges joining stars in a figure."
+      },
+      {
+        "name": "star-leader",
+        "value": "stroke #c9b3e8; stroke-opacity 0.6 (0.95 lit); stroke-width 0.9",
+        "purpose": "The line from a named star out to its italic label."
+      },
+      {
+        "name": "calendar-rail",
+        "value": "border-left: 1px solid color-mix(in oklab, #c9b3e8 22%, transparent); padding-left 32px; 11px starlight star at -2.35rem on each new day",
+        "purpose": "The vertical rail the calendar timeline hangs from."
+      }
+    ],
+    "shadows": [
+      {
+        "name": "ink-glow",
+        "value": "0 12px 40px -12px rgba(111,63,165,0.9)",
+        "purpose": "The hero's primary button only; a soft ink pool under the one action in the first viewport. No other element casts a shadow."
+      }
+    ],
+    "surfaces": [
+      {
+        "name": "nav-ground",
+        "value": "color-mix(in oklab, #0b0716 92%, transparent); clip-path: ellipse(115% 100% at 50% 0%)",
+        "purpose": "The ecliptic: the header's ground, bowed across the width, no backdrop-filter."
+      },
+      {
+        "name": "menu-ground",
+        "value": "color-mix(in oklab, #0b0716 97%, transparent)",
+        "purpose": "The small-screen menu panel under the ecliptic."
+      },
+      {
+        "name": "hero-void",
+        "value": "radial-gradient(ellipse 78% 72% at 50% 46%, #000000 0%, #000000 30%, #0b0716 100%)",
+        "purpose": "The pool of void under the point cloud, dissolving into the sky at the edges; a 160px linear fade to the sky closes the hero at its foot."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The only authored easing; used by the rule-draw entrance."
+      },
+      {
+        "name": "rule-draw",
+        "value": "transform scaleX(0) to scaleX(1); 900ms ease-out-expo; animation-timeline: view(); animation-range: entry 0% entry 30%; transform-origin left center",
+        "purpose": "The first section's opening hairline draws in from the left as it enters the viewport. Used on that rule only; disabled under prefers-reduced-motion."
+      },
+      {
+        "name": "state-transition",
+        "value": "150ms (browser default) on color, border-color, background-color",
+        "purpose": "Hover and focus colour shifts on links, pills and rows."
+      },
+      {
+        "name": "label-dim",
+        "value": "opacity 200ms",
+        "purpose": "Unlit constellation labels fall to 45% while one star is active."
+      },
+      {
+        "name": "canvas-reveal",
+        "value": "opacity 0 to 1 over 700ms ease-out",
+        "purpose": "The hero canvas fades in once the starfield is ready."
+      },
+      {
+        "name": "hero-pin",
+        "value": "section 175svh; sticky viewport 100svh; headline opacity 1 - min(1, p / 0.55); copy translateY(p * -24px); legend opacity max((p - 0.5) / 0.4, 1 - p * 2.5); starfield morph = p",
+        "purpose": "The scroll-pinned morph from monogram to the ring of twelve; the headline yields to the legend as the cloud re-forms."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "scroll-behavior auto; rule-draw none; starfield renders one still frame and ignores the pointer",
+        "purpose": "prefers-reduced-motion: reduce."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "container",
+        "value": "1280px"
+      }
+    ],
+    "focus": {
+      "value": "outline: 2px solid #c9b3e8; outline-offset: 4px; border-radius: 2px (on the plate the outline is #6f3fa5)"
+    },
+    "heroHouseColors": {
+      "note": "Shader-only literals in web/src/components/hero/starfield.ts; not CSS tokens. The four active houses in the ring take their real team-logo colours, an addition reviewed 2026-09-17. Quiet houses use [0.79, 0.70, 0.91].",
+      "tigers": "rgb(1.0, 0.48, 0.0) ≈ #ff7a00",
+      "ox": "rgb(0.04, 0.42, 1.0) ≈ #0a6bff",
+      "goats": "rgb(0.79, 0.80, 0.84) ≈ #c9ccd6",
+      "piggies": "rgb(1.0, 0.24, 0.54) ≈ #ff3d8a"
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one filled action on a surface (Join the Discord, Visit the store). Ink pill, white spaced caps; lifts lighter on the sky, deepens on the plate.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Join the Discord</a>",
+      "css": ".ds-btn-primary { display:inline-flex; align-items:center; gap:8px; background: var(--color-ink, #6f3fa5); color: #ffffff; padding: 14px 24px; border-radius: 9999px; text-decoration: none; border: 0; cursor: pointer; transition: background-color 150ms; font-family: var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif); text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.75rem; line-height: 1.2; font-weight: 500; } .ds-btn-primary:hover { background: #7d4dba; } .ds-btn-primary:focus-visible { outline: 2px solid var(--color-lavender, #c9b3e8); outline-offset: 4px; border-radius: 2px; }"
+    },
+    {
+      "name": "Hairline Button",
+      "kind": "button",
+      "refersTo": "button-hairline",
+      "description": "The secondary action beside a primary (See the teams, Follow on X, the nav Discord pill). Transparent pill with a lavender hairline; the hairline brightens to full lavender on hover.",
+      "html": "<a class=\"ds-btn-hairline\" href=\"#\">See the teams</a>",
+      "css": ".ds-btn-hairline { display:inline-flex; align-items:center; gap:8px; background: transparent; color: var(--color-starlight, #ede9f5); padding: 14px 24px; border-radius: 9999px; border: 1px solid color-mix(in oklab, var(--color-lavender, #c9b3e8) 22%, transparent); text-decoration: none; cursor: pointer; transition: border-color 150ms, background-color 150ms; font-family: var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif); text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.75rem; line-height: 1.2; font-weight: 500; } .ds-btn-hairline:hover { border-color: var(--color-lavender, #c9b3e8); } .ds-btn-hairline:focus-visible { outline: 2px solid var(--color-lavender, #c9b3e8); outline-offset: 4px; border-radius: 2px; }"
+    },
+    {
+      "name": "Ecliptic Nav",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "The fixed 80px header: sky at 92% clipped to one ellipse whose lower edge bows across the width, a 1px lavender ellipse tracing the arc, star-label links in lavender caps that turn to starlight with a small lavender dot at left. No backdrop blur.",
+      "html": "<header class=\"ds-nav\"><div class=\"ds-nav-ground\"></div><svg class=\"ds-nav-arc\" aria-hidden=\"true\"><ellipse cx=\"50%\" cy=\"0\" rx=\"115%\" ry=\"100%\" fill=\"none\" stroke=\"#c9b3e8\" stroke-opacity=\"0.32\" stroke-width=\"1\"/></svg><div class=\"ds-nav-row\"><a class=\"ds-nav-brand\" href=\"#\">Zodiac Esports</a><nav class=\"ds-nav-links\"><a href=\"#\">Teams</a><a href=\"#\">Matches</a><a href=\"#\">Stars</a><a href=\"#\">Store</a><a href=\"#\">Community</a></nav><a class=\"ds-nav-pill\" href=\"#\">Join the Discord</a></div></header>",
+      "css": ".ds-nav { position: relative; height: 80px; background: var(--color-sky, #0b0716); } .ds-nav-ground { position:absolute; inset:0; background: color-mix(in oklab, var(--color-sky, #0b0716) 92%, transparent); clip-path: ellipse(115% 100% at 50% 0%); } .ds-nav-arc { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; overflow:hidden; } .ds-nav-row { position:relative; display:flex; align-items:center; justify-content:space-between; gap:24px; height:100%; padding: 0 32px; } .ds-nav-brand { color: var(--color-starlight, #ede9f5); text-decoration:none; font-family: var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif); text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.75rem; line-height: 1.2; font-weight: 500; } .ds-nav-links { display:flex; gap:28px; } .ds-nav-links a { position:relative; color: var(--color-lavender, #c9b3e8); text-decoration:none; transition: color 150ms; font-family: var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif); text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.75rem; line-height: 1.2; font-weight: 500; } .ds-nav-links a::before { content:''; position:absolute; left:-12px; top:50%; width:4px; height:4px; transform: translateY(-50%); border-radius:9999px; background: var(--color-lavender, #c9b3e8); opacity:0; transition: opacity 150ms; } .ds-nav-links a:hover { color: var(--color-starlight, #ede9f5); } .ds-nav-links a:hover::before { opacity:1; } .ds-nav-pill { color: var(--color-starlight, #ede9f5); text-decoration:none; padding: 8px 16px; border-radius: 9999px; border: 1px solid color-mix(in oklab, var(--color-lavender, #c9b3e8) 22%, transparent); transition: border-color 150ms, background-color 150ms; font-family: var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif); text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.75rem; line-height: 1.2; font-weight: 500; } .ds-nav-pill:hover { border-color: var(--color-lavender, #c9b3e8); background: color-mix(in oklab, var(--color-ink, #6f3fa5) 25%, transparent); } .ds-nav a:focus-visible { outline: 2px solid var(--color-lavender, #c9b3e8); outline-offset: 4px; border-radius: 2px; }"
+    },
+    {
+      "name": "Star Glyph",
+      "kind": "custom",
+      "refersTo": "star-glyph",
+      "description": "The four-point star, the atlas mark for a named star. It is the only bullet and the only icon in the system: ink on sky lists, starlight on the hero legend, 8 to 10px.",
+      "html": "<ul class=\"ds-star-list\"><li><a href=\"#\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" aria-hidden=\"true\" fill=\"currentColor\"><path d=\"M5 0C5.3 3 7 4.7 10 5 7 5.3 5.3 7 5 10 4.7 7 3 5.3 0 5 3 4.7 4.7 3 5 0Z\"/></svg> Teams</a></li><li><a href=\"#\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" aria-hidden=\"true\" fill=\"currentColor\"><path d=\"M5 0C5.3 3 7 4.7 10 5 7 5.3 5.3 7 5 10 4.7 7 3 5.3 0 5 3 4.7 4.7 3 5 0Z\"/></svg> Matches</a></li><li><a href=\"#\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" aria-hidden=\"true\" fill=\"currentColor\"><path d=\"M5 0C5.3 3 7 4.7 10 5 7 5.3 5.3 7 5 10 4.7 7 3 5.3 0 5 3 4.7 4.7 3 5 0Z\"/></svg> Discord</a></li></ul>",
+      "css": ".ds-star-list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px; } .ds-star-list a { display:flex; align-items:center; gap:8px; color: var(--color-lavender, #c9b3e8); text-decoration:none; transition: color 150ms; font-family: var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif); text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.75rem; line-height: 1.2; font-weight: 500; } .ds-star-list svg { width:8px; height:8px; color: var(--color-ink, #6f3fa5); flex:none; } .ds-star-list a:hover { color: var(--color-starlight, #ede9f5); } .ds-star-list a:focus-visible { outline: 2px solid var(--color-lavender, #c9b3e8); outline-offset: 4px; border-radius: 2px; }"
+    },
+    {
+      "name": "Hairline Row",
+      "kind": "card",
+      "refersTo": "row-hairline",
+      "description": "The system has no cards. A list is a stack of 1px hairline-topped rows (gap 1px): a name in medium weight, a role in caps, and the player's first social as a 14px brand glyph at the far right (the only glyph family besides the star). Roster rows light to white when their star is active.",
+      "html": "<ul class=\"ds-rows\"><li class=\"ds-row\"><span class=\"ds-row-avatar\"></span><span class=\"ds-row-main\"><span class=\"ds-row-name\">Gap</span><span class=\"ds-row-role\">Tank</span></span><a class=\"ds-row-social\" href=\"#\" aria-label=\"Gap on X\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z\"/></svg></a></li><li class=\"ds-row\"><span class=\"ds-row-avatar\"></span><span class=\"ds-row-main\"><span class=\"ds-row-name\">Ewan</span><span class=\"ds-row-role\">Support</span></span><a class=\"ds-row-social\" href=\"#\" aria-label=\"Ewan on Twitch\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z\"/></svg></a></li><li class=\"ds-row\"><span class=\"ds-row-avatar ds-row-avatar--open\"></span><span class=\"ds-row-main\"><span class=\"ds-row-role\">Open slot</span><span class=\"ds-row-role ds-row-role--dim\">Sentinel</span></span></li></ul>",
+      "css": ".ds-rows { list-style:none; margin:0; padding:0; display:grid; gap:1px; } .ds-row { display:flex; align-items:center; gap:16px; padding: 20px 0; border-top: 1px solid color-mix(in oklab, var(--color-lavender, #c9b3e8) 22%, transparent); color: var(--color-starlight, #ede9f5); transition: color 150ms; } .ds-row:hover .ds-row-name { color: #ffffff; } .ds-row-avatar { width:36px; height:36px; border-radius:9999px; background: var(--color-ink-deep, #3d225e); flex:none; } .ds-row-avatar--open { background: transparent; border: 1px dashed color-mix(in oklab, var(--color-lavender, #c9b3e8) 22%, transparent); } .ds-row-main { display:flex; flex:1; min-width:0; align-items:baseline; gap:12px; } .ds-row-name { font-family: var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif); font-weight:500; font-size:1rem; } .ds-row-role { color: color-mix(in oklab, var(--color-lavender, #c9b3e8) 80%, transparent); font-family: var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif); text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.75rem; line-height: 1.2; font-weight: 500; } .ds-row-role--dim { color: color-mix(in oklab, var(--color-lavender, #c9b3e8) 60%, transparent); } .ds-row-social { display:inline-flex; color: var(--color-lavender, #c9b3e8); transition: color 150ms; } .ds-row-social:hover { color: var(--color-starlight, #ede9f5); } .ds-row-social:focus-visible { outline: 2px solid var(--color-lavender, #c9b3e8); outline-offset: 4px; border-radius: 2px; }"
+    },
+    {
+      "name": "Calendar Timeline",
+      "kind": "custom",
+      "refersTo": "calendar-timeline",
+      "description": "Every synced fixture on one vertical hairline rail: a 6.5rem caps date column and a body line, the first fixture of each day opening with a hairline top and an 11px starlight star on the rail; later fixtures that day leave the date blank. On a team plate the same row compresses to a 3.25rem date and 'vs Opponent'.",
+      "html": "<ol class=\"ds-timeline\"><li class=\"ds-fixture ds-fixture--day\"><svg class=\"ds-fixture-star\" width=\"11\" height=\"11\" viewBox=\"0 0 10 10\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M5 0C5.3 3 7 4.7 10 5 7 5.3 5.3 7 5 10 4.7 7 3 5.3 0 5 3 4.7 4.7 3 5 0Z\"/></svg><span class=\"ds-fixture-date\">Sat Sep 20</span><span class=\"ds-fixture-body\"><span class=\"ds-fixture-line\">Zodiac <span class=\"ds-fixture-vs\">vs</span> Nightfall</span><span class=\"ds-fixture-meta\">Overwatch · S10 NA Advanced Central</span></span></li><li class=\"ds-fixture\"><span class=\"ds-fixture-date\"></span><span class=\"ds-fixture-body\"><span class=\"ds-fixture-line\">Ox <span class=\"ds-fixture-vs\">vs</span> Hollow Point</span><span class=\"ds-fixture-meta\">Overwatch · S10 NA Advanced Central</span></span></li><li class=\"ds-fixture ds-fixture--day\"><svg class=\"ds-fixture-star\" width=\"11\" height=\"11\" viewBox=\"0 0 10 10\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M5 0C5.3 3 7 4.7 10 5 7 5.3 5.3 7 5 10 4.7 7 3 5.3 0 5 3 4.7 4.7 3 5 0Z\"/></svg><span class=\"ds-fixture-date\">Sun Sep 21</span><span class=\"ds-fixture-body\"><span class=\"ds-fixture-line\">Goats <span class=\"ds-fixture-vs\">vs</span> Aurora</span><span class=\"ds-fixture-meta\">Overwatch · S10 NA Advanced Central</span></span></li></ol>",
+      "css": ".ds-timeline { list-style:none; margin:0; padding:0 0 0 32px; position:relative; display:grid; gap:1px; border-left: 1px solid color-mix(in oklab, var(--color-lavender, #c9b3e8) 22%, transparent); color: var(--color-starlight, #ede9f5); } .ds-fixture { position:relative; display:grid; grid-template-columns: 6.5rem 1fr; align-items: baseline; gap: 20px; padding: 16px 0; } .ds-fixture--day { border-top: 1px solid color-mix(in oklab, var(--color-lavender, #c9b3e8) 22%, transparent); } .ds-fixture-star { position:absolute; left: -2.35rem; top: 20px; color: var(--color-starlight, #ede9f5); } .ds-fixture-date { color: color-mix(in oklab, var(--color-lavender, #c9b3e8) 80%, transparent); font-family: var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif); text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.75rem; line-height: 1.2; font-weight: 500; } .ds-fixture-body { min-width:0; font-family: var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif); font-feature-settings: 'tnum' 1; } .ds-fixture-line { display:block; font-size: 1.125rem; line-height: 1.5; } .ds-fixture-vs { color: color-mix(in oklab, var(--color-lavender, #c9b3e8) 70%, transparent); } .ds-fixture-meta { display:block; font-size: 0.875rem; line-height: 1.5; color: color-mix(in oklab, var(--color-lavender, #c9b3e8) 75%, transparent); }"
+    },
+    {
+      "name": "Section Opening",
+      "kind": "custom",
+      "refersTo": "headline",
+      "description": "Every section opens with a hairline rule, then 32px later a display-caps headline (clamp 1.9rem to 3.4rem) and a lavender lead paragraph capped at about 40 to 46ch. The first section's rule draws in from the left on entry; the rest are static.",
+      "html": "<section class=\"ds-section\"><div class=\"ds-rule\"></div><h2 class=\"ds-headline\">Five rosters,<br>drawn from twelve houses</h2><p class=\"ds-lead\">Every Zodiac team takes an animal of the zodiac. Four rosters compete in Overwatch, one in VALORANT, and players move between houses as they grow.</p></section>",
+      "css": ".ds-section { color: var(--color-starlight, #ede9f5); } .ds-rule { border-top: 1px solid color-mix(in oklab, var(--color-lavender, #c9b3e8) 22%, transparent); } .ds-headline { margin: 32px 0 0; font-size: clamp(1.9rem, 4vw, 3.4rem); text-wrap: balance; font-family: var(--font-display, 'Libre Caslon Display', Georgia, serif); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 400; line-height: 1.02; } .ds-lead { margin: 24px 0 0; max-width: 44ch; color: var(--color-lavender, #c9b3e8); font-family: var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif); font-size: 1rem; line-height: 1.5; text-wrap: pretty; }"
+    },
+    {
+      "name": "Atlas Plate Heading",
+      "kind": "custom",
+      "refersTo": "title",
+      "description": "A team plate's heading block: the team name in display caps, its house in italic Caslon Text directly beneath (a line under the heading, not an eyebrow above it), facts in lavender, and a star-marked caps link. The figure's caption 'Tab. N' sits in the same italic under the figure.",
+      "html": "<div class=\"ds-plate-head\"><figcaption class=\"ds-tab\">Tab. III</figcaption><h3 class=\"ds-plate-title\">Ox</h3><p class=\"ds-house\">House of the Ox</p><p class=\"ds-facts\">Overwatch · 5 players · FACEIT League Season 10</p><a class=\"ds-plate-link\" href=\"#\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" aria-hidden=\"true\" fill=\"currentColor\"><path d=\"M5 0C5.3 3 7 4.7 10 5 7 5.3 5.3 7 5 10 4.7 7 3 5.3 0 5 3 4.7 4.7 3 5 0Z\"/></svg> Match schedule</a></div>",
+      "css": ".ds-plate-head { color: var(--color-starlight, #ede9f5); } .ds-tab { color: var(--color-lavender, #c9b3e8); font-size: 1rem; margin-bottom: 16px; font-family: var(--font-text, 'Libre Caslon Text', Georgia, serif); font-style: italic; font-weight: 400; } .ds-plate-title { margin:0; font-size: clamp(1.75rem, 3.2vw, 2.6rem); font-family: var(--font-display, 'Libre Caslon Display', Georgia, serif); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 400; line-height: 1.02; } .ds-house { margin: 4px 0 0; color: var(--color-lavender, #c9b3e8); font-size: 1rem; font-family: var(--font-text, 'Libre Caslon Text', Georgia, serif); font-style: italic; font-weight: 400; } .ds-facts { margin: 16px 0 0; color: var(--color-lavender, #c9b3e8); font-family: var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif); font-feature-settings: 'tnum' 1; } .ds-plate-link { display:inline-flex; align-items:center; gap:8px; margin-top: 24px; color: var(--color-starlight, #ede9f5); text-decoration:none; font-family: var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif); text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.75rem; line-height: 1.2; font-weight: 500; } .ds-plate-link svg { width:8px; height:8px; color: var(--color-ink, #6f3fa5); }"
+    },
+    {
+      "name": "Constellation Figure",
+      "kind": "custom",
+      "refersTo": "constellation",
+      "description": "The atlas grammar over a 1,500-star additive dot cloud of the mark: starlight dots (r 1.2 to 3.0) joined by dotted starlight edges (1.4px, dash 1.5 3.5, round caps, 80%); a named star is a sky backing disc (r 6, 85%), a white core (r 3.8) and a white outline ring (r 7.5, 45%) leading out on a lavender-60% 0.9px line to an italic label. Lit: disc 7.5, core 5, ring 9.5 at 70%, leader 95%, label white; unlit labels drop to 45%.",
+      "html": "<svg class=\"ds-constellation\" viewBox=\"0 0 240 160\" aria-hidden=\"true\"><line class=\"ds-edge\" x1=\"40\" y1=\"110\" x2=\"90\" y2=\"60\"/><line class=\"ds-edge\" x1=\"90\" y1=\"60\" x2=\"140\" y2=\"80\"/><line class=\"ds-edge\" x1=\"140\" y1=\"80\" x2=\"190\" y2=\"40\"/><line class=\"ds-edge\" x1=\"140\" y1=\"80\" x2=\"160\" y2=\"130\"/><circle class=\"ds-dot\" cx=\"40\" cy=\"110\" r=\"2\"/><circle class=\"ds-dot\" cx=\"90\" cy=\"60\" r=\"2.6\"/><circle class=\"ds-dot\" cx=\"160\" cy=\"130\" r=\"1.6\"/><g class=\"ds-named\"><line class=\"ds-lead\" x1=\"140\" y1=\"80\" x2=\"120\" y2=\"20\"/><circle class=\"ds-disc\" cx=\"140\" cy=\"80\" r=\"6\"/><circle class=\"ds-core\" cx=\"140\" cy=\"80\" r=\"3.8\"/><circle class=\"ds-ring\" cx=\"140\" cy=\"80\" r=\"7.5\"/><text x=\"116\" y=\"23\" text-anchor=\"end\">Yuqi</text></g><g class=\"ds-named ds-named--lit\"><line class=\"ds-lead\" x1=\"190\" y1=\"40\" x2=\"222\" y2=\"24\"/><circle class=\"ds-disc\" cx=\"190\" cy=\"40\" r=\"7.5\"/><circle class=\"ds-core\" cx=\"190\" cy=\"40\" r=\"5\"/><circle class=\"ds-ring\" cx=\"190\" cy=\"40\" r=\"9.5\"/><text x=\"226\" y=\"27\">Ewan</text></g></svg>",
+      "css": ".ds-constellation { width: 100%; max-width: 380px; color: var(--color-starlight, #ede9f5); } .ds-edge { stroke: var(--color-starlight, #ede9f5); stroke-width: 1.4; stroke-dasharray: 1.5 3.5; stroke-linecap: round; opacity: 0.8; } .ds-dot { fill: currentColor; opacity: 0.9; } .ds-lead { stroke: var(--color-lavender, #c9b3e8); stroke-opacity: 0.6; stroke-width: 0.9; } .ds-disc { fill: var(--color-sky, #0b0716); fill-opacity: 0.85; } .ds-core { fill: #ffffff; } .ds-ring { fill: none; stroke: #ffffff; stroke-opacity: 0.45; stroke-width: 0.9; } .ds-named text { font-size: 11px; fill: var(--color-lavender, #c9b3e8); font-family: var(--font-text, 'Libre Caslon Text', Georgia, serif); font-style: italic; font-weight: 400; } .ds-named { cursor: pointer; transition: opacity 200ms; } .ds-named--lit .ds-ring { stroke-opacity: 0.7; } .ds-named--lit .ds-lead { stroke-opacity: 0.95; } .ds-named--lit text { fill: #ffffff; }"
+    },
+    {
+      "name": "Plate Surface",
+      "kind": "card",
+      "refersTo": "plate-surface",
+      "description": "The Read surface: cream plate with plate-ink text, the same hairline grammar at plate-ink 22%, italic Caslon Text for the quiet headings and numerals, ink as the link colour, and a filled ink button that deepens on hover.",
+      "html": "<section class=\"ds-plate\"><div class=\"ds-plate-rule\"></div><h2 class=\"ds-plate-h\">Stars, the loyalty program</h2><p class=\"ds-plate-p\">Every eligible purchase in the Zodiac store earns Stars. Climb five lifetime tiers that never reset when you spend.</p><ol class=\"ds-tiers\"><li class=\"ds-tier\"><span class=\"ds-tier-n\">I</span><span class=\"ds-tier-dot\" style=\"background:#b2764b\"></span><span class=\"ds-tier-name\">Zodiac Bronze</span></li><li class=\"ds-tier\"><span class=\"ds-tier-n\">II</span><span class=\"ds-tier-dot\" style=\"background:#c9cbd6\"></span><span class=\"ds-tier-name\">Zodiac Silver</span></li><li class=\"ds-tier\"><span class=\"ds-tier-n\">III</span><span class=\"ds-tier-dot\" style=\"background:#e2b84c\"></span><span class=\"ds-tier-name\">Zodiac Gold</span></li></ol><a class=\"ds-plate-btn\" href=\"#\">Visit the store</a></section>",
+      "css": ".ds-plate { background: var(--color-plate, #f3eadb); color: var(--color-plate-ink, #2d2140); padding: 40px 32px; color-scheme: light; } .ds-plate ::selection { background: var(--color-ink, #6f3fa5); color: var(--color-plate, #f3eadb); } .ds-plate-rule { border-top: 1px solid color-mix(in oklab, var(--color-plate-ink, #2d2140) 22%, transparent); } .ds-plate-h { margin: 32px 0 0; font-size: clamp(1.9rem, 4vw, 3.4rem); font-family: var(--font-display, 'Libre Caslon Display', Georgia, serif); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 400; line-height: 1.02; } .ds-plate-p { margin: 20px 0 0; max-width: 46ch; color: color-mix(in oklab, var(--color-plate-ink, #2d2140) 80%, transparent); font-family: var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif); line-height: 1.5; } .ds-tiers { list-style:none; margin: 32px 0 0; padding:0; display:grid; gap:1px; } .ds-tier { display:flex; align-items:center; gap:20px; padding:16px 0; border-top: 1px solid color-mix(in oklab, var(--color-plate-ink, #2d2140) 22%, transparent); } .ds-tier-n { width: 32px; color: var(--color-plate-muted, #6b5b80); font-family: var(--font-text, 'Libre Caslon Text', Georgia, serif); font-style: italic; font-weight: 400; } .ds-tier-dot { width:12px; height:12px; border-radius:9999px; flex:none; } .ds-tier-name { font-size: 1.25rem; font-family: var(--font-display, 'Libre Caslon Display', Georgia, serif); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 400; line-height: 1.02; } .ds-plate-btn { display:inline-flex; margin-top: 32px; background: var(--color-ink, #6f3fa5); color:#ffffff; padding: 14px 24px; border-radius: 9999px; text-decoration:none; transition: background-color 150ms; font-family: var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif); text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.75rem; line-height: 1.2; font-weight: 500; } .ds-plate-btn:hover { background: var(--color-ink-deep, #3d225e); } .ds-plate a:focus-visible { outline: 2px solid var(--color-ink, #6f3fa5); outline-offset: 4px; border-radius: 2px; }"
+    },
+    {
+      "name": "House Ring",
+      "kind": "custom",
+      "refersTo": "house-ring",
+      "description": "The single geometry the site is drawn from: a hairline circle (lavender 28%) with twelve quiet dots thirty degrees apart, the Tiger at the top and the houses running counter-clockwise; active houses are a 4.5px starlight star with an italic 'numeral · name' label pushed outward along the radius, the flagship holding the centre.",
+      "html": "<svg class=\"ds-ring\" viewBox=\"-50 -30 400 360\" role=\"img\" aria-label=\"The twelve houses\"><circle cx=\"150\" cy=\"150\" r=\"118\"/><g class=\"ds-ring-quiet\"><circle cx=\"150\" cy=\"32\" r=\"2\"/><circle cx=\"47.8\" cy=\"91\" r=\"2\"/><circle cx=\"47.8\" cy=\"209\" r=\"2\"/><circle cx=\"150\" cy=\"268\" r=\"2\"/><circle cx=\"252.2\" cy=\"209\" r=\"2\"/><circle cx=\"252.2\" cy=\"91\" r=\"2\"/><circle cx=\"91\" cy=\"47.8\" r=\"2\"/><circle cx=\"32\" cy=\"150\" r=\"2\"/><circle cx=\"91\" cy=\"252.2\" r=\"2\"/><circle cx=\"209\" cy=\"252.2\" r=\"2\"/><circle cx=\"268\" cy=\"150\" r=\"2\"/><circle cx=\"209\" cy=\"47.8\" r=\"2\"/></g><a class=\"ds-house\" href=\"#\"><circle cx=\"150\" cy=\"32\" r=\"4.5\"/><text x=\"150\" y=\"2\" text-anchor=\"middle\">V · Tigers</text></a><a class=\"ds-house\" href=\"#\"><circle cx=\"91\" cy=\"47.8\" r=\"4.5\"/><text x=\"74.5\" y=\"22\" text-anchor=\"middle\">III · Ox</text></a><a class=\"ds-house\" href=\"#\"><circle cx=\"32\" cy=\"150\" r=\"4.5\"/><text x=\"-1\" y=\"153\" text-anchor=\"middle\">IV · Goats</text></a><a class=\"ds-house\" href=\"#\"><circle cx=\"209\" cy=\"252.2\" r=\"4.5\"/><text x=\"225.5\" y=\"284\" text-anchor=\"middle\">II · Piggies</text></a><a class=\"ds-house\" href=\"#\"><circle cx=\"150\" cy=\"150\" r=\"4.5\"/><text x=\"150\" y=\"175\" text-anchor=\"middle\">I · Zodiac</text></a></svg>",
+      "css": ".ds-ring { width: 288px; height: 288px; display:block; } .ds-ring > circle { fill:none; stroke: var(--color-lavender, #c9b3e8); stroke-opacity: 0.28; stroke-width: 1; } .ds-ring-quiet circle { fill: var(--color-lavender, #c9b3e8); fill-opacity: 0.5; } .ds-house circle { fill: var(--color-starlight, #ede9f5); transition: r 150ms; } .ds-house:hover circle { r: 6; } .ds-house text { font-size: 12px; fill: var(--color-lavender, #c9b3e8); font-family: var(--font-text, 'Libre Caslon Text', Georgia, serif); font-style: italic; font-weight: 400; } .ds-house:hover text { fill: var(--color-starlight, #ede9f5); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Celestial Atlas",
+    "overview": "The site is a star atlas in the lineage of Flamsteed and Bode: a night sky of near-black violet on which the org is charted rather than displayed. Every team is its animal's constellation, sampled from the real team mark and joined by dotted edges; every player is a named star on that figure; the twelve houses of the zodiac sit on one hairline ring, thirty degrees apart with the Tiger at the top, and that ring is the single geometry the hero morphs into and the sections are composed around. Dense reading (the founder's words, the staff, the Stars program) inverts to a cream engraved plate with the same hairline grammar, the way an atlas turns from chart to commentary.\n\nThe material vocabulary is small and used everywhere: 1px hairlines at low opacity for every edge, four-point star glyphs as the only marker, roman numerals for plates and tiers, spaced Caslon capitals for anything that names a thing, italic Caslon for the chart's own labels, and Hanken Grotesk with tabular figures for facts and controls. There are no cards, no filled panels, no shadows beyond one ink glow under the hero's action, and no UI icon set; the only glyphs besides the star are brand marks on social links. Depth comes from tonal grounds (void pool, sky, plate) and from opacity, never from elevation.\n\nThe build is Tailwind v4 (@theme tokens in web/src/app/globals.css) with fonts loaded through next/font; the hero and plate figures are vgpu (WebGPU) point clouds with still-image fallbacks. The risk named in the direction contract holds: the world must stay a committed atlas and never drift into generic dark-mode space.",
+    "keyCharacteristics": [
+      "Night-sky ground (`sky`) with a pool of true black only under the hero cloud; cream plate for Read surfaces.",
+      "One accent (ink purple) used as fill for the single primary action and as the colour of the star marker; text on the sky is starlight and lavender, never ink.",
+      "Three type voices: spaced Caslon Display caps, italic Caslon Text atlas labels, Hanken Grotesk UI with tabular figures.",
+      "Hairlines, dotted constellation edges and four-point stars are the whole material kit; no cards, no shadows, no UI icon set (brand marks appear only on social links).",
+      "The ring of twelve is the one geometry: hero morph target, section diagram, and the order the plates are numbered in."
+    ],
+    "rules": [
+      {
+        "name": "The Hairline Rule",
+        "body": "Every edge is 1px at low opacity, mixed from the surface's own secondary: lavender at 22% on the sky, plate-ink at 22% on the plate, ink at 45% when an edge must read stronger. No edge is ever a solid colour at full strength.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Fill Rule",
+        "body": "Ink fills exactly one pill per viewport. Its companion action is a hairline pill; every other link is text that rises from lavender to starlight.",
+        "section": "colors"
+      },
+      {
+        "name": "The Real Tier Rule",
+        "body": "Bronze, silver, gold and diamond appear only beside a tier that exists in the Stars program. They are never decoration or state colours.",
+        "section": "colors"
+      },
+      {
+        "name": "The Sky, Not Space Rule",
+        "body": "The ground is the violet sky, never neutral black or grey. True black exists only as the pool beneath the hero cloud, and it fades back into the sky before the page begins.",
+        "section": "colors"
+      },
+      {
+        "name": "The Spaced Caps Rule",
+        "body": "Caslon Display is only ever set uppercase at 0.08em tracking with 1.02 leading. It is never set in mixed case and never below 1.25rem.",
+        "section": "typography"
+      },
+      {
+        "name": "The Atlas Voice Rule",
+        "body": "Italic Caslon Text is the chart's annotation, not the UI's. It names houses, plates, stars and numerals and sits beneath or beside the thing it names; it never labels a control and is never used as an eyebrow above a heading.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Rule",
+        "body": "Every number on the site is a tabular figure (tnum is on at the body). Season numbers, player counts and dates align.",
+        "section": "typography"
+      },
+      {
+        "name": "The Rule-First Rule",
+        "body": "A section begins with a hairline, not a heading. The heading follows 32px beneath it.",
+        "section": "layout"
+      },
+      {
+        "name": "The One Geometry Rule",
+        "body": "New arrangements of the teams derive from the ring: twelve positions, thirty degrees apart, Tiger at the top, counter-clockwise, flagship at the centre. Do not lay the houses out on a grid.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Sky Rule",
+        "body": "Nothing casts a shadow except the hero's primary action. Lift is expressed as a brighter hairline, a lit star, or a colour rising toward starlight.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Pill-or-Square Rule",
+        "body": "No intermediate radii. A thing is either a full pill (actions, avatars, dots) or a hairlined rectangle (rows, rules, sections).",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do open every section with a hairline rule and set the headline 32px beneath it in Caslon Display caps at 0.08em.",
+      "Do separate content with 1px hairlines mixed from the surface's secondary (lavender 22% on sky, plate-ink 22% on plate) and stack rows with 1px gaps.",
+      "Do use the four-point star glyph (8 to 10px, ink on sky, starlight on the hero legend) as the marker for any list or star-led link.",
+      "Do put one ink pill per viewport and pair it with a hairline pill; let every other link be text rising from lavender to starlight.",
+      "Do write the chart's own labels (house names, \"Tab. N\", numerals, star names) in italic Caslon Text, placed beneath or beside what they name.",
+      "Do invert dense reading to the cream plate and keep the hairline grammar, ink links and display caps intact there.",
+      "Do derive any arrangement of the teams from the ring: twelve positions, thirty degrees apart, Tiger at the top, flagship at the centre.",
+      "Do keep numbers tabular and roman numerals for plates and tiers.",
+      "Do set dated rows with a caps date column (6.5rem on the calendar rail, 3.25rem on a plate) and mark each new day on a rail with a starlight star.",
+      "Do honour reduced motion: still starfield, no rule-draw, no smooth scroll."
+    ],
+    "donts": [
+      "Don't introduce cards, filled panels, or intermediate corner radii; the only shapes are the pill and the hairlined rectangle.",
+      "Don't cast shadows; the hero's ink glow is the single exception and does not travel.",
+      "Don't blur the nav or any fixed surface over the canvas; use the clipped sky ground.",
+      "Don't set ink as text on the sky, or set Caslon Display in mixed case or below 1.25rem.",
+      "Don't add a UI icon set; the star glyph, the dotted edge and the hairline are the kit, and brand marks appear only on social links at 12 to 14px in currentColor.",
+      "Don't use the tier colours or the four team-logo colours outside a real tier or the hero ring.",
+      "Don't ground a surface on neutral black or grey; the sky is violet, and true black belongs only to the hero pool.",
+      "Don't place an eyebrow or kicker above a heading; the house line lives under the team title."
+    ]
+  }
+}

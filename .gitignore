@@ -8,3 +8,6 @@ samconfig.toml
 .test-output/
 /docs/
 /.venv/
+
+# Impeccable review captures are regenerated evidence, not source
+.impeccable/review/*.png
