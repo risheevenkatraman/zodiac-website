@@ -145,7 +145,7 @@ export default function Home() {
                 <p className="mt-5 max-w-[46ch] text-plate-ink/80">
                   Every eligible purchase in the Zodiac store earns Stars. Redeem them for single-use discount codes, and climb five lifetime tiers that never reset when you spend.
                 </p>
-                <a href={storeUrl} target="_blank" rel="noreferrer" className="caps mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-white no-underline hover:bg-ink-deep">
+                <a href={storeUrl} target="_blank" rel="noreferrer" className="pill-press caps mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-white no-underline hover:bg-ink-deep">
                   Visit the store
                 </a>
               </div>
@@ -178,10 +178,10 @@ export default function Home() {
               Match nights, community events, and roster news happen in the Discord first. Follow on X for results and announcements.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href={discordUrl} target="_blank" rel="noreferrer" className="caps rounded-full bg-ink px-6 py-3.5 text-white no-underline hover:bg-[#7d4dba]">
+              <a href={discordUrl} target="_blank" rel="noreferrer" className="pill-press caps rounded-full bg-ink px-6 py-3.5 text-white no-underline hover:bg-[#7d4dba]">
                 Join the Discord
               </a>
-              <a href={xUrl} target="_blank" rel="noreferrer" className="caps hairline rounded-full border px-6 py-3.5 text-starlight no-underline hover:border-lavender">
+              <a href={xUrl} target="_blank" rel="noreferrer" className="pill-press caps hairline rounded-full border px-6 py-3.5 text-starlight no-underline hover:border-lavender">
                 Follow on X
               </a>
             </div>

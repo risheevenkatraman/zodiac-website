@@ -52,7 +52,7 @@ export function Nav() {
             href={discordUrl}
             target="_blank"
             rel="noreferrer"
-            className="caps hairline hidden rounded-full border px-4 py-2 text-starlight no-underline transition-colors hover:border-lavender hover:bg-ink/25 sm:inline-block"
+            className="pill-press caps hairline hidden rounded-full border px-4 py-2 text-starlight no-underline hover:border-lavender hover:bg-ink/25 sm:inline-block"
           >
             Join the Discord
           </a>

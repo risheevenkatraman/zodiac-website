@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 export function PlateFigure({ src, className = "" }: { src: string; className?: string }) {
   const ref = useRef<HTMLCanvasElement>(null);
   const [fallback, setFallback] = useState(false);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const canvas = ref.current;
@@ -17,7 +18,9 @@ export function PlateFigure({ src, className = "" }: { src: string; className?: 
     let dispose: (() => void) | undefined;
     let gone = false;
     const run = import("./figure")
-      .then(({ startFigureSerialized }) => startFigureSerialized(canvas, src, () => gone))
+      .then(({ startFigureSerialized }) => startFigureSerialized(canvas, src, () => gone, () => {
+        if (!gone) setReady(true);
+      }))
       .then((d) => {
         if (!d) return;
         if (gone) d();
@@ -35,7 +38,11 @@ export function PlateFigure({ src, className = "" }: { src: string; className?: 
 
   return (
     <div className={className} aria-hidden="true">
-      <canvas ref={ref} className="absolute inset-0 block h-full w-full" />
+      <canvas
+        ref={ref}
+        className="absolute inset-0 block h-full w-full transition-opacity duration-700 ease-out"
+        style={{ opacity: ready ? 1 : 0 }}
+      />
       {fallback && (
         <div
           className="absolute inset-0 bg-center bg-no-repeat opacity-80"

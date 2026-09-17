@@ -23,14 +23,15 @@ export function NavMenu({ links, discordUrl }: { links: { href: string; label: s
         aria-expanded={open}
         aria-controls={id}
         onClick={() => setOpen((o) => !o)}
-        className="caps hairline rounded-full border px-4 py-2 text-starlight transition-colors hover:border-lavender"
+        className="pill-press caps hairline rounded-full border px-4 py-2 text-starlight hover:border-lavender"
       >
         {open ? "Close" : "Menu"}
       </button>
       <div
         id={id}
-        hidden={!open}
-        className="fixed inset-x-0 top-20 bottom-0 z-40 bg-sky/97 px-5 pt-8"
+        data-open={open || undefined}
+        inert={!open || undefined}
+        className="nav-panel fixed inset-x-0 top-20 bottom-0 z-40 bg-sky/97 px-5 pt-8"
       >
         <nav aria-label="Main" className="flex flex-col gap-1">
           {links.map((l) => (
@@ -46,7 +47,7 @@ export function NavMenu({ links, discordUrl }: { links: { href: string; label: s
               {l.label}
             </Link>
           ))}
-          <a href={discordUrl} target="_blank" rel="noreferrer" className="caps mt-8 inline-flex w-fit rounded-full bg-ink px-6 py-3.5 text-white no-underline">
+          <a href={discordUrl} target="_blank" rel="noreferrer" className="pill-press caps mt-8 inline-flex w-fit rounded-full bg-ink px-6 py-3.5 text-white no-underline">
             Join the Discord
           </a>
         </nav>

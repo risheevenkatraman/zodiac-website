@@ -84,11 +84,11 @@ export function HeroScene({ teams, discordUrl }: { teams: TeamLegend[]; discordU
                 href={discordUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="caps rounded-full bg-ink px-6 py-3.5 text-white no-underline shadow-[0_12px_40px_-12px_rgba(111,63,165,0.9)] transition-colors hover:bg-[#7d4dba]"
+                className="pill-press caps rounded-full bg-ink px-6 py-3.5 text-white no-underline shadow-[0_12px_40px_-12px_rgba(111,63,165,0.9)] hover:bg-[#7d4dba]"
               >
                 Join the Discord
               </a>
-              <Link href="#teams" className="caps hairline rounded-full border px-6 py-3.5 text-starlight no-underline transition-colors hover:border-lavender">
+              <Link href="#teams" className="pill-press caps hairline rounded-full border px-6 py-3.5 text-starlight no-underline hover:border-lavender">
                 See the teams
               </Link>
             </div>

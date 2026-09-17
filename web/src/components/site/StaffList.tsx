@@ -14,7 +14,7 @@ export function StaffList({ staff }: { staff: Staff[] }) {
         const bio = s.introduction?.trim();
         return (
           <li key={s.id} className="hairline-plate border-t">
-            <details name="staff" className="group">
+            <details name="staff" className="group bio-details">
               <summary className="flex cursor-pointer list-none items-center gap-4 py-4 [&::-webkit-details-marker]:hidden">
                 <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full bg-ink/15">
                   <Image src={asset(s.image)} alt="" fill sizes="40px" className="object-cover" />
@@ -44,7 +44,7 @@ export function StaffList({ staff }: { staff: Staff[] }) {
                 )}
               </summary>
               {bio && (
-                <p className="font-text max-w-[60ch] pb-6 pl-14 text-[1.05rem] leading-relaxed text-plate-ink/85">{bio}</p>
+                <p className="bio-text font-text max-w-[60ch] pb-6 pl-14 text-[1.05rem] leading-relaxed text-plate-ink/85">{bio}</p>
               )}
             </details>
           </li>

@@ -82,7 +82,7 @@ fn hash11(p: f32) -> f32 {
 }
 `;
 
-type Plate = { canvasSurface: Surface; field: Draw; stars: Geometry; visible: boolean };
+type Plate = { canvasSurface: Surface; field: Draw; stars: Geometry; visible: boolean; ready: boolean; onReady?: () => void };
 
 const registry: { plates: Set<Plate>; loop: FrameLoopHandle | null } = { plates: new Set(), loop: null };
 async function getShared() {
@@ -92,7 +92,7 @@ async function getShared() {
 
 const QUAD = new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]);
 
-export async function startFigure(canvas: HTMLCanvasElement, src: string): Promise<() => void> {
+export async function startFigure(canvas: HTMLCanvasElement, src: string, onReady?: () => void): Promise<() => void> {
   const [state, sample] = await Promise.all([
     getShared(),
     samplePoints(src, { count: STARS, resolution: 320, fit: 0.78, seed: 5 }),
@@ -134,7 +134,7 @@ export async function startFigure(canvas: HTMLCanvasElement, src: string): Promi
     label: "plate-figure",
     set: { params: { time: 0, motion, aspect, _pad: 0 } },
   });
-  const plate: Plate = { canvasSurface, field, stars, visible: true };
+  const plate: Plate = { canvasSurface, field, stars, visible: true, ready: false, onReady };
   plates.add(plate);
 
   const time = clock(gpu);
@@ -147,6 +147,12 @@ export async function startFigure(canvas: HTMLCanvasElement, src: string): Promi
         any = true;
         p.field.set({ params: { time: time.time } });
         f.pass(p.canvasSurface, p.field);
+        if (!p.ready) {
+          p.ready = true;
+          // The pass is presented after this callback returns; report on the next frame so the fade starts on pixels.
+          const cb = p.onReady;
+          if (cb) requestAnimationFrame(() => cb());
+        }
       }
       // Reduced motion draws each visible plate once and rests; no visible plates rests too.
       if (motion === 0 || !any) {
@@ -173,9 +179,9 @@ export async function startFigure(canvas: HTMLCanvasElement, src: string): Promi
 
 /** Starts are serialized per canvas so a strict-mode remount never opens a second surface on the same canvas. */
 const chains = new WeakMap<HTMLCanvasElement, Promise<unknown>>();
-export function startFigureSerialized(canvas: HTMLCanvasElement, src: string, isGone: () => boolean): Promise<(() => void) | undefined> {
+export function startFigureSerialized(canvas: HTMLCanvasElement, src: string, isGone: () => boolean, onReady?: () => void): Promise<(() => void) | undefined> {
   const prev = chains.get(canvas) ?? Promise.resolve();
-  const run = prev.then(() => (isGone() ? undefined : startFigure(canvas, src)));
+  const run = prev.then(() => (isGone() ? undefined : startFigure(canvas, src, onReady)));
   chains.set(canvas, run.catch(() => undefined));
   return run;
 }
