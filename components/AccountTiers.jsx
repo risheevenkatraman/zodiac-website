@@ -47,7 +47,7 @@ export default function AccountTiers() {
             data-current={currentTier === `Zodiac ${tier.name}` ? 'true' : undefined}
           >
             <span className="tier-number" aria-hidden="true">
-              0{index + 1}
+              {['I', 'II', 'III', 'IV', 'V'][index]}
             </span>
             <span className="tier-color-dot" aria-hidden="true" />
             <span className="tier-brand">Zodiac</span>

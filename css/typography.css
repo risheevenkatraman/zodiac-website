@@ -1,0 +1,191 @@
+/* Zodiac typography: engraved titles, atlas annotations, and a modern chart hand. */
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
+}
+.site-page :is(h1, h2, h3, h4),
+.site-page .hero h1,
+.site-page .commerce-hero .commerce-hero-copy h1,
+.site-page .inline-profile .player-header h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.02;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+.site-page h1,
+.site-page .hero h1,
+.site-page .commerce-hero .commerce-hero-copy h1,
+.site-page .section-heading h2,
+.site-page .manifesto h2,
+.site-page .constellation-heading h2,
+.site-page .account-dashboard > h2,
+.site-page .stars-explainer h2 {
+  font-size: clamp(1.9rem, 4vw, 3.4rem);
+}
+.site-page .home-hero #home-title {
+  font-size: clamp(2.4rem, 6.4vw, 5.4rem);
+  max-width: 15ch;
+  text-align: left;
+}
+.home-title-line {
+  display: block;
+}
+.site-page .community-banner h2 {
+  font-size: clamp(2rem, 5vw, 4.2rem);
+}
+.site-page .community-banner em {
+  font: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+}
+.site-page .team-header h1,
+.site-page .home-team-grid h3,
+.site-page .team-card h4,
+.site-page .inline-profile .player-header h2 {
+  font-size: clamp(1.75rem, 3.2vw, 2.6rem);
+}
+.site-page :is(h3, h4),
+.site-page .profile-section :is(h2, h3) {
+  font-size: 1.5rem;
+}
+.site-page .membership-tier h3 {
+  font-size: 1.25rem;
+}
+.site-page .staff-accordion-name,
+.site-page .roster-card h4,
+.site-page .schedule-story h3 {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: normal;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.site-page .schedule-story h3 {
+  font-size: 1.125rem;
+}
+.site-page .home-atmosphere .schedule-story h3 {
+  font-size: 1rem;
+}
+.site-page
+  :is(
+    button,
+    .button,
+    nav a,
+    .eyebrow,
+    .text-link,
+    .shop-link,
+    .profile-link,
+    .role,
+    .staff-accordion-role,
+    .team-game,
+    .hero-footnote,
+    .hero-bottom,
+    .tier-brand,
+    .schedule-date
+  ) {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-style: normal;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+.site-page :is(.role, .staff-accordion-role, .schedule-date) {
+  color: color-mix(in srgb, var(--lavender) 80%, var(--cream));
+}
+.site-page .role-pick {
+  font-size: 0.875rem;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+}
+.site-page
+  :is(
+    .hero-intro,
+    .hero-copy > p,
+    .commerce-hero-copy > p:not(.eyebrow),
+    .manifesto p,
+    .profile-section > p,
+    .staff-accordion-profile p,
+    .schedule-story > p:not(.eyebrow)
+  ) {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  max-width: 46ch;
+}
+.site-page :is(.hero-intro, .hero-copy > p, .commerce-hero-copy > p:not(.eyebrow)) {
+  color: var(--lavender);
+}
+.site-page .home-atmosphere p {
+  color: color-mix(in srgb, var(--ink) 80%, var(--cream));
+}
+.site-page
+  :is(
+    .constellation-caption,
+    .hero-star-caption,
+    .tier-number,
+    .schedule-signoff,
+    .star-label > span,
+    .atlas-label
+  ) {
+  font-family: var(--font-accent);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--lavender);
+}
+.site-page .star-label small {
+  font-family: var(--font-body);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.625rem;
+}
+.site-page .constellation-map text {
+  font-family: var(--font-accent);
+  font-size: 12px;
+  font-style: italic;
+}
+.site-page .schedule-date strong {
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.site-page .schedule-heading p {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+.site-page .site-footer {
+  font-size: 0.75rem;
+  color: color-mix(in srgb, var(--lavender) 70%, var(--cream));
+}
+.site-page .site-footer::before {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.02;
+}
+@media (min-width: 640px) {
+  .site-page .hero-intro {
+    font-size: 1.125rem;
+  }
+}

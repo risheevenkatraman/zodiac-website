@@ -6,9 +6,12 @@ import { asset, basePath, pageHref } from '../lib/paths';
 import PageMotion from './PageMotion';
 import Constellation from './Constellation';
 import HeroLogo from './HeroLogo';
+import AtmosphereStars from './AtmosphereStars';
+import HomeTeams from './HomeTeams';
 import CommerceConstellation from './CommerceConstellation';
 import AccountTiers from './AccountTiers';
 import Roster from './Roster';
+import StaffAccordion from './StaffAccordion';
 import Events from './Events';
 import CommerceScripts from './CommerceScripts';
 import ProfileSocialLink from './ProfileSocialLink';
@@ -55,6 +58,15 @@ export default function SitePage({ page }) {
       const attrs = node.attribs;
       if (node.name === 'script') return <></>;
       if (attrs.class === 'hero-art') return <HeroLogo />;
+      if (attrs.class === 'home-atmosphere')
+        return (
+          <div className="home-atmosphere">
+            <AtmosphereStars edge="top" />
+            {domToReact(node.children, options)}
+            <AtmosphereStars edge="bottom" />
+          </div>
+        );
+      if (attrs.class === 'team-grid home-team-grid') return <HomeTeams />;
       if (commerce && /\b(?:shop|account)-hero\b/.test(attrs.class || ''))
         return (
           <section className={`${attrs.class} commerce-hero`}>
@@ -66,7 +78,24 @@ export default function SitePage({ page }) {
       if (attrs.class === 'roster-tools') return <></>;
       if (attrs.class === 'roster-grid' && team)
         return <Roster players={team.players} game={team.game} />;
-      if (attrs.class === 'staff-grid') return <Roster players={readData('staff')} staff />;
+      if (attrs.class === 'staff-grid') return <StaffAccordion members={readData('staff')} />;
+      if (attrs.class?.split(' ').includes('constellation-dust')) {
+        const clusters = Array.from({ length: 12 }, () => []);
+        node.children
+          .filter((child) => child.name === 'circle')
+          .forEach((child, index) => {
+            clusters[index % clusters.length].push(child);
+          });
+        return (
+          <g className={attrs.class}>
+            {clusters.map((stars, index) => (
+              <g className="team-star-cluster" key={index}>
+                {domToReact(stars, options)}
+              </g>
+            ))}
+          </g>
+        );
+      }
       if (attrs.class === 'team-constellation')
         return (
           <Constellation house={attrs['data-house']}>
@@ -87,7 +116,20 @@ export default function SitePage({ page }) {
           </article>
         );
       }
-      if (attrs.id === 'home-title') return <h1 id="home-title">{site.homeTitle}</h1>;
+      if (attrs.id === 'home-title')
+        return (
+          <h1 id="home-title">
+            {site.homeTitle.toLowerCase() === 'written in the stars' ? (
+              <>
+                <span className="home-title-line">Written in</span>
+                <span className="home-title-line">the Stars</span>
+              </>
+            ) : (
+              site.homeTitle
+            )}
+          </h1>
+        );
+      if (page.file === 'staff.html' && node.name === 'h1') return <h1>The staff</h1>;
       if (attrs.class === 'hero-intro')
         return <p className="hero-intro">{site.homeIntroduction}</p>;
       if (attrs.class === 'social-grid')
@@ -191,14 +233,13 @@ export default function SitePage({ page }) {
       </main>
       <footer className="site-footer">
         <div className="container">
-          © 2024–{new Date().getFullYear()} Zodiac Esports — All rights reserved
-          <p className="disclaimer">
-            Overwatch and its hero icons are property of Blizzard Entertainment. They are used here
-            for non-commercial purposes only.
-          </p>
-          <p className="disclaimer">
-            VALORANT and its agent icons are property of Riot Games. They are used here for
-            non-commercial purposes only.
+          <p className="footer-legal">
+            <span>© 2024–{new Date().getFullYear()} Zodiac Esports. All rights reserved.</span>{' '}
+            <span className="footer-legal-separator" aria-hidden="true">
+              ·
+            </span>{' '}
+            Overwatch and its hero icons belong to Blizzard Entertainment; VALORANT and its agent
+            icons belong to Riot Games. Used for non-commercial purposes only.
           </p>
         </div>
       </footer>

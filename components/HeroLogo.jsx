@@ -1,6 +1,6 @@
 import points from '../assets/constellations/points.json';
 import contours from '../assets/constellations/contours.json';
-import Constellation from './Constellation';
+import HomeStarMotion from './HomeStarMotion';
 
 function detailStars() {
   const stars = [];
@@ -40,26 +40,38 @@ export default function HeroLogo() {
       i % 8 === 0 ? 1.6 : 0.75,
     ];
   });
+  const clusters = Array.from({ length: 16 }, () => ['', '', '']);
+  const stars = [...points.zodiac, ...detailStars()]
+    .map(([x, y, r]) => [x, y, r * 1.15])
+    .concat(orbit);
+  stars.forEach(([x, y, r], i) => {
+    clusters[i % 16][i % 3] +=
+      `M${(x - r).toFixed(2)},${y.toFixed(2)}a${r},${r} 0 1,0 ${2 * r},0a${r},${r} 0 1,0 ${-2 * r},0Z`;
+  });
   return (
-    <Constellation house="zodiac" variant="hero">
+    <HomeStarMotion>
       <div className="constellation-map hero-star-map">
         <svg viewBox="210 40 480 480" role="img" aria-labelledby="hero-logo-title">
           <title id="hero-logo-title">
             Zodiac logo and orbit formed from white and purple stars
           </title>
-          <g className="constellation-dust hero-logo-stars">
-            {[...points.zodiac, ...detailStars()].map(([x, y, r], i) => (
-              <circle key={i} cx={x} cy={y} r={r * 1.15} opacity={0.65 + (i % 4) * 0.1} />
-            ))}
-          </g>
-          <g className="constellation-dust hero-orbit-stars">
-            {orbit.map(([x, y, r], i) => (
-              <circle key={i} cx={x} cy={y} r={r} opacity={0.45 + (i % 5) * 0.1} />
-            ))}
-          </g>
+          {clusters.map((paths, i) => (
+            <g className="home-star-cluster" key={i}>
+              <g>
+                {paths.map((d, color) => (
+                  <path
+                    key={color}
+                    d={d}
+                    fill={['#b78adf', '#f8f5ff', '#d9c7f1'][color]}
+                    opacity="0.85"
+                  />
+                ))}
+              </g>
+            </g>
+          ))}
         </svg>
       </div>
       <span className="hero-star-caption">The future is ours to write</span>
-    </Constellation>
+    </HomeStarMotion>
   );
 }

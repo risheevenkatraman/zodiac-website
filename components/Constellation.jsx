@@ -18,12 +18,22 @@ export default function Constellation({ house, children, variant = 'team' }) {
       clearTimeout(timer);
       cancelAnimationFrame(frame);
     };
-    const stars = section.querySelectorAll('.constellation-dust circle');
+    const stars = section.querySelectorAll(
+      variant === 'team' ? '.team-star-cluster' : '.constellation-dust circle',
+    );
     const play = () => {
       finish();
       if (media.matches || disposed) return;
       started = true;
       stars.forEach((star, index) => {
+        if (variant === 'team') {
+          const angle = ((index % 12) * Math.PI) / 6;
+          const distance = 170 + (index % 3) * 35;
+          star.style.setProperty('--star-x', `${(Math.cos(angle) * distance).toFixed(2)}px`);
+          star.style.setProperty('--star-y', `${(Math.sin(angle) * distance).toFixed(2)}px`);
+          star.style.setProperty('--star-delay', `${(index % 4) * 110}ms`);
+          return;
+        }
         const x = Number(star.getAttribute('cx'));
         const y = Number(star.getAttribute('cy'));
         star.style.setProperty(
@@ -92,7 +102,7 @@ export default function Constellation({ house, children, variant = 'team' }) {
       main.removeEventListener('focusout', clear);
       media.removeEventListener('change', configure);
     };
-  }, [house]);
+  }, [house, variant]);
   const Tag = variant === 'team' ? 'section' : 'div';
   return (
     <Tag

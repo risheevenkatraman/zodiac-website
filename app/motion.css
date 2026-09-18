@@ -126,3 +126,52 @@
     animation: none;
   }
 }
+/* Animate twelve star clusters instead of thousands of individual stars. */
+.commerce-header-art .is-forming .commerce-star-layer {
+  animation: commerce-stars-form 1900ms cubic-bezier(0.16, 1, 0.3, 1) var(--layer-delay) backwards;
+  transform-origin: 450px 280px;
+}
+@keyframes commerce-stars-form {
+  from {
+    opacity: 0;
+    transform: translate(var(--arrival-x), var(--arrival-y));
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .commerce-header-art .is-forming .commerce-star-layer {
+    animation: none;
+  }
+}
+.home-star-art .hero-star-map,
+.home-star-art .hero-star-map svg {
+  overflow: visible;
+}
+.home-page {
+  overflow-x: clip;
+}
+/* Team stars travel in scattered clusters, then reveal the player connections. */
+.team-constellation.is-forming .team-star-cluster circle {
+  animation: none;
+}
+.team-constellation.is-forming .team-star-cluster {
+  animation: team-stars-arrive 1900ms cubic-bezier(0.16, 1, 0.3, 1) var(--star-delay) backwards;
+}
+@keyframes team-stars-arrive {
+  from {
+    opacity: 0;
+    transform: translate(var(--star-x), var(--star-y));
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .team-constellation.is-forming .team-star-cluster {
+    animation: none;
+  }
+}

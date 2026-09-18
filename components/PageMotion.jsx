@@ -40,7 +40,7 @@ export default function PageMotion({ pageKey, className, children }) {
     };
     if (!media.matches)
       for (const element of root.current.querySelectorAll(
-        'main > section:not(.team-constellation):not(.membership-tiers), .home-atmosphere > section, main > .team-grid, main > .staff-grid, .brand-strip',
+        'main > section:not(.team-constellation):not(.membership-tiers):not(.home-teams), .home-atmosphere > section, main > .team-grid, main > .staff-grid, .brand-strip',
       )) {
         pending.add(element);
         element.style.opacity = '0';

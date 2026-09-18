@@ -14,6 +14,7 @@ export default function RootLayout({ children }) {
         <link rel="icon" href={asset('assets/zodiac-logo.png')} />
         <link rel="stylesheet" href={asset('css/styles.css')} />
         <link rel="stylesheet" href={asset('css/store.css')} />
+        <link rel="stylesheet" href={asset('css/typography.css')} />
       </head>
       <body>{children}</body>
     </html>

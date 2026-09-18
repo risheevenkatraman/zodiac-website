@@ -37,7 +37,7 @@ def build():
             signature = player['signature']
             profile_image = asset_url(player.get('image') or 'assets/profile-placeholder.svg')
             portrait = asset_url(signature['image'])
-            role_markup = f'<p class="role player-role"><span>{role}</span><span class="role-pick"><span class="role-separator" aria-hidden="true"></span><img src="{portrait}" alt="" width="28" height="28"><span>{escape(signature["name"])}</span></span></p>'
+            role_markup = f'<p class="role player-role"><span>{role}</span><span class="role-pick"><span class="role-separator" aria-hidden="true"></span><img src="{portrait}" alt="" width="20" height="20"><span>{escape(signature["name"])}</span></span></p>'
             cards.append(f'''<a class="roster-card" href="../{page}">
         <img class="roster-portrait" src="{profile_image}" alt="" width="88" height="88" loading="lazy" decoding="async">
         <div><h4>{name}</h4>{role_markup}<span class="profile-link">View profile →</span></div>

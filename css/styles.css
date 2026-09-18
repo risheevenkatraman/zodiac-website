@@ -1,6 +1,7 @@
 @import url('./fonts.css');
 
 :root {
+  --page-gutter: clamp(1.25rem, 3vw, 4rem);
   --font-display: 'Libre Caslon Display', Georgia, serif;
   --font-accent: 'Libre Caslon Text', Georgia, serif;
   --font-body: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
@@ -38,9 +39,9 @@ a:hover {
 }
 
 .container {
-  max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
-  padding: 1.25rem;
+  padding: 1.25rem var(--page-gutter);
 }
 
 .site-header {
@@ -93,6 +94,19 @@ nav a:hover {
   color: var(--purple);
 }
 
+.site-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+.site-page > .site-header,
+.site-page > .site-footer {
+  flex-shrink: 0;
+}
+.site-page > main.container {
+  flex: 1 0 auto;
+}
 main.container {
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -695,7 +709,7 @@ nav a {
   font-size: 0.78rem;
   letter-spacing: 0.05em;
 }
-nav a:last-child {
+.site-header nav a:last-child {
   border: 1px solid var(--line);
   border-radius: 999px;
   padding: 0.65rem 1rem;
@@ -1096,7 +1110,7 @@ main.container > p {
     font-size: 0.7rem;
     padding-block: 0.35rem;
   }
-  nav a:last-child {
+  .site-header nav a:last-child {
     padding: 0.3rem 0.65rem;
   }
   .home-page main.container {
@@ -1931,7 +1945,7 @@ textarea {
   --atmosphere-fade: clamp(240px, 24vw, 360px);
   position: relative;
   isolation: isolate;
-  padding: var(--atmosphere-fade) max(1.25rem, calc((100vw - 1240px) / 2));
+  padding: var(--atmosphere-fade) var(--page-gutter);
 }
 .home-atmosphere::before {
   content: '';
@@ -2111,12 +2125,13 @@ textarea {
   color: var(--lavender);
 }
 .role-pick img {
-  width: 28px;
-  height: 28px;
-  min-width: 28px;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  flex: 0 0 20px;
   object-fit: contain;
   border-radius: 50%;
-  border: 2px solid var(--purple);
+  border: 1px solid var(--purple);
   background: var(--cream);
 }
 .role-separator {
@@ -2126,4 +2141,444 @@ textarea {
   border-radius: 50%;
   background: #fff;
   margin-inline: 0.15rem;
+}
+/* Staff profiles stay in a single, expandable list at every screen size. */
+.staff-accordion {
+  margin-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+.staff-accordion-item {
+  border-bottom: 1px solid var(--line);
+}
+.staff-accordion-item > summary {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem 0.5rem;
+  cursor: pointer;
+  list-style: none;
+}
+.staff-accordion-item > summary::-webkit-details-marker {
+  display: none;
+}
+.staff-accordion-item > summary:hover {
+  background: #b78adf08;
+}
+.staff-accordion-item > summary:focus-visible {
+  outline: 2px solid var(--purple);
+  outline-offset: -2px;
+  border-radius: 8px;
+}
+.staff-accordion-item > summary > img {
+  width: 64px;
+  height: 64px;
+  flex: 0 0 64px;
+  border-radius: 50%;
+  border: 2px solid var(--purple);
+  object-fit: cover;
+}
+.staff-accordion-heading {
+  display: grid;
+  gap: 0.25rem;
+  min-width: 0;
+}
+.staff-accordion-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.3vw, 2rem);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+.staff-accordion-role {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.staff-accordion-indicator {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  margin-left: auto;
+}
+.staff-accordion-indicator::before,
+.staff-accordion-indicator::after {
+  content: '';
+  position: absolute;
+  background: var(--lavender);
+  inset: 9px 2px;
+}
+.staff-accordion-indicator::after {
+  transform: rotate(90deg);
+}
+.staff-accordion-item[open] .staff-accordion-indicator::after {
+  transform: rotate(0);
+}
+.staff-accordion-profile {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(200px, 1fr);
+  gap: 2rem;
+  padding: 0.5rem 0.5rem 2rem 5.75rem;
+}
+.staff-accordion-profile h3 {
+  margin: 0 0 0.85rem;
+  font-size: 1.5rem;
+}
+.staff-accordion-profile p {
+  margin: 0;
+  max-width: 75ch;
+  white-space: pre-line;
+  color: var(--muted);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .staff-accordion-item[open] .staff-accordion-profile {
+    animation: staff-profile-reveal 350ms ease-out;
+  }
+  @keyframes staff-profile-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+@media (max-width: 640px) {
+  .staff-accordion-item > summary {
+    gap: 0.85rem;
+  }
+  .staff-accordion-profile {
+    grid-template-columns: 1fr;
+    padding-left: 0.5rem;
+    gap: 1.5rem;
+  }
+}
+.player-accordion summary {
+  scroll-margin-top: 110px;
+}
+.player-accordion summary.is-active {
+  background: #b78adf12;
+}
+.home-team-universe {
+  text-align: center;
+}
+.home-team-chart {
+  display: block;
+  width: min(100%, 780px);
+  margin: auto;
+  overflow: visible;
+}
+.home-team-target ellipse {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 1;
+}
+.home-team-target:hover ellipse,
+.home-team-target:focus-visible ellipse {
+  fill: #0b090f66;
+  stroke: var(--team-color);
+}
+.home-team-target text {
+  font-family: var(--font-body);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  fill: #fff;
+  paint-order: stroke;
+  stroke: #170c26;
+  stroke-width: 3px;
+}
+.home-team-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 2rem;
+  margin: 2rem auto;
+}
+.home-team-legend a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 44px;
+}
+.home-team-legend a > span {
+  width: 8px;
+  height: 8px;
+  background: var(--team-color);
+  border-radius: 50%;
+}
+.flagship-sigil {
+  color: #e7d7fa;
+  pointer-events: none;
+}
+.flagship-sigil .sigil-backdrop {
+  fill: #130d20;
+  fill-opacity: 0.9;
+  stroke: none;
+}
+.flagship-sigil .sigil-game {
+  fill: currentColor;
+}
+.home-team-target:hover .flagship-sigil,
+.home-team-target:focus-visible .flagship-sigil {
+  color: #fff;
+}
+.home-team-target:hover .sigil-backdrop,
+.home-team-target:focus-visible .sigil-backdrop {
+  fill: #332043;
+  stroke: #e7d7fa;
+}
+
+/* Highlight only the selected constellation; scroll transforms stay on its parent. */
+.interactive-team-stars {
+  transition:
+    opacity 220ms ease,
+    transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sigil-satellites {
+  opacity: 0;
+  fill: #eadbff;
+  transform-origin: 0 0;
+  transition: opacity 200ms ease;
+}
+@keyframes sigil-satellite-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.home-team-universe:has([data-team='overwatch-team1']:is(:hover, :focus-visible))
+  [data-star-team='flagship'] {
+  opacity: 1;
+}
+.home-team-universe:has([data-team='overwatch-team1']:is(:hover, :focus-visible))
+  [data-team='overwatch-team1']
+  .sigil-satellites {
+  opacity: 1;
+  animation: sigil-satellite-orbit 4s linear infinite;
+}
+.home-team-universe:has([data-team='valorant-team1']:is(:hover, :focus-visible))
+  [data-star-team='flagship'] {
+  opacity: 1;
+}
+.home-team-universe:has([data-team='valorant-team1']:is(:hover, :focus-visible))
+  [data-team='valorant-team1']
+  .sigil-satellites {
+  opacity: 1;
+  animation: sigil-satellite-orbit 4s linear infinite;
+}
+.home-team-universe:has([data-team='overwatch-team2']:is(:hover, :focus-visible))
+  [data-star-team='overwatch-team2'] {
+  opacity: 1;
+  transform: scale(1.035);
+}
+.home-team-universe:has([data-team='overwatch-team3']:is(:hover, :focus-visible))
+  [data-star-team='overwatch-team3'] {
+  opacity: 1;
+  transform: scale(1.035);
+}
+.home-team-universe:has([data-team='overwatch-team4']:is(:hover, :focus-visible))
+  [data-star-team='overwatch-team4'] {
+  opacity: 1;
+  transform: scale(1.035);
+}
+.home-team-universe:has([data-team='valorant-team2']:is(:hover, :focus-visible))
+  [data-star-team='valorant-team2'] {
+  opacity: 1;
+  transform: scale(1.035);
+}
+
+.home-team-target:hover ellipse {
+  fill: transparent;
+  stroke: transparent;
+}
+.home-team-target:focus-visible ellipse {
+  fill: transparent;
+  stroke: var(--team-color);
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-team-universe .interactive-team-stars {
+    transition: none;
+    transform: none !important;
+  }
+  .home-team-universe .sigil-satellites {
+    animation: none !important;
+    transition: none;
+  }
+}
+
+/* Small cluster offsets let the stars stir without losing the animal silhouette. */
+@media (prefers-reduced-motion: no-preference) {
+  .home-team-universe:has([data-team='overwatch-team2']:is(:hover, :focus-visible))
+    [data-star-team='overwatch-team2'] {
+    animation: constellation-hover-drift var(--drift-duration) ease-in-out infinite;
+  }
+  .home-team-universe:has([data-team='overwatch-team3']:is(:hover, :focus-visible))
+    [data-star-team='overwatch-team3'] {
+    animation: constellation-hover-drift var(--drift-duration) ease-in-out infinite;
+  }
+  .home-team-universe:has([data-team='overwatch-team4']:is(:hover, :focus-visible))
+    [data-star-team='overwatch-team4'] {
+    animation: constellation-hover-drift var(--drift-duration) ease-in-out infinite;
+  }
+  .home-team-universe:has([data-team='valorant-team2']:is(:hover, :focus-visible))
+    [data-star-team='valorant-team2'] {
+    animation: constellation-hover-drift var(--drift-duration) ease-in-out infinite;
+  }
+}
+@keyframes constellation-hover-drift {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  35% {
+    translate: var(--drift-x) var(--drift-y);
+  }
+  70% {
+    translate: calc(var(--drift-x) * -0.65) calc(var(--drift-y) * -0.65);
+  }
+}
+.flagship-star-sigil {
+  fill: url(#flagship-starlight);
+  stroke: #ffffff;
+  stroke-width: 0.45;
+  stroke-opacity: 0.5;
+  opacity: 0.85;
+  transition: opacity 180ms ease;
+}
+.home-team-target:is(:hover, :focus-visible) .flagship-star-sigil {
+  opacity: 1;
+  stroke-opacity: 0.8;
+}
+
+.flagship-star-sigil path:not([fill]) {
+  fill: url(#flagship-starlight);
+}
+.flagship-beacon .beacon-ring {
+  fill: none;
+  stroke: #cdaaf1;
+  stroke-width: 0.6;
+  stroke-dasharray: 0.5 3;
+  stroke-linecap: round;
+  opacity: 0.55;
+}
+.flagship-beacon .beacon-leader {
+  fill: none;
+  stroke: #cdaaf1;
+  stroke-width: 0.5;
+  opacity: 0.65;
+}
+.home-team-target .beacon-label {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 9px;
+  letter-spacing: 0;
+  fill: #d9c7f1;
+  stroke-width: 2px;
+}
+.home-team-target:is(:hover, :focus-visible) .beacon-ring {
+  opacity: 1;
+}
+/* Keep room around the central mark; its star selectors share the same scale. */
+.home-team-universe [data-star-team='flagship'],
+.home-team-chart
+  > .home-team-target:is([data-team='overwatch-team1'], [data-team='valorant-team1']) {
+  scale: 0.88;
+  transform: none;
+  transform-origin: 450px 280px;
+  transition: opacity 220ms ease;
+}
+/* Hover drift is generated in short, non-repeating segments by HomeTeamsMotion. */
+.home-team-universe .interactive-team-stars,
+.home-team-universe .home-team-chart > .home-team-target {
+  animation: none !important;
+}
+.site-footer .footer-legal {
+  max-width: none;
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+.footer-legal-separator {
+  margin-inline: 0.5rem;
+  color: var(--lavender);
+}
+/* Sparse atlas stars sit only in the two atmospheric fades. */
+.atmosphere-stars {
+  position: absolute;
+  inset-inline: var(--page-gutter);
+  height: calc(var(--atmosphere-fade) * 0.62);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  pointer-events: none;
+  user-select: none;
+  color: #f4eaff;
+}
+.atmosphere-stars-top {
+  top: 0;
+}
+.atmosphere-stars-bottom {
+  bottom: 0;
+  transform: rotate(180deg);
+}
+.atmosphere-stars svg {
+  width: clamp(52px, 6vw, 100px);
+  height: 100%;
+  overflow: visible;
+}
+.atmosphere-stars svg:nth-child(even) {
+  opacity: 0.85;
+  transform: translateY(12px) rotate(12deg);
+}
+.atmosphere-stars circle {
+  fill: currentColor;
+}
+.atmosphere-stars polyline {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.5;
+  stroke-dasharray: 1 4;
+  opacity: 0.32;
+}
+@media (max-width: 640px) {
+  .atmosphere-stars svg:nth-child(2) {
+    display: none;
+  }
+}
+/* A consistent, full-width signoff between the hero and the team atlas. */
+.home-page .brand-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 1.5rem 1rem;
+  border-block: 1px solid var(--line);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--lavender);
+}
+.home-page .brand-strip span {
+  display: inline;
+  color: inherit;
+}
+.home-page .brand-strip .brand-strip-star {
+  color: var(--purple);
+}
+@media (max-width: 640px) {
+  .home-page .brand-strip {
+    justify-content: center;
+  }
+  .home-page .brand-strip .brand-strip-star {
+    display: none;
+  }
+  .home-page .brand-strip > span:last-child {
+    flex-basis: 100%;
+    text-align: center;
+  }
 }
