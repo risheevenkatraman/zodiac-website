@@ -1235,6 +1235,10 @@ main:has(.team-constellation[data-house='ox']) {
 main:has(.team-constellation[data-house='goat']) {
   --house-color: #c8cbd2;
 }
+main:has(.team-constellation[data-house='monkey']) {
+  --house-color: #dc143c;
+  --house-light: #ff91a7;
+}
 main:has(.team-constellation[data-house='tiger']) {
   --house-color: #ff7000;
 }
@@ -2380,6 +2384,11 @@ textarea {
   opacity: 1;
   transform: scale(1.035);
 }
+.home-team-universe:has([data-team='overwatch-team5']:is(:hover, :focus-visible))
+  [data-star-team='overwatch-team5'] {
+  opacity: 1;
+  transform: scale(1.035);
+}
 .home-team-universe:has([data-team='valorant-team2']:is(:hover, :focus-visible))
   [data-star-team='valorant-team2'] {
   opacity: 1;
@@ -2417,6 +2426,10 @@ textarea {
   }
   .home-team-universe:has([data-team='overwatch-team4']:is(:hover, :focus-visible))
     [data-star-team='overwatch-team4'] {
+    animation: constellation-hover-drift var(--drift-duration) ease-in-out infinite;
+  }
+  .home-team-universe:has([data-team='overwatch-team5']:is(:hover, :focus-visible))
+    [data-star-team='overwatch-team5'] {
     animation: constellation-hover-drift var(--drift-duration) ease-in-out infinite;
   }
   .home-team-universe:has([data-team='valorant-team2']:is(:hover, :focus-visible))

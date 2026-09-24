@@ -11,6 +11,7 @@ HOUSES = {
     'Piggies': ('pig', 'House of the Pig'),
     'Ox': ('ox', 'House of the Ox'),
     'Goats': ('goat', 'House of the Goat'),
+    'Monkeys': ('monkey', 'House of the Monkey'),
     'Tigers': ('tiger', 'House of the Tiger'),
 }
 

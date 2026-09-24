@@ -25,6 +25,15 @@ const teams = [
   { name: 'Piggies', route: 'overwatch-team2', color: '#f83088', x: 617, y: 363, rx: 37, ry: 37 },
   { name: 'Ox', route: 'overwatch-team3', color: '#0068ff', x: 360, y: 132, rx: 38, ry: 41 },
   { name: 'Goats', route: 'overwatch-team4', color: '#aebfd9', x: 289, y: 371, rx: 36, ry: 43 },
+  {
+    name: 'Monkeys',
+    route: 'overwatch-team5',
+    color: '#dc143c',
+    x: 557,
+    y: 432,
+    rx: 36,
+    ry: 39,
+  },
   { name: 'Tigers', route: 'valorant-team2', color: '#ff7000', x: 446, y: 100, rx: 39, ry: 35 },
 ];
 const clusters = Array.from({ length: 16 }, () => ({}));

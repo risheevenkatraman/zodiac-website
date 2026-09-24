@@ -5,6 +5,10 @@ https://zodiac-website-iota.vercel.app/marks/{pig,ox,goat,tiger}.png
 `assets/zodiac-logo.png`. These are decorative zodiac-inspired brand shapes.
 The flagship uses the Zodiac logo, as in the reference.
 
+The monkey is sampled from `assets/zodiac-banner.png` with
+`python scripts/sample_monkey_constellation.py` (Playwright and Edge required).
+Its crimson stars match Monkeys, whose header uses `assets/monkey-logo.png`.
+
 `scripts/build_constellations.py` uses these samples and the current roster to
 generate static SVG artwork and accessible player profile links. Run
 `python scripts/build_players.py` after roster changes; no runtime image sampling,
