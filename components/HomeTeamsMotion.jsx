@@ -1,12 +1,12 @@
 'use client';
 import { useEffect, useRef } from 'react';
+import useHomeConstellation from '../lib/use-home-constellation';
 export default function HomeTeamsMotion({ children }) {
   const root = useRef(null);
+  useHomeConstellation(root, '.home-team-cluster');
   useEffect(() => {
     const element = root.current;
-    const groups = [...element.querySelectorAll('.home-team-cluster')];
     const media = matchMedia('(prefers-reduced-motion: reduce)');
-    let frame = 0;
     let activeTeam = null;
     let motion = [];
     let generation = 0;
@@ -58,31 +58,8 @@ export default function HomeTeamsMotion({ children }) {
       run(nodes.map(() => '0px 0px'));
     };
     const changeMotion = () => {
-      schedule();
       drift();
     };
-    const render = () => {
-      frame = 0;
-      const rect = element.getBoundingClientRect();
-      const progress = media.matches
-        ? 1
-        : Math.max(
-            0,
-            Math.min(1, (innerHeight - rect.top) / (Math.min(rect.height, innerHeight) * 0.65)),
-          );
-      groups.forEach((g, i) => {
-        const angle = (i * Math.PI * 2) / groups.length;
-        const distance = (1 - progress) ** 2 * 320;
-        g.style.transform = `translate(${Math.cos(angle) * distance}px,${Math.sin(angle) * distance}px)`;
-        g.style.opacity = String(progress);
-      });
-    };
-    const schedule = () => {
-      if (!frame) frame = requestAnimationFrame(render);
-    };
-    render();
-    window.addEventListener('scroll', schedule, { passive: true });
-    window.addEventListener('resize', schedule);
     media.addEventListener('change', changeMotion);
     element.addEventListener('pointerover', drift);
     element.addEventListener('pointerout', drift);
@@ -90,10 +67,7 @@ export default function HomeTeamsMotion({ children }) {
     element.addEventListener('focusout', drift);
     element.addEventListener('pointerleave', stopDrift);
     return () => {
-      cancelAnimationFrame(frame);
       stopDrift();
-      window.removeEventListener('scroll', schedule);
-      window.removeEventListener('resize', schedule);
       media.removeEventListener('change', changeMotion);
       element.removeEventListener('pointerover', drift);
       element.removeEventListener('pointerout', drift);
