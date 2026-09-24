@@ -481,6 +481,27 @@
           "image": "assets/Icon-Baptiste.webp"
         },
         "image": "assets/hideki-pfp.png"
+      },
+      {
+        "id": "sauce",
+        "name": "sauce",
+        "role": "Damage",
+        "image": "assets/uploads/sauce-pfp.png",
+        "introduction": "hitscan player for goats, aim trainer gamer and professional video editor. i make clipdumps sometimes.",
+        "socials": [
+          {
+            "label": "X/Twitter",
+            "url": "https://www.x.com/sauceboyee"
+          },
+          {
+            "label": "Youtube",
+            "url": "https://www.youtube.com/@sauceboye"
+          }
+        ],
+        "signature": {
+          "name": "Sojourn",
+          "image": "assets/uploads/icon-sojourn.webp"
+        }
       }
     ]
   },
