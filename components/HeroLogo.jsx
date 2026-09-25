@@ -28,7 +28,7 @@ function detailStars() {
   return stars;
 }
 
-export default function HeroLogo() {
+export default function HeroLogo({ artworkOnly = false }) {
   const orbit = Array.from({ length: 160 }, (_, i) => {
     const angle = (i * Math.PI * 2) / 160;
     const x = 211 * Math.cos(angle),
@@ -48,29 +48,33 @@ export default function HeroLogo() {
     clusters[i % 16][i % 3] +=
       `M${(x - r).toFixed(2)},${y.toFixed(2)}a${r},${r} 0 1,0 ${2 * r},0a${r},${r} 0 1,0 ${-2 * r},0Z`;
   });
+  const artwork = (
+    <svg
+      viewBox="210 40 480 480"
+      role="img"
+      aria-label="Zodiac logo and orbit formed from white and purple stars"
+    >
+      <title>Zodiac logo and orbit formed from white and purple stars</title>
+      {clusters.map((paths, i) => (
+        <g className="home-star-cluster" key={i}>
+          <g>
+            {paths.map((d, color) => (
+              <path
+                key={color}
+                d={d}
+                fill={['#b78adf', '#f8f5ff', '#d9c7f1'][color]}
+                opacity="0.85"
+              />
+            ))}
+          </g>
+        </g>
+      ))}
+    </svg>
+  );
+  if (artworkOnly) return artwork;
   return (
     <HomeStarMotion>
-      <div className="constellation-map hero-star-map">
-        <svg viewBox="210 40 480 480" role="img" aria-labelledby="hero-logo-title">
-          <title id="hero-logo-title">
-            Zodiac logo and orbit formed from white and purple stars
-          </title>
-          {clusters.map((paths, i) => (
-            <g className="home-star-cluster" key={i}>
-              <g>
-                {paths.map((d, color) => (
-                  <path
-                    key={color}
-                    d={d}
-                    fill={['#b78adf', '#f8f5ff', '#d9c7f1'][color]}
-                    opacity="0.85"
-                  />
-                ))}
-              </g>
-            </g>
-          ))}
-        </svg>
-      </div>
+      <div className="constellation-map hero-star-map">{artwork}</div>
       <span className="hero-star-caption">The future is ours to write</span>
     </HomeStarMotion>
   );

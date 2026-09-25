@@ -99,6 +99,24 @@ try:
                 page.evaluate(SCROLL_TO_TEAMS)
                 page.wait_for_timeout(120)
             page.wait_for_function(TEAMS_SETTLED)
+            # Rapid re-entry must animate from scattered stars rather than snap.
+            page.evaluate("window.scrollTo({top: 0, behavior: 'instant'})")
+            page.wait_for_timeout(80)
+            page.evaluate(SCROLL_TO_TEAMS)
+            page.wait_for_function("""() => document.querySelector('.home-team-cluster')
+                .getAnimations().some(a => a.playState === 'running' && a.currentTime < 1500)""")
+            effects = page.locator('.home-team-cluster').evaluate_all(
+                "els => { window.__starEffects = els.map(el => el.getAnimations()[0]); return els.length; }"
+            )
+            for _ in range(3):
+                page.evaluate("window.scrollTo({top: 0, behavior: 'instant'})")
+                page.wait_for_timeout(80)
+                page.evaluate(SCROLL_TO_TEAMS)
+                page.wait_for_timeout(80)
+            assert page.locator('.home-team-cluster').evaluate_all(
+                "els => els.every((el, i) => el.getAnimations()[0] === window.__starEffects[i])"
+            ), 'Rapid re-entry must reuse animation effects'
+            page.wait_for_function(TEAMS_SETTLED)
             page.emulate_media(reduced_motion='reduce')
             page.wait_for_function("""() => [...document.querySelectorAll('.home-team-cluster, .home-star-cluster')]
                 .every(e => e.getAnimations().length === 0 && getComputedStyle(e).opacity === '1')""")

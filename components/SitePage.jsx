@@ -15,11 +15,13 @@ import StaffAccordion from './StaffAccordion';
 import Events from './Events';
 import CommerceScripts from './CommerceScripts';
 import ProfileSocialLink from './ProfileSocialLink';
+import PartnershipOrbit from './PartnershipOrbit';
 
 const navigation = [
   ['Home', 'index.html'],
   ['Teams', 'teams.html'],
   ['Staff', 'staff.html'],
+  ['Partners', 'partnerships.html'],
   ['Store', 'store.html'],
   ['Socials', 'socials.html'],
   ['Account & Stars', 'account.html'],
@@ -57,6 +59,28 @@ export default function SitePage({ page }) {
       if (!node.attribs) return;
       const attrs = node.attribs;
       if (node.name === 'script') return <></>;
+      if (page.file === 'partnerships.html' && attrs.id === 'partner-list') {
+        const partners = node.children
+          .filter((child) => child.name === 'article')
+          .map((article, index) => {
+            const logo = article.children.find((child) =>
+              child.attribs?.class?.split(' ').includes('partner-logo'),
+            );
+            const copy = article.children.find((child) => child.attribs?.class === 'partner-copy');
+            const heading = copy.children.find((child) => child.name === 'h2');
+            const name = heading.children.map((child) => child.data || '').join('');
+            const logoImage = logo.children.find((child) => child.name === 'img');
+            const src = resolve(logoImage.attribs.src);
+            return {
+              id: `partner-${index}`,
+              name,
+              logo: src,
+              logoClass: logo.attribs.class,
+              content: domToReact([article], options),
+            };
+          });
+        return <PartnershipOrbit partners={partners} constellation={<HeroLogo artworkOnly />} />;
+      }
       if (attrs.class === 'hero-art') return <HeroLogo />;
       if (attrs.class === 'home-atmosphere')
         return (

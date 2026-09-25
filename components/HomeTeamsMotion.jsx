@@ -12,6 +12,9 @@ export default function HomeTeamsMotion({ children }) {
     let activeTeam = null;
     let motion = [];
     let generation = 0;
+    let scrolling = false;
+    let scrollTimer;
+    let visible = true;
     const stopDrift = () => {
       generation++;
       motion.forEach((animation) => animation.cancel());
@@ -23,7 +26,7 @@ export default function HomeTeamsMotion({ children }) {
         element.querySelector('[data-team]:focus-visible') ||
         element.querySelector('[data-team]:hover');
       const team = target?.dataset.team;
-      if (media.matches || !team) {
+      if (scrolling || !visible || media.matches || !team) {
         stopDrift();
         return;
       }
@@ -62,6 +65,30 @@ export default function HomeTeamsMotion({ children }) {
     const changeMotion = () => {
       drift();
     };
+    const onScroll = () => {
+      scrolling = true;
+      if (motion.length) stopDrift();
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        scrolling = false;
+        drift();
+      }, 140);
+    };
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      if (!visible) stopDrift();
+    });
+    observer.observe(element);
+    // Prepare the dense SVG layers just before arrival rather than during
+    // the first formation frame. Release the hint once the section is distant.
+    const warmup = new IntersectionObserver(
+      ([entry]) => {
+        element.classList.toggle('is-near-viewport', entry.isIntersecting);
+      },
+      { rootMargin: '300px' },
+    );
+    warmup.observe(element);
+    window.addEventListener('scroll', onScroll, { passive: true });
     media.addEventListener('change', changeMotion);
     element.addEventListener('pointerover', drift);
     element.addEventListener('pointerout', drift);
@@ -70,6 +97,11 @@ export default function HomeTeamsMotion({ children }) {
     element.addEventListener('pointerleave', stopDrift);
     return () => {
       stopDrift();
+      clearTimeout(scrollTimer);
+      observer.disconnect();
+      warmup.disconnect();
+      element.classList.remove('is-near-viewport');
+      window.removeEventListener('scroll', onScroll);
       media.removeEventListener('change', changeMotion);
       element.removeEventListener('pointerover', drift);
       element.removeEventListener('pointerout', drift);
