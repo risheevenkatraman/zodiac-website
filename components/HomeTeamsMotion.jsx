@@ -3,7 +3,9 @@ import { useEffect, useRef } from 'react';
 import useHomeConstellation from '../lib/use-home-constellation';
 export default function HomeTeamsMotion({ children }) {
   const root = useRef(null);
-  useHomeConstellation(root, '.home-team-cluster');
+  // HTML layers use percentages to preserve the SVG's 320-unit scatter
+  // distance at every rendered size of the 480-unit viewBox.
+  useHomeConstellation(root, '.home-team-cluster', { distance: (320 / 480) * 100, unit: '%' });
   useEffect(() => {
     const element = root.current;
     const media = matchMedia('(prefers-reduced-motion: reduce)');

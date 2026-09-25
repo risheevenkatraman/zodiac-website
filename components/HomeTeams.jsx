@@ -92,18 +92,15 @@ points.forEach(([x, y, r], i) => {
       `M${x},${y - ray}l0.4,${ray - 0.4} ${ray - 0.4},0.4 ${-ray + 0.4},0.4 -0.4,${ray - 0.4} -0.4,${-ray + 0.4} ${-ray + 0.4},-0.4 ${ray - 0.4},-0.4Z`;
   }
 });
-export default function HomeTeams() {
+// Each scattered group has its own HTML layer. Its SVG is painted once and
+// the formation can move the cached layer without repainting dense star paths.
+function TeamStarLayer({ paths, index }) {
   return (
-    <HomeTeamsMotion>
-      <svg
-        className="home-team-chart"
-        viewBox="210 40 480 480"
-        aria-labelledby="home-team-chart-title"
-      >
-        <title id="home-team-chart-title">Choose a Zodiac team from the stars</title>
+    <div className="home-team-cluster" aria-hidden="true">
+      <svg viewBox="210 40 480 480" focusable="false">
         <defs>
           <linearGradient
-            id="home-logo-purple"
+            id={`home-logo-purple-${index}`}
             gradientUnits="userSpaceOnUse"
             x1="330"
             y1="365"
@@ -115,7 +112,7 @@ export default function HomeTeams() {
             <stop offset="1" stopColor="#d2a0ff" />
           </linearGradient>
           <linearGradient
-            id="home-goat-silver"
+            id={`home-goat-silver-${index}`}
             gradientUnits="userSpaceOnUse"
             x1="265"
             y1="335"
@@ -127,70 +124,85 @@ export default function HomeTeams() {
             <stop offset="1" stopColor="#8d9eb9" />
           </linearGradient>
         </defs>
-        {clusters.map((paths, i) => (
-          <g className="home-team-cluster" key={i}>
-            {Object.entries(paths).map(([key, d]) => {
-              const [color, opacity, team] = key.split('|');
-              const origin = teams.find((item) => item.route === team);
-              return (
-                <path
-                  key={key}
-                  className="interactive-team-stars"
-                  data-star-team={team}
-                  d={d}
-                  fill={color}
-                  opacity={opacity}
-                  style={{
-                    transformOrigin: `${origin?.x || 450}px ${origin?.y || 280}px`,
-                    '--drift-x': `${((i % 5) - 2) * 0.55}px`,
-                    '--drift-y': `${((i % 7) - 3) * 0.4}px`,
-                    '--drift-duration': `${2.6 + (i % 5) * 0.35}s`,
-                  }}
-                />
-              );
-            })}
-          </g>
-        ))}
-        {teams.map((t) => (
-          <a
-            key={t.route}
-            data-team={t.route}
-            href={`${basePath}/teams/${t.route}/`}
-            aria-label={`Meet ${t.name}`}
-            className="home-team-target"
-            style={{ '--team-color': t.color }}
-          >
-            <title>{t.name}</title>
-            <ellipse cx={t.x} cy={t.y} rx={t.rx} ry={t.ry} />
-            {t.route.endsWith('team1') && (
-              <g
-                className="flagship-sigil flagship-beacon"
-                transform={`translate(${t.x} ${t.y})`}
-                aria-hidden="true"
-              >
-                <circle className="beacon-ring" r="13" />
-                <g className="sigil-satellites">
-                  <circle cx="13" cy="0" r="1.2" />
-                  <circle cx="-6.5" cy="11.3" r="0.8" />
-                  <circle cx="-6.5" cy="-11.3" r="1" />
-                </g>
-                <path
-                  className="beacon-leader"
-                  d={t.route.startsWith('overwatch') ? 'M-9-9-18-18H-70' : 'M9 9 18 22H75'}
-                />
-                <text
-                  className="beacon-label"
-                  x={t.route.startsWith('overwatch') ? -20 : 20}
-                  y={t.route.startsWith('overwatch') ? -23 : 34}
-                  textAnchor={t.route.startsWith('overwatch') ? 'end' : 'start'}
-                >
-                  {t.route.startsWith('overwatch') ? 'Overwatch' : 'VALORANT'}
-                </text>
-              </g>
-            )}
-          </a>
-        ))}
+        {Object.entries(paths).map(([key, d]) => {
+          const [color, opacity, team] = key.split('|');
+          const origin = teams.find((item) => item.route === team);
+          return (
+            <path
+              key={key}
+              className="interactive-team-stars"
+              data-star-team={team}
+              d={d}
+              fill={color.startsWith('url(') ? color.replace(')', `-${index})`) : color}
+              opacity={opacity}
+              style={{
+                transformOrigin: `${origin?.x || 450}px ${origin?.y || 280}px`,
+                '--drift-x': `${((index % 5) - 2) * 0.55}px`,
+                '--drift-y': `${((index % 7) - 3) * 0.4}px`,
+                '--drift-duration': `${2.6 + (index % 5) * 0.35}s`,
+              }}
+            />
+          );
+        })}
       </svg>
+    </div>
+  );
+}
+
+export default function HomeTeams() {
+  return (
+    <HomeTeamsMotion>
+      <div className="home-team-art">
+        <svg
+          className="home-team-chart"
+          viewBox="210 40 480 480"
+          aria-labelledby="home-team-chart-title"
+        >
+          <title id="home-team-chart-title">Choose a Zodiac team from the stars</title>
+          {teams.map((t) => (
+            <a
+              key={t.route}
+              data-team={t.route}
+              href={`${basePath}/teams/${t.route}/`}
+              aria-label={`Meet ${t.name}`}
+              className="home-team-target"
+              style={{ '--team-color': t.color }}
+            >
+              <title>{t.name}</title>
+              <ellipse cx={t.x} cy={t.y} rx={t.rx} ry={t.ry} />
+              {t.route.endsWith('team1') && (
+                <g
+                  className="flagship-sigil flagship-beacon"
+                  transform={`translate(${t.x} ${t.y})`}
+                  aria-hidden="true"
+                >
+                  <circle className="beacon-ring" r="13" />
+                  <g className="sigil-satellites">
+                    <circle cx="13" cy="0" r="1.2" />
+                    <circle cx="-6.5" cy="11.3" r="0.8" />
+                    <circle cx="-6.5" cy="-11.3" r="1" />
+                  </g>
+                  <path
+                    className="beacon-leader"
+                    d={t.route.startsWith('overwatch') ? 'M-9-9-18-18H-70' : 'M9 9 18 22H75'}
+                  />
+                  <text
+                    className="beacon-label"
+                    x={t.route.startsWith('overwatch') ? -20 : 20}
+                    y={t.route.startsWith('overwatch') ? -23 : 34}
+                    textAnchor={t.route.startsWith('overwatch') ? 'end' : 'start'}
+                  >
+                    {t.route.startsWith('overwatch') ? 'Overwatch' : 'VALORANT'}
+                  </text>
+                </g>
+              )}
+            </a>
+          ))}
+        </svg>
+        {clusters.map((paths, i) => (
+          <TeamStarLayer key={i} paths={paths} index={i} />
+        ))}
+      </div>
       <p className="atlas-label">One constellation. Every team has its place.</p>
       <nav className="home-team-legend" aria-label="Choose a team">
         {teams.map((t) => (

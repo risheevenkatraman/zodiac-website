@@ -2266,10 +2266,27 @@ textarea {
 .home-team-universe {
   text-align: center;
 }
-.home-team-chart {
-  display: block;
+.home-team-art {
+  position: relative;
   width: min(100%, 780px);
   margin: auto;
+}
+.home-team-chart {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+.home-team-cluster {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.home-team-cluster > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
   overflow: visible;
 }
 .home-team-target ellipse {
