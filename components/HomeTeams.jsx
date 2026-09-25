@@ -69,7 +69,8 @@ points.forEach(([x, y, r], i) => {
   }
   const color = goat
     ? 'url(#home-goat-silver)'
-    : animal?.color || (central ? 'url(#home-logo-purple)' : '#ffffff');
+    : animal?.color ||
+      (central ? 'url(#home-logo-purple)' : ['#b78adf', '#f8f5ff', '#d9c7f1'][i % 3]);
   const size = starNoise(x, y, 17);
   const cell = `${Math.floor(x / 12)},${Math.floor(y / 12)}`;
   const anchor = size > 0.985 && !anchorCells.has(cell);
