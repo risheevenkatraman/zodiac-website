@@ -80,11 +80,9 @@ points.forEach(([x, y, r], i) => {
   if (goat) r *= 1.15;
   const opacity = anchor ? 1 : size < 0.3 ? 0.4 : size < 0.7 ? 0.65 : 0.85;
   const key = `${color}|${opacity}|${animal?.route || (central ? 'flagship' : 'unassigned')}`;
-  // Keep animation groups local: interleaving every 16th star made every
-  // moving group span the entire chart, multiplying its repaint area.
-  const column = Math.max(0, Math.min(3, Math.floor((x - 210) / 120)));
-  const row = Math.max(0, Math.min(3, Math.floor((y - 40) / 120)));
-  const layer = clusters[row * 4 + column];
+  // Scatter each animation group across the artwork so individual stars
+  // regroup into the teams instead of arriving as preformed pieces.
+  const layer = clusters[i % clusters.length];
   layer[key] =
     (layer[key] || '') +
     `M${(x - r).toFixed(2)},${y}a${r},${r} 0 1,0 ${2 * r},0a${r},${r} 0 1,0 ${-2 * r},0Z`;
