@@ -2334,6 +2334,8 @@ textarea {
 
 /* Highlight only the selected constellation; scroll transforms stay on its parent. */
 .interactive-team-stars {
+  /* Team links provide the hit targets; dense decorative paths need no hit testing. */
+  pointer-events: none;
   transition:
     opacity 220ms ease,
     transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
