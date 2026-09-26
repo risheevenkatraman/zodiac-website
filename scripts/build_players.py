@@ -35,7 +35,7 @@ def build():
                 raise ValueError(f'Duplicate player ID: {slug}')
             expected.add(page)
             signature = player['signature']
-            profile_image = asset_url(player.get('image') or 'assets/profile-placeholder.svg')
+            profile_image = asset_url(player.get('image') or 'assets/uploads/profile-placeholder.svg')
             portrait = asset_url(signature['image'])
             role_markup = f'<p class="role player-role"><span>{role}</span><span class="role-pick"><span class="role-separator" aria-hidden="true"></span><img src="{portrait}" alt="" width="20" height="20"><span>{escape(signature["name"])}</span></span></p>'
             cards.append(f'''<a class="roster-card" href="../{page}">

@@ -158,7 +158,7 @@
     const source = product.featuredImage;
     img.src = source?.url?.startsWith('https://')
       ? source.url
-      : assetRoot + 'assets/zodiac-logo.png';
+      : assetRoot + 'assets/uploads/zodiac-logo.png';
     img.alt = source?.altText || product.title;
     img.loading = 'lazy';
     card.append(img);

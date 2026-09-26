@@ -229,7 +229,7 @@ export default function SitePage({ page }) {
             '/',
             <>
               <img
-                src={asset('assets/zodiac-logo.png')}
+                src={asset('assets/uploads/zodiac-logo.png')}
                 alt="Zodiac Esports logo"
                 width="42"
                 height="42"

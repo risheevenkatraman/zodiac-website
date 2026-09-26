@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def main():
-    source = base64.b64encode((ROOT / 'assets/zodiac-banner.png').read_bytes()).decode()
+    source = base64.b64encode((ROOT / 'assets/uploads/zodiac-banner.png').read_bytes()).decode()
     with sync_playwright() as p:
         browser = p.chromium.launch(channel='msedge', headless=True)
         page = browser.new_page()

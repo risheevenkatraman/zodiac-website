@@ -335,7 +335,7 @@ h3 {
   border-radius: 28px;
   background:
     linear-gradient(120deg, rgba(61, 34, 94, 0.95), rgba(111, 63, 165, 0.86)),
-    url('../assets/zodiac-banner.png') center / cover no-repeat;
+    url('../assets/uploads/zodiac-banner.png') center / cover no-repeat;
   box-shadow: var(--shadow);
   color: var(--white);
 }

@@ -21,7 +21,7 @@ def build():
             raise ValueError(f'Invalid or duplicate staff ID: {slug}')
         ids.add(slug)
         name, role = escape(member['name']), escape(member['role'])
-        portrait = member.get('image') or 'assets/profile-placeholder.svg'
+        portrait = member.get('image') or 'assets/uploads/profile-placeholder.svg'
         page = f'staff/staff-{slug}.html'
         cards.append(f'''<a class="staff-card" href="{page}">
         <img src="{escape(portrait, quote=True)}" alt="" width="120" height="120" loading="lazy">

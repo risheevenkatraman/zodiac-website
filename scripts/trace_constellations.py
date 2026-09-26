@@ -67,7 +67,7 @@ def main():
             page.goto(f'http://127.0.0.1:{server.server_port}')
             contours = json.loads((ROOT / 'assets/constellations/contours.json').read_text())
             for shape in ('pig', 'ox', 'goat', 'tiger', 'zodiac'):
-                source = 'assets/zodiac-logo.png' if shape == 'zodiac' else f'assets/constellations/{shape}.png'
+                source = 'assets/uploads/zodiac-logo.png' if shape == 'zodiac' else f'assets/constellations/{shape}.png'
                 pixels = page.evaluate('''async (source) => {
                     const image = new Image(); image.src = source; await image.decode();
                     const canvas = document.createElement('canvas'); canvas.width = canvas.height = 240;

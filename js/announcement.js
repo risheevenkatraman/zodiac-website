@@ -2,7 +2,7 @@ const fallbackAnnouncement = {
   title: 'Welcome to Zodiac Esports',
   message:
     'Our Overwatch and VALORANT rosters are ready. Follow our teams and join the community for the latest updates.',
-  image: 'assets/announcement-placeholder.svg',
+  image: 'assets/uploads/announcement-placeholder.svg',
 };
 
 function parseAnnouncement(announcement) {

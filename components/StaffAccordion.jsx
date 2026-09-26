@@ -13,7 +13,7 @@ export default function StaffAccordion({ members, players = false }) {
         >
           <summary data-player={players ? person.id : undefined}>
             <img
-              src={asset(person.image || 'assets/profile-placeholder.svg')}
+              src={asset(person.image || 'assets/uploads/profile-placeholder.svg')}
               alt=""
               width="64"
               height="64"

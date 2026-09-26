@@ -10,7 +10,7 @@ export default function InlineProfile({ person, game, staff, onBack }) {
       </button>
       <header className="team-header player-header">
         <img
-          src={asset(person.image || 'assets/profile-placeholder.svg')}
+          src={asset(person.image || 'assets/uploads/profile-placeholder.svg')}
           alt=""
           width="112"
           height="112"

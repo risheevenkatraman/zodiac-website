@@ -21,9 +21,9 @@
         ],
         "signature": {
           "name": "Ramattra",
-          "image": "assets/Icon-Ramattra.webp"
+          "image": "assets/uploads/Icon-Ramattra.webp"
         },
-        "image": "assets/gap-pfp.jpg"
+        "image": "assets/uploads/gap-pfp.jpg"
       },
       {
         "id": "overwatch-team1-winter",
@@ -42,9 +42,9 @@
         ],
         "signature": {
           "name": "Freja",
-          "image": "assets/Freja_Hero.webp"
+          "image": "assets/uploads/Freja_Hero.webp"
         },
-        "image": "assets/winter-pfp.jpg"
+        "image": "assets/uploads/winter-pfp.jpg"
       },
       {
         "id": "overwatch-team1-m3ws",
@@ -63,9 +63,9 @@
         ],
         "signature": {
           "name": "Tracer",
-          "image": "assets/Icon-Tracer.webp"
+          "image": "assets/uploads/Icon-Tracer.webp"
         },
-        "image": "assets/profile-placeholder.svg"
+        "image": "assets/uploads/profile-placeholder.svg"
       },
       {
         "id": "overwatch-team1-ewan",
@@ -88,9 +88,9 @@
         ],
         "signature": {
           "name": "Jetpack Cat",
-          "image": "assets/Jetpack_Cat_Hero.webp"
+          "image": "assets/uploads/Jetpack_Cat_Hero.webp"
         },
-        "image": "assets/ewan-pfp.png"
+        "image": "assets/uploads/ewan-pfp.png"
       },
       {
         "id": "overwatch-team1-hutch",
@@ -109,9 +109,9 @@
         ],
         "signature": {
           "name": "Baptiste",
-          "image": "assets/Icon-Baptiste.webp"
+          "image": "assets/uploads/Icon-Baptiste.webp"
         },
-        "image": "assets/hutch-pfp.jpeg"
+        "image": "assets/uploads/hutch-pfp.jpeg"
       }
     ]
   },
@@ -133,9 +133,9 @@
         ],
         "signature": {
           "name": "Hazard",
-          "image": "assets/Hazard_Hero.webp"
+          "image": "assets/uploads/Hazard_Hero.webp"
         },
-        "image": "assets/samir-pfp.webp"
+        "image": "assets/uploads/samir-pfp.webp"
       },
       {
         "id": "overwatch-team2-deatorean",
@@ -158,9 +158,9 @@
         ],
         "signature": {
           "name": "Sojourn",
-          "image": "assets/Icon-Sojourn.webp"
+          "image": "assets/uploads/icon-sojourn.webp"
         },
-        "image": "assets/deat-pfp.png"
+        "image": "assets/uploads/deat-pfp.png"
       },
       {
         "id": "overwatch-team2-cristehn",
@@ -179,9 +179,9 @@
         ],
         "signature": {
           "name": "Tracer",
-          "image": "assets/Icon-Tracer.webp"
+          "image": "assets/uploads/Icon-Tracer.webp"
         },
-        "image": "assets/cristehn-pfp.jpg"
+        "image": "assets/uploads/cristehn-pfp.jpg"
       },
       {
         "id": "overwatch-team2-sealceo",
@@ -200,9 +200,9 @@
         ],
         "signature": {
           "name": "Jetpack Cat",
-          "image": "assets/Jetpack_Cat_Hero.webp"
+          "image": "assets/uploads/Jetpack_Cat_Hero.webp"
         },
-        "image": "assets/sealceo-pfp.png"
+        "image": "assets/uploads/sealceo-pfp.png"
       },
       {
         "id": "overwatch-team2-penguingamer",
@@ -229,9 +229,9 @@
         ],
         "signature": {
           "name": "Lucio",
-          "image": "assets/Lucio.webp"
+          "image": "assets/uploads/Lucio.webp"
         },
-        "image": "assets/penguingamer-pfp.webp"
+        "image": "assets/uploads/penguingamer-pfp.webp"
       },
       {
         "id": "overwatch-team2-georan",
@@ -246,9 +246,9 @@
         ],
         "signature": {
           "name": "Baptiste",
-          "image": "assets/Icon-Baptiste.webp"
+          "image": "assets/uploads/Icon-Baptiste.webp"
         },
-        "image": "assets/georan-pfp.jpeg"
+        "image": "assets/uploads/georan-pfp.jpeg"
       }
     ]
   },
@@ -274,9 +274,9 @@
         ],
         "signature": {
           "name": "Wrecking Ball",
-          "image": "assets/Wrecking_Ball_Hero.webp"
+          "image": "assets/uploads/Wrecking_Ball_Hero.webp"
         },
-        "image": "assets/alright-pfp.jpeg"
+        "image": "assets/uploads/alright-pfp.jpeg"
       },
       {
         "id": "overwatch-team3-xdnoo6",
@@ -291,9 +291,9 @@
         ],
         "signature": {
           "name": "Hanzo",
-          "image": "assets/Hanzo_Hero.webp"
+          "image": "assets/uploads/Hanzo_Hero.webp"
         },
-        "image": "assets/profile-placeholder.svg"
+        "image": "assets/uploads/profile-placeholder.svg"
       },
       {
         "id": "overwatch-team3-v-id",
@@ -316,9 +316,9 @@
         ],
         "signature": {
           "name": "Tracer",
-          "image": "assets/Icon-Tracer.webp"
+          "image": "assets/uploads/Icon-Tracer.webp"
         },
-        "image": "assets/void-pfp.jpg"
+        "image": "assets/uploads/void-pfp.jpg"
       },
       {
         "id": "overwatch-team3-baksa",
@@ -333,9 +333,9 @@
         ],
         "signature": {
           "name": "Lifeweaver",
-          "image": "assets/Icon-Lifeweaver.webp"
+          "image": "assets/uploads/Icon-Lifeweaver.webp"
         },
-        "image": "assets/profile-placeholder.svg"
+        "image": "assets/uploads/profile-placeholder.svg"
       },
       {
         "id": "overwatch-team3-zeusa",
@@ -358,9 +358,9 @@
         ],
         "signature": {
           "name": "Ana",
-          "image": "assets/Ana_Hero.webp"
+          "image": "assets/uploads/Ana_Hero.webp"
         },
-        "image": "assets/zeus-pfp.jpeg"
+        "image": "assets/uploads/zeus-pfp.jpeg"
       }
     ]
   },
@@ -386,9 +386,9 @@
         ],
         "signature": {
           "name": "Sigma",
-          "image": "assets/Icon-Sigma.webp"
+          "image": "assets/uploads/Icon-Sigma.webp"
         },
-        "image": "assets/thena-pfp.png"
+        "image": "assets/uploads/thena-pfp.png"
       },
       {
         "id": "overwatch-team4-nahj1x",
@@ -411,9 +411,9 @@
         ],
         "signature": {
           "name": "Sojourn",
-          "image": "assets/Icon-Sojourn.webp"
+          "image": "assets/uploads/icon-sojourn.webp"
         },
-        "image": "assets/nahj1x-pfp.jpeg"
+        "image": "assets/uploads/nahj1x-pfp.jpeg"
       },
       {
         "id": "overwatch-team4-hara",
@@ -436,9 +436,9 @@
         ],
         "signature": {
           "name": "Tracer",
-          "image": "assets/Icon-Tracer.webp"
+          "image": "assets/uploads/Icon-Tracer.webp"
         },
-        "image": "assets/hara-pfp.jpg"
+        "image": "assets/uploads/hara-pfp.jpg"
       },
       {
         "id": "overwatch-team4-lanni",
@@ -457,9 +457,9 @@
         ],
         "signature": {
           "name": "Lucio",
-          "image": "assets/Lucio.webp"
+          "image": "assets/uploads/Lucio.webp"
         },
-        "image": "assets/lanni-pfp.png"
+        "image": "assets/uploads/lanni-pfp.png"
       },
       {
         "id": "overwatch-team4-hideki",
@@ -478,9 +478,9 @@
         ],
         "signature": {
           "name": "Baptiste",
-          "image": "assets/Icon-Baptiste.webp"
+          "image": "assets/uploads/Icon-Baptiste.webp"
         },
-        "image": "assets/hideki-pfp.png"
+        "image": "assets/uploads/hideki-pfp.png"
       },
       {
         "id": "sauce",
@@ -523,9 +523,9 @@
         ],
         "signature": {
           "name": "Omen",
-          "image": "assets/Omen_icon.webp"
+          "image": "assets/uploads/Omen_icon.webp"
         },
-        "image": "assets/nei-pfp.jpg"
+        "image": "assets/uploads/nei-pfp.jpg"
       },
       {
         "id": "valorant-team2-tr3nt",
@@ -544,9 +544,9 @@
         ],
         "signature": {
           "name": "Jett",
-          "image": "assets/Jett_icon.webp"
+          "image": "assets/uploads/Jett_icon.webp"
         },
-        "image": "assets/trent-pfp.jpg"
+        "image": "assets/uploads/trent-pfp.jpg"
       },
       {
         "id": "valorant-team2-5am",
@@ -565,9 +565,9 @@
         ],
         "signature": {
           "name": "Fade",
-          "image": "assets/Fade_icon.webp"
+          "image": "assets/uploads/Fade_icon.webp"
         },
-        "image": "assets/5am-pfp.jpeg"
+        "image": "assets/uploads/5am-pfp.jpeg"
       },
       {
         "id": "valorant-team2-nooy",
@@ -590,9 +590,9 @@
         ],
         "signature": {
           "name": "Phoenix",
-          "image": "assets/Phoenix_icon.webp"
+          "image": "assets/uploads/Phoenix_icon.webp"
         },
-        "image": "assets/nooy-pfp.png"
+        "image": "assets/uploads/nooy-pfp.png"
       },
       {
         "id": "valorant-team2-placeholder",
@@ -602,9 +602,9 @@
         "socials": [],
         "signature": {
           "name": "Cypher",
-          "image": "assets/Cypher_icon.webp"
+          "image": "assets/uploads/Cypher_icon.webp"
         },
-        "image": "assets/profile-placeholder.svg"
+        "image": "assets/uploads/profile-placeholder.svg"
       }
     ]
   },
