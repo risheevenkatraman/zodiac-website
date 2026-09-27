@@ -131,6 +131,16 @@ body {
 }
 .site-page.home-page .manifesto p {
   max-width: none;
+  font-size: clamp(1rem, 0.85rem + 0.35vw, 1.25rem);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+.site-page.home-page .announcement-message {
+  font-size: clamp(1rem, 0.9rem + 0.25vw, 1.1875rem);
+  line-height: 1.6;
+}
+.site-page.home-page .announcement-card h4 {
+  font-size: clamp(1.5rem, 1.1rem + 1vw, 2.25rem);
 }
 .site-page .home-atmosphere p {
   color: color-mix(in srgb, var(--ink) 80%, var(--cream));
