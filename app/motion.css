@@ -154,11 +154,31 @@
   overflow-x: clip;
 }
 /* Team stars travel in scattered clusters, then reveal the player connections. */
+.team-layer-map > .team-star-cluster {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.team-layer-map > .team-star-cluster > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.team-layer-map > svg {
+  position: relative;
+}
+.team-constellation.is-waiting .team-star-cluster {
+  opacity: 0;
+}
+.team-constellation:is(.is-waiting, .is-forming) .team-star-cluster {
+  will-change: transform, opacity;
+}
 .team-constellation.is-forming .team-star-cluster circle {
   animation: none;
 }
 .team-constellation.is-forming .team-star-cluster {
-  animation: team-stars-arrive 1900ms cubic-bezier(0.16, 1, 0.3, 1) var(--star-delay) backwards;
+  animation: team-stars-arrive 3000ms cubic-bezier(0.25, 0.45, 0.35, 1) var(--star-delay) backwards;
 }
 @keyframes team-stars-arrive {
   from {
@@ -171,6 +191,10 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .team-constellation:is(.is-waiting, .is-forming) .team-star-cluster {
+    opacity: 1;
+    will-change: auto;
+  }
   .team-constellation.is-forming .team-star-cluster {
     animation: none;
   }

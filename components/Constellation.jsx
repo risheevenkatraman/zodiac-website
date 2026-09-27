@@ -27,11 +27,17 @@ export default function Constellation({ house, children, variant = 'team' }) {
       started = true;
       stars.forEach((star, index) => {
         if (variant === 'team') {
-          const angle = ((index % 12) * Math.PI) / 6;
-          const distance = 170 + (index % 3) * 35;
-          star.style.setProperty('--star-x', `${(Math.cos(angle) * distance).toFixed(2)}px`);
-          star.style.setProperty('--star-y', `${(Math.sin(angle) * distance).toFixed(2)}px`);
-          star.style.setProperty('--star-delay', `${(index % 4) * 110}ms`);
+          const angle = (index * Math.PI * 2) / stars.length;
+          // HTML layers use percentages equivalent to 320 SVG units at any size.
+          star.style.setProperty(
+            '--star-x',
+            `${((Math.cos(angle) * 320 * 100) / 900).toFixed(3)}%`,
+          );
+          star.style.setProperty(
+            '--star-y',
+            `${((Math.sin(angle) * 320 * 100) / 560).toFixed(3)}%`,
+          );
+          star.style.setProperty('--star-delay', `${120 + (index % 4) * 30}ms`);
           return;
         }
         const x = Number(star.getAttribute('cx'));
@@ -43,11 +49,10 @@ export default function Constellation({ house, children, variant = 'team' }) {
         star.style.setProperty('--star-x', `${((index % 9) - 4) * 7}px`);
         star.style.setProperty('--star-y', `${((index % 7) - 3) * 7}px`);
       });
-      // Commit the reset before starting the formation.
-      void section.offsetWidth;
+      // CSS starts from backwards-filled keyframes; no forced layout is needed.
       frame = requestAnimationFrame(() => {
         section.classList.add('is-forming');
-        timer = setTimeout(finish, 4200);
+        timer = setTimeout(finish, variant === 'team' ? 3400 : 4200);
       });
     };
     const observer = new IntersectionObserver(

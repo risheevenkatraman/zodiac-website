@@ -103,6 +103,49 @@ export default function SitePage({ page }) {
       if (attrs.class === 'roster-grid' && team)
         return <Roster players={team.players} game={team.game} />;
       if (attrs.class === 'staff-grid') return <StaffAccordion members={readData('staff')} />;
+      if (attrs.class === 'constellation-map' && team) {
+        const svg = node.children.find((child) => child.name === 'svg');
+        const dust = svg?.children.filter((child) =>
+          child.attribs?.class?.split(' ').includes('constellation-dust'),
+        );
+        if (dust?.length) {
+          const layers = Array.from({ length: 12 }, () => []);
+          for (const group of dust) {
+            const circles = group.children.filter((child) => child.name === 'circle');
+            layers.forEach((layer, index) =>
+              layer.push(
+                <g key={layer.length} className={group.attribs.class}>
+                  {domToReact(
+                    circles.filter((_, i) => i % layers.length === index),
+                    options,
+                  )}
+                </g>,
+              ),
+            );
+          }
+          // Cache each scattered star layer as a separate surface, as on the
+          // homepage. Keep player connections and links above these layers.
+          return (
+            <div className="constellation-map team-layer-map">
+              {layers.map((layer, index) => (
+                <div className="team-star-cluster" key={index} aria-hidden="true">
+                  <svg viewBox="0 0 900 560" preserveAspectRatio="none" focusable="false">
+                    {layer}
+                  </svg>
+                </div>
+              ))}
+              {domToReact(
+                node.children.map((child) =>
+                  child === svg
+                    ? { ...svg, children: svg.children.filter((item) => !dust.includes(item)) }
+                    : child,
+                ),
+                options,
+              )}
+            </div>
+          );
+        }
+      }
       if (attrs.class?.split(' ').includes('constellation-dust')) {
         const clusters = Array.from({ length: 12 }, () => []);
         node.children
