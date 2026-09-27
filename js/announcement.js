@@ -49,6 +49,7 @@ function renderAnnouncement(announcement) {
   const title = document.createElement('h4');
   title.textContent = announcement.title;
   const message = document.createElement('p');
+  message.className = 'announcement-message';
   message.textContent = announcement.message;
   content.append(label, title, message);
   container.replaceChildren(image, content);

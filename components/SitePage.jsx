@@ -135,7 +135,7 @@ export default function SitePage({ page }) {
             <div>
               <p className="eyebrow">Pinned update</p>
               <h4>{announcement.title}</h4>
-              <p>{announcement.message}</p>
+              <p className="announcement-message">{announcement.message}</p>
             </div>
           </article>
         );
