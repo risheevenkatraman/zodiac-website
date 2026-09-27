@@ -50,10 +50,16 @@ try:
                 for (let y = 0; y <= end; y += 40) {
                     window.scrollTo({top: y, behavior: 'instant'});
                     await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+                    const headerBottom = document.querySelector('.site-header').getBoundingClientRect().bottom;
                     const visible = el => {
                         const r = el.getBoundingClientRect();
-                        return r.bottom > 0 && r.top < innerHeight;
+                        return r.bottom > headerBottom && r.top < innerHeight;
                     };
+                    if (hero.getBoundingClientRect().bottom <= headerBottom) {
+                        const stars = [...document.querySelectorAll('.home-star-cluster')];
+                        if (stars.some(el => el.style.opacity !== '0' || el.getAnimations().length))
+                            throw new Error(`Hero must stop animating behind navigation at ${y}`);
+                    }
                     if (visible(hero) || visible(team)) {
                         const heroForming = document.querySelector('.home-star-cluster').style.opacity === '1';
                         const teamForming = document.querySelector('.home-team-cluster').style.opacity === '1';
