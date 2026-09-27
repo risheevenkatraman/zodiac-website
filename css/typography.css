@@ -129,6 +129,9 @@ body {
 .site-page :is(.hero-intro, .hero-copy > p, .commerce-hero-copy > p:not(.eyebrow)) {
   color: var(--lavender);
 }
+.site-page.home-page .manifesto p {
+  max-width: none;
+}
 .site-page .home-atmosphere p {
   color: color-mix(in srgb, var(--ink) 80%, var(--cream));
 }

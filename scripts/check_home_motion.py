@@ -40,8 +40,37 @@ try:
             page.set_viewport_size({'width': width, 'height': 900})
             page.goto(base)
             page.wait_for_function("document.querySelector('.home-team-cluster').style.opacity === '0'")
+            # A slow pass must never leave visible artwork without a formation
+            # target, including the old gap between the two 65% thresholds.
+            handoff = page.evaluate("""async () => {
+                const hero = document.querySelector('.home-star-art svg');
+                const team = document.querySelector('.home-team-chart');
+                const end = scrollY + team.getBoundingClientRect().top - 100;
+                let samples = 0;
+                for (let y = 0; y <= end; y += 40) {
+                    window.scrollTo({top: y, behavior: 'instant'});
+                    await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+                    const visible = el => {
+                        const r = el.getBoundingClientRect();
+                        return r.bottom > 0 && r.top < innerHeight;
+                    };
+                    if (visible(hero) || visible(team)) {
+                        const heroForming = document.querySelector('.home-star-cluster').style.opacity === '1';
+                        const teamForming = document.querySelector('.home-team-cluster').style.opacity === '1';
+                        if (!heroForming && !teamForming) throw new Error(`Empty handoff at ${y}`);
+                        samples++;
+                    }
+                }
+                return samples;
+            }""")
+            assert handoff > 0
+            page.evaluate("window.scrollTo({top: 0, behavior: 'instant'})")
+            page.wait_for_timeout(150)
             page.evaluate(SCROLL_TO_TEAMS)
             page.wait_for_function("document.querySelector('.home-team-cluster').getAnimations().length > 0")
+            assert page.locator('.home-team-cluster').evaluate_all(
+                'els => els.every(el => el.getAnimations()[0].playbackRate > 1)'
+            ), 'Fast scrolling must accelerate formation'
             # The same 320 SVG units must become the same screen distance at any width.
             page.evaluate("""() => {
                 for (const e of document.querySelectorAll('.home-team-cluster')) {
@@ -105,17 +134,14 @@ try:
             page.evaluate(SCROLL_TO_TEAMS)
             page.wait_for_function("""() => document.querySelector('.home-team-cluster')
                 .getAnimations().some(a => a.playState === 'running' && a.currentTime < 1500)""")
-            effects = page.locator('.home-team-cluster').evaluate_all(
-                "els => { window.__starEffects = els.map(el => el.getAnimations()[0]); return els.length; }"
-            )
             for _ in range(3):
                 page.evaluate("window.scrollTo({top: 0, behavior: 'instant'})")
                 page.wait_for_timeout(80)
                 page.evaluate(SCROLL_TO_TEAMS)
                 page.wait_for_timeout(80)
             assert page.locator('.home-team-cluster').evaluate_all(
-                "els => els.every((el, i) => el.getAnimations()[0] === window.__starEffects[i])"
-            ), 'Rapid re-entry must reuse animation effects'
+                "els => els.every(el => el.getAnimations().length === 1)"
+            ), 'Rapid re-entry must not accumulate animation effects'
             page.wait_for_function(TEAMS_SETTLED)
             page.emulate_media(reduced_motion='reduce')
             page.wait_for_function("""() => [...document.querySelectorAll('.home-team-cluster, .home-star-cluster')]
