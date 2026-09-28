@@ -22,7 +22,7 @@ merchandise, and a customer loyalty program called **Stars**.
 
 | Area | Implementation |
 | --- | --- |
-| Frontend | Next.js App Router, React, CSS, and static export |
+| Frontend | Next.js App Router, React, strict TypeScript, CSS, and static export |
 | Content | JSON, local image assets, and Decap CMS |
 | Pages and profiles | React Server Components rendered from JSON during the Next.js build |
 | Match schedules | FACEIT Data API and scheduled synchronization |
@@ -34,4 +34,4 @@ merchandise, and a customer loyalty program called **Stars**.
 | Secrets and monitoring | AWS Secrets Manager and Amazon CloudWatch |
 | Infrastructure | AWS SAM and CloudFormation |
 | Hosting and automation | AWS Amplify Hosting, GitHub, and GitHub Actions; an existing GitHub Pages workflow remains for migration |
-| Validation | Python unittest, Moto AWS mocks, Node.js checks, Playwright browser checks, and CloudFormation linting |
+| Validation | TypeScript checks, Python unittest, Moto AWS mocks, Node.js checks, Playwright browser checks, and CloudFormation linting |

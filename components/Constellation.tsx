@@ -1,0 +1,140 @@
+'use client';
+import type { ReactNode } from 'react';
+import { useEffect, useRef } from 'react';
+
+export default function Constellation({
+  house,
+  children,
+  variant = 'team',
+}: {
+  house: string;
+  children: ReactNode;
+  variant?: 'team' | 'hero' | 'tiers';
+}) {
+  const root = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const section = root.current;
+    if (!section) return;
+    const main = section.closest('main');
+    if (!main) return;
+    const media = matchMedia('(prefers-reduced-motion: reduce)');
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    let frame = 0;
+    let disposed = false;
+    let started = false;
+    const map = section.querySelector('.constellation-map');
+    const finish = () => {
+      section.classList.remove('is-forming');
+      section.classList.remove('is-waiting');
+      clearTimeout(timer);
+      cancelAnimationFrame(frame);
+    };
+    const stars = section.querySelectorAll<HTMLElement | SVGElement>(
+      variant === 'team' ? '.team-star-cluster' : '.constellation-dust circle',
+    );
+    const play = () => {
+      finish();
+      if (media.matches || disposed) return;
+      started = true;
+      stars.forEach((star, index) => {
+        if (variant === 'team') {
+          const angle = (index * Math.PI * 2) / stars.length;
+          // HTML layers use percentages equivalent to 320 SVG units at any size.
+          star.style.setProperty(
+            '--star-x',
+            `${((Math.cos(angle) * 320 * 100) / 900).toFixed(3)}%`,
+          );
+          star.style.setProperty(
+            '--star-y',
+            `${((Math.sin(angle) * 320 * 100) / 560).toFixed(3)}%`,
+          );
+          star.style.setProperty('--star-delay', `${120 + (index % 4) * 30}ms`);
+          return;
+        }
+        const x = Number(star.getAttribute('cx'));
+        const y = Number(star.getAttribute('cy'));
+        star.style.setProperty(
+          '--star-delay',
+          `${Math.round(Math.hypot(x - 450, y - 280) * 4 + (index % 7) * 60)}ms`,
+        );
+        star.style.setProperty('--star-x', `${((index % 9) - 4) * 7}px`);
+        star.style.setProperty('--star-y', `${((index % 7) - 3) * 7}px`);
+      });
+      // CSS starts from backwards-filled keyframes; no forced layout is needed.
+      frame = requestAnimationFrame(() => {
+        section.classList.add('is-forming');
+        timer = setTimeout(finish, variant === 'team' ? 3400 : 4200);
+      });
+    };
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!started && !media.matches && entries.some((entry) => entry.isIntersecting)) {
+          play();
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 },
+    );
+    const configure = () => {
+      finish();
+      observer.disconnect();
+      started = false;
+      if (!media.matches && map) {
+        section.classList.add('is-waiting');
+        observer.observe(map);
+      }
+    };
+    document.fonts.ready.then(() => {
+      if (!disposed) configure();
+    });
+    const highlight = (event: Event) => {
+      const target =
+        event.target instanceof Element ? event.target.closest<HTMLElement>('[data-player]') : null;
+      const id = target?.dataset.player;
+      for (const item of main.querySelectorAll<HTMLElement | SVGElement>('[data-player]')) {
+        item.classList.toggle(
+          item.classList.contains('roster-card') ? 'constellation-active' : 'is-active',
+          Boolean(id) && item.dataset.player === id,
+        );
+      }
+      if (event.type === 'focusin' && target?.classList.contains('star-label')) finish();
+    };
+    const clear = () => {
+      for (const item of main.querySelectorAll('.is-active, .constellation-active'))
+        item.classList.remove('is-active', 'constellation-active');
+    };
+    main.addEventListener('pointerover', highlight);
+    main.addEventListener('focusin', highlight);
+    main.addEventListener('pointerleave', clear);
+    main.addEventListener('focusout', clear);
+    media.addEventListener('change', configure);
+    return () => {
+      disposed = true;
+      observer.disconnect();
+      finish();
+      clear();
+      main.removeEventListener('pointerover', highlight);
+      main.removeEventListener('focusin', highlight);
+      main.removeEventListener('pointerleave', clear);
+      main.removeEventListener('focusout', clear);
+      media.removeEventListener('change', configure);
+    };
+  }, [house, variant]);
+  const Tag = variant === 'team' ? 'section' : 'div';
+  return (
+    <Tag
+      ref={root}
+      className={
+        variant === 'hero'
+          ? 'hero-art hero-constellation'
+          : variant === 'tiers'
+            ? 'tier-constellation'
+            : 'team-constellation'
+      }
+      data-house={house}
+      aria-labelledby={variant === 'team' ? 'constellation-heading' : undefined}
+    >
+      {children}
+    </Tag>
+  );
+}
