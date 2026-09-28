@@ -1,20 +1,11 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { parseEvents, currentMonthEvents } from '../lib/events.cjs';
 
 export default function Events({ initialEvents }) {
   const [upcoming, setUpcoming] = useState(null);
   useEffect(() => {
-    const now = new Date();
-    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    const end = new Date(now.getFullYear(), now.getMonth() + 1, 1);
-    setUpcoming(
-      initialEvents
-        .filter((event) => {
-          const date = new Date(event.date + 'T12:00:00');
-          return date >= today && date < end;
-        })
-        .sort((a, b) => a.date.localeCompare(b.date)),
-    );
+    setUpcoming(currentMonthEvents(parseEvents(initialEvents)));
   }, [initialEvents]);
   return (
     <div id="event-timeline" className="event-timeline" aria-live="polite">

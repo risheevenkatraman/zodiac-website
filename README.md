@@ -24,7 +24,7 @@ merchandise, and a customer loyalty program called **Stars**.
 | --- | --- |
 | Frontend | Next.js App Router, React, CSS, and static export |
 | Content | JSON, local image assets, and Decap CMS |
-| Profile generation | Python scripts generating static player and staff pages |
+| Pages and profiles | React Server Components rendered from JSON during the Next.js build |
 | Match schedules | FACEIT Data API and scheduled synchronization |
 | Commerce | Shopify Storefront API, hosted checkout, and Shop Pay |
 | Customer authentication | Shopify Customer Account API with OAuth and PKCE |

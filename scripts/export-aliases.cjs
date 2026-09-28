@@ -23,13 +23,11 @@ function normalizeSegments(directory) {
 }
 normalizeSegments(output);
 // Keep bookmarks and registered Shopify OAuth callbacks on their existing URLs.
-for (const folder of ['', 'teams', 'players', 'staff']) {
-  for (const file of fs.readdirSync(path.join(root, folder))) {
-    if (!file.endsWith('.html') || file === 'index.html') continue;
-    const generated = path.join(output, folder, file.slice(0, -5), 'index.html');
-    if (!fs.existsSync(generated)) throw new Error(`Missing exported route: ${file}`);
-    fs.copyFileSync(generated, path.join(output, folder, file));
-  }
+for (const { file } of require('../lib/page-catalog.cjs').pageCatalog(root)) {
+  if (file === 'index.html') continue;
+  const generated = path.join(output, file.slice(0, -5), 'index.html');
+  if (!fs.existsSync(generated)) throw new Error(`Missing exported route: ${file}`);
+  fs.copyFileSync(generated, path.join(output, file));
 }
 fs.writeFileSync(path.join(output, '.nojekyll'), '');
 console.log('Added compatible .html URLs to the Next.js export.');

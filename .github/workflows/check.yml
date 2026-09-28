@@ -24,13 +24,11 @@ jobs:
           AWS_EC2_METADATA_DISABLED: 'true'
       - run: python -m unittest discover -s scripts -p 'test_*.py'
       - run: |
-          python scripts/build_players.py
-          python scripts/build_staff.py
-          python scripts/check_site.py
+          node scripts/check_content.cjs
           node scripts/check_events.cjs
-          node scripts/check_roster.cjs
           node scripts/check_store.cjs
           node scripts/check_account.cjs
           node scripts/check_editor.cjs
           npm run format:check
           npm run build
+          python scripts/check_site.py

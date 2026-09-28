@@ -1,11 +1,7 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
-const vm = require('node:vm');
+const { parseEvents: parse, currentMonthEvents } = require('../lib/events.cjs');
 
-// Keep the network loader idle while exercising the actual date parser.
-const context = vm.createContext({ fetch: () => new Promise(() => {}) });
-vm.runInContext(fs.readFileSync('js/events.js', 'utf8'), context);
-const parse = context.parseEvents;
 const event = (date, name = 'Event', description = 'Description') => ({ name, description, date });
 assert.equal(parse([event('2026-02-30')]).length, 0);
 assert.equal(parse([event('2026-13-01')]).length, 0);
@@ -34,20 +30,18 @@ const calendar = parse(
     event(date),
   ),
 );
-const visibleDates = (now) => Array.from(context.currentMonthEvents(calendar, now), (e) => e.date);
+const visibleDates = (now) => Array.from(currentMonthEvents(calendar, now), (e) => e.date);
 assert.deepEqual(visibleDates(new Date(2026, 8, 11, 23)), ['2026-09-11', '2026-09-30']);
 assert.deepEqual(visibleDates(new Date(2026, 9, 1)), ['2026-10-01']);
 assert.deepEqual(visibleDates(new Date(2026, 11, 31)), ['2026-12-31']);
 assert.deepEqual(visibleDates(new Date(2027, 0, 1)), ['2027-01-01']);
 assert.deepEqual(visibleDates(new Date(2027, 1, 1)), []);
 assert.equal(parse(saved).length, saved.length);
-vm.runInContext(fs.readFileSync('js/announcement.js', 'utf8'), context);
 const announcement = JSON.parse(fs.readFileSync('data/announcement.json', 'utf8'));
-assert.equal(context.parseAnnouncement(announcement).title, announcement.title);
-for (const invalid of [null, [], 'text', { title: 42, message: {}, image: false }]) {
-  assert.equal(context.parseAnnouncement(invalid).title, 'Welcome to Zodiac Esports');
+for (const field of ['title', 'message', 'image']) {
+  assert.equal(typeof announcement[field], 'string');
+  assert.ok(announcement[field].trim(), `Missing announcement ${field}`);
 }
-assert.equal(context.parseAnnouncement({ title: ' Custom ' }).title, 'Custom');
 console.log(
-  'JSON content, invalid shapes, defaults, date validation, ordering, and plain-text parsing passed.',
+  'Event date validation, monthly filtering, plain-text parsing, and current content passed.',
 );

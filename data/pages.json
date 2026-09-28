@@ -1,0 +1,32 @@
+{
+  "account.html": {
+    "title": "Your Stars | Zodiac Esports",
+    "bodyClass": "account-page"
+  },
+  "index.html": {
+    "title": "Zodiac Esports — Written in the Stars",
+    "bodyClass": "home-page",
+    "description": "Written in the Stars. Destined for Victory. Meet Zodiac Esports, established in 2024. Follow our teams and matches, and find your people in our Overwatch and VALORANT community."
+  },
+  "partnerships.html": {
+    "title": "Partners — Zodiac Esports",
+    "bodyClass": "partnerships-page",
+    "description": "Meet the companies partnering with Zodiac Esports and explore their products."
+  },
+  "socials.html": {
+    "title": "Socials — Zodiac Esports",
+    "bodyClass": ""
+  },
+  "staff.html": {
+    "title": "Staff — Zodiac Esports",
+    "bodyClass": ""
+  },
+  "store.html": {
+    "title": "Store — Zodiac Esports",
+    "bodyClass": ""
+  },
+  "teams.html": {
+    "title": "Teams — Zodiac Esports",
+    "bodyClass": ""
+  }
+}

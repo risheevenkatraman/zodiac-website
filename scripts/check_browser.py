@@ -16,7 +16,7 @@ class QuietHandler(SimpleHTTPRequestHandler):
         pass
 
 
-server = ThreadingHTTPServer(('127.0.0.1', 0), functools.partial(QuietHandler, directory=str(ROOT)))
+server = ThreadingHTTPServer(('127.0.0.1', 0), functools.partial(QuietHandler, directory=str(ROOT / 'out')))
 thread = threading.Thread(target=server.serve_forever, daemon=True)
 thread.start()
 base = os.environ.get('ZODIAC_TEST_URL', f'http://127.0.0.1:{server.server_port}')
@@ -24,6 +24,9 @@ try:
     with sync_playwright() as p:
         browser = p.chromium.launch(channel='msedge', headless=True)
         page = browser.new_page(viewport={'width': 390, 'height': 844})
+        if os.environ.get('ZODIAC_CMS_BUNDLE'):
+            page.route('https://unpkg.com/decap-cms@3.14.0/dist/decap-cms.js',
+                       lambda route: route.fulfill(path=os.environ['ZODIAC_CMS_BUNDLE'], content_type='application/javascript'))
         errors = []
         page.on('pageerror', lambda error: errors.append(str(error)))
         page.route('**/data/account.json', lambda route: route.fulfill(json={'enabled': False}))
@@ -49,7 +52,7 @@ try:
             route.fulfill(json={'accepted': True})
         page.route('https://rewards.test/me/redeem', redeem)
         page.reload()
-        page.get_by_text('Zodiac Silver', exact=True).wait_for()
+        page.locator('#member-tier').filter(has_text='Zodiac Silver').wait_for()
         assert page.locator('#stars-balance').inner_text() == '150'
         page.locator('#stars-redeem').click()
         page.get_by_text('ZODIAC-TEST', exact=False).wait_for()

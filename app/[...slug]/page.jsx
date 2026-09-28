@@ -10,7 +10,11 @@ export function generateStaticParams() {
 }
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  return { title: readPage(slug.join('/') + '.html')?.title || 'Page not found' };
+  const page = readPage(slug.join('/') + '.html');
+  return {
+    title: page?.title || 'Page not found',
+    ...(page?.description ? { description: page.description } : {}),
+  };
 }
 export default async function ContentPage({ params }) {
   const { slug } = await params;

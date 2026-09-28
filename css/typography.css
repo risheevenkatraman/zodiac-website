@@ -202,3 +202,10 @@ body {
     font-size: 1.125rem;
   }
 }
+@media (max-width: 640px) {
+  /* Keep long player names inside the compact constellation label spacing. */
+  .site-page .star-label > span {
+    font-size: 0.7rem;
+    line-height: 1.15;
+  }
+}

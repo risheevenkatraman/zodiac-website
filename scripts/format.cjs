@@ -17,7 +17,14 @@ async function main() {
   for (const file of files) {
     const info = await prettier.getFileInfo(file, { ignorePath: '.prettierignore' });
     if (info.ignored) continue;
-    const source = await fs.readFile(file, 'utf8');
+    let source;
+    try {
+      source = await fs.readFile(file, 'utf8');
+    } catch (error) {
+      // Git still lists locally deleted files until the deletion is staged.
+      if (error.code === 'ENOENT') continue;
+      throw error;
+    }
     const options = { ...(await prettier.resolveConfig(file)), filepath: file };
     if (checking) {
       if (!(await prettier.check(source, options))) {

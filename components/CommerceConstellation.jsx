@@ -1,6 +1,6 @@
 import { insideLogo } from '../lib/constellation-shape';
 import points from '../assets/constellations/banner-stars.json';
-import Constellation from './Constellation';
+import HomeStarMotion from './HomeStarMotion';
 
 // Combine the original stars into a few paths: preserve the artwork without
 // thousands of independent DOM nodes and concurrent CSS animations.
@@ -33,22 +33,14 @@ points.forEach(([x, y, r], i) => {
 export default function CommerceConstellation() {
   return (
     <div className="commerce-header-art">
-      <Constellation house="zodiac" variant="hero">
+      <HomeStarMotion>
         <div className="constellation-map hero-star-map">
           <svg viewBox="210 40 480 480" role="img" aria-labelledby="commerce-logo-title">
             <title id="commerce-logo-title">
               Zodiac logo surrounded by Chinese zodiac animals in white and purple stars
             </title>
             {layers.map((paths, index) => (
-              <g
-                key={index}
-                className="commerce-star-layer"
-                style={{
-                  '--layer-delay': `${(index % 4) * 110}ms`,
-                  '--arrival-x': `${(Math.cos((index * Math.PI) / 6) * (150 + (index % 3) * 35)).toFixed(2)}px`,
-                  '--arrival-y': `${(Math.sin((index * Math.PI) / 6) * (150 + (index % 3) * 35)).toFixed(2)}px`,
-                }}
-              >
+              <g key={index} className="home-star-cluster">
                 {paths.map((d, color) => (
                   <path
                     key={color}
@@ -61,7 +53,7 @@ export default function CommerceConstellation() {
             ))}
           </svg>
         </div>
-      </Constellation>
+      </HomeStarMotion>
     </div>
   );
 }

@@ -1,0 +1,65 @@
+[
+  {
+    "page": "teams/overwatch-team1.html",
+    "name": "Zodiac",
+    "game": "Overwatch",
+    "image": "assets/uploads/zodiac-logo.png",
+    "eyebrow": "Overwatch · Flagship team",
+    "description": "Our main competitive Overwatch roster.",
+    "title": "Zodiac — Overwatch | Zodiac Esports"
+  },
+  {
+    "page": "teams/overwatch-team2.html",
+    "name": "Piggies",
+    "game": "Overwatch",
+    "image": "assets/uploads/piggies-logo.png",
+    "eyebrow": "Overwatch · Academy team",
+    "description": "Our development roster and next generation of talent.",
+    "title": "Piggies — Overwatch | Zodiac Esports"
+  },
+  {
+    "page": "teams/overwatch-team3.html",
+    "name": "Ox",
+    "game": "Overwatch",
+    "image": "assets/uploads/ox-logo.png",
+    "eyebrow": "Overwatch · Academy team",
+    "description": "A disciplined academy roster built to compete and grow.",
+    "title": "Ox — Overwatch | Zodiac Esports"
+  },
+  {
+    "page": "teams/overwatch-team4.html",
+    "name": "Goats",
+    "game": "Overwatch",
+    "image": "assets/uploads/goats-logo.png",
+    "eyebrow": "Overwatch · Academy team",
+    "description": "An ambitious academy roster making its mark.",
+    "title": "Goats — Overwatch | Zodiac Esports"
+  },
+  {
+    "page": "teams/overwatch-team5.html",
+    "name": "Monkeys",
+    "game": "Overwatch",
+    "image": "assets/uploads/monkey-logo.png",
+    "eyebrow": "Overwatch · Academy team",
+    "description": "The Monkeys academy roster is coming soon.",
+    "title": "Monkeys — Overwatch | Zodiac Esports"
+  },
+  {
+    "page": "teams/valorant-team1.html",
+    "name": "Zodiac",
+    "game": "VALORANT",
+    "image": "assets/uploads/zodiac-logo.png",
+    "eyebrow": "VALORANT · Flagship team",
+    "description": "Our flagship VALORANT roster is coming soon.",
+    "title": "Zodiac — VALORANT | Zodiac Esports"
+  },
+  {
+    "page": "teams/valorant-team2.html",
+    "name": "Tigers",
+    "game": "VALORANT",
+    "image": "assets/uploads/tigers-logo.png",
+    "eyebrow": "VALORANT · Academy team",
+    "description": "A competitive VALORANT roster representing Zodiac Esports.",
+    "title": "Tigers — VALORANT | Zodiac Esports"
+  }
+]
