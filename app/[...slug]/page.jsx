@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import SitePage from '../../components/SitePage';
 import { pageFiles, readPage } from '../../lib/content';
+import { pageMetadata } from '../../lib/seo';
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -11,10 +12,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const page = readPage(slug.join('/') + '.html');
-  return {
-    title: page?.title || 'Page not found',
-    ...(page?.description ? { description: page.description } : {}),
-  };
+  return pageMetadata(page);
 }
 export default async function ContentPage({ params }) {
   const { slug } = await params;

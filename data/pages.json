@@ -1,7 +1,8 @@
 {
   "account.html": {
     "title": "Your Stars | Zodiac Esports",
-    "bodyClass": "account-page"
+    "bodyClass": "account-page",
+    "description": "Join Zodiac Stars, our supporter rewards program. Sign in to view your account, track Stars, and explore lifetime membership tiers."
   },
   "index.html": {
     "title": "Zodiac Esports — Written in the Stars",
@@ -15,18 +16,22 @@
   },
   "socials.html": {
     "title": "Socials — Zodiac Esports",
-    "bodyClass": ""
+    "bodyClass": "",
+    "description": "Connect with Zodiac Esports on X and Discord. Follow team updates and join our Overwatch and VALORANT community."
   },
   "staff.html": {
     "title": "Staff — Zodiac Esports",
-    "bodyClass": ""
+    "bodyClass": "",
+    "description": "Meet the staff behind Zodiac Esports. Get to know the people supporting our players, teams, and gaming community."
   },
   "store.html": {
     "title": "Store — Zodiac Esports",
-    "bodyClass": ""
+    "bodyClass": "",
+    "description": "Explore official Zodiac Esports merchandise and represent your team. Browse the collection and shop through our Shopify checkout."
   },
   "teams.html": {
     "title": "Teams — Zodiac Esports",
-    "bodyClass": ""
+    "bodyClass": "",
+    "description": "Explore Zodiac Esports teams competing in Overwatch and VALORANT. Meet our flagship and academy rosters and discover their players."
   }
 }
