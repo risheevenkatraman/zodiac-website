@@ -25,11 +25,6 @@ export default function TeamsContent() {
             <h4>Piggies</h4>
             <p>Academy team</p>
           </PageLink>
-          <PageLink className="team-card" href="teams/overwatch-team3.html">
-            <img src={asset('assets/uploads/ox-logo.png')} alt="Ox team logo" />
-            <h4>Ox</h4>
-            <p>Academy team</p>
-          </PageLink>
           <PageLink className="team-card" href="teams/overwatch-team4.html">
             <img src={asset('assets/uploads/goats-logo.png')} alt="Goats team logo" />
             <h4>Goats</h4>

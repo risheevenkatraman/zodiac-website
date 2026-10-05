@@ -121,8 +121,25 @@
     "game": "Overwatch",
     "players": [
       {
+        "id": "overwatch-team2-georan",
+        "name": "Georan",
+        "role": "Support",
+        "introduction": "I’ve been playing video games for most of my life and love competing. I have a wide range of hobbies including playing the piano, working on my car, rock climbing, and of course Overwatch. I love improving in all aspects of life and am excited to prove that I can be one of the best. ",
+        "socials": [
+          {
+            "label": "X/Twitter",
+            "url": "https://x.com/georan_fps?s=20"
+          }
+        ],
+        "signature": {
+          "name": "Baptiste",
+          "image": "assets/uploads/Icon-Baptiste.webp"
+        },
+        "image": "assets/uploads/georan-pfp.jpeg"
+      },
+      {
         "id": "overwatch-team2-samir",
-        "name": "SamiR",
+        "name": "Samir",
         "role": "Tank",
         "introduction": "One could even say, thank god for Mir. Without him, we’d have to find someone else to blame.",
         "socials": [
@@ -136,6 +153,31 @@
           "image": "assets/uploads/Hazard_Hero.webp"
         },
         "image": "assets/uploads/samir-pfp.webp"
+      },
+      {
+        "id": "overwatch-team3-zeusa",
+        "name": "Zeusa",
+        "role": "Support",
+        "introduction": "just the same old saudi fs growing older and older and wiser kinda",
+        "socials": [
+          {
+            "label": "X/Twitter",
+            "url": "https://x.com/0Zeusa0?s=20"
+          },
+          {
+            "label": "Twitch",
+            "url": "https://www.twitch.tv/zeusa_ow"
+          },
+          {
+            "label": "TikTok",
+            "url": "https://www.tiktok.com/@zeusa_ow"
+          }
+        ],
+        "signature": {
+          "name": "Ana",
+          "image": "assets/uploads/Ana_Hero.webp"
+        },
+        "image": "assets/uploads/zeus-pfp.jpeg"
       },
       {
         "id": "overwatch-team2-deatorean",
@@ -163,141 +205,8 @@
         "image": "assets/uploads/deat-pfp.png"
       },
       {
-        "id": "overwatch-team2-cristehn",
-        "name": "Cristehn",
-        "role": "Damage",
-        "introduction": "Hello, my name is Christian, and I’m a competitive Overwatch player who enjoys improving and pushing myself to become a better player and a better version of myself. I’ve been competing since I was around 14 years old, winning multiple amateur leagues and continuing to pursue my goal of making a name for myself.",
-        "socials": [
-          {
-            "label": "X/Twitter",
-            "url": "https://x.com/cristehn?s=20"
-          },
-          {
-            "label": "Twitch",
-            "url": "https://www.twitch.tv/cristehn"
-          }
-        ],
-        "signature": {
-          "name": "Tracer",
-          "image": "assets/uploads/Icon-Tracer.webp"
-        },
-        "image": "assets/uploads/cristehn-pfp.jpg"
-      },
-      {
-        "id": "overwatch-team2-sealceo",
-        "name": "SealCEO",
-        "role": "Support",
-        "introduction": "Playing in faceit since season 2. I love jetpack cat!",
-        "socials": [
-          {
-            "label": "X/Twitter",
-            "url": "https://x.com/sealceo?s=20"
-          },
-          {
-            "label": "Twitch",
-            "url": "https://www.twitch.tv/sealceo"
-          }
-        ],
-        "signature": {
-          "name": "Jetpack Cat",
-          "image": "assets/uploads/Jetpack_Cat_Hero.webp"
-        },
-        "image": "assets/uploads/sealceo-pfp.png"
-      },
-      {
-        "id": "overwatch-team2-penguingamer",
-        "name": "Penguingamer",
-        "role": "Support",
-        "introduction": "Im a chill passionate gamer who tries to do whatever it takes to win. I stream on the side and try to have as much fun as i can no matter what im doing. Im always aiming to improve whether its to improve in a game or in real life.",
-        "socials": [
-          {
-            "label": "X/Twitter",
-            "url": "https://x.com/pengiswingis?s=20"
-          },
-          {
-            "label": "Twitch",
-            "url": "https://www.twitch.tv/Penguingamer552"
-          },
-          {
-            "label": "YouTube",
-            "url": "https://www.youtube.com/@empoleondynamite.8275"
-          },
-          {
-            "label": "TikTok",
-            "url": "https://www.tiktok.com/@Penguingamer123"
-          }
-        ],
-        "signature": {
-          "name": "Lucio",
-          "image": "assets/uploads/Lucio.webp"
-        },
-        "image": "assets/uploads/penguingamer-pfp.webp"
-      },
-      {
-        "id": "overwatch-team2-georan",
-        "name": "Georan",
-        "role": "Support",
-        "introduction": "I’ve been playing video games for most of my life and love competing. I have a wide range of hobbies including playing the piano, working on my car, rock climbing, and of course Overwatch. I love improving in all aspects of life and am excited to prove that I can be one of the best. ",
-        "socials": [
-          {
-            "label": "X/Twitter",
-            "url": "https://x.com/georan_fps?s=20"
-          }
-        ],
-        "signature": {
-          "name": "Baptiste",
-          "image": "assets/uploads/Icon-Baptiste.webp"
-        },
-        "image": "assets/uploads/georan-pfp.jpeg"
-      }
-    ]
-  },
-  {
-    "page": "teams/overwatch-team3.html",
-    "name": "Ox",
-    "game": "Overwatch",
-    "players": [
-      {
-        "id": "overwatch-team3-alright",
-        "name": "ALright",
-        "role": "Tank",
-        "introduction": "Tank&Coach on Ox",
-        "socials": [
-          {
-            "label": "X/Twitter",
-            "url": "https://x.com/ALright_ow?s=20"
-          },
-          {
-            "label": "Instagram",
-            "url": "https://www.instagram.com/alr6_22"
-          }
-        ],
-        "signature": {
-          "name": "Wrecking Ball",
-          "image": "assets/uploads/Wrecking_Ball_Hero.webp"
-        },
-        "image": "assets/uploads/alright-pfp.jpeg"
-      },
-      {
-        "id": "overwatch-team3-xdnoo6",
-        "name": "YUQI",
-        "role": "Damage",
-        "introduction": "Main dps on Ox",
-        "socials": [
-          {
-            "label": "X/Twitter",
-            "url": "https://x.com/ow_yuqi?s=20"
-          }
-        ],
-        "signature": {
-          "name": "Hanzo",
-          "image": "assets/uploads/Hanzo_Hero.webp"
-        },
-        "image": "assets/uploads/profile-placeholder.svg"
-      },
-      {
         "id": "overwatch-team3-v-id",
-        "name": "Vøid",
+        "name": "Void",
         "role": "Damage",
         "introduction": "New kid on the block tryna make it big and taking my team to a new level",
         "socials": [
@@ -321,46 +230,25 @@
         "image": "assets/uploads/void-pfp.jpg"
       },
       {
-        "id": "overwatch-team3-baksa",
-        "name": "Baksa",
-        "role": "Support",
-        "introduction": "Spt on Ox",
+        "id": "overwatch-team2-cristehn",
+        "name": "Cristehn",
+        "role": "Damage",
+        "introduction": "Hello, my name is Christian, and I’m a competitive Overwatch player who enjoys improving and pushing myself to become a better player and a better version of myself. I’ve been competing since I was around 14 years old, winning multiple amateur leagues and continuing to pursue my goal of making a name for myself.",
         "socials": [
           {
             "label": "X/Twitter",
-            "url": "https://x.com/baksa_0w?s=20"
-          }
-        ],
-        "signature": {
-          "name": "Lifeweaver",
-          "image": "assets/uploads/Icon-Lifeweaver.webp"
-        },
-        "image": "assets/uploads/profile-placeholder.svg"
-      },
-      {
-        "id": "overwatch-team3-zeusa",
-        "name": "zeusa",
-        "role": "Support",
-        "introduction": "just the same old saudi fs growing older and older and wiser kinda",
-        "socials": [
-          {
-            "label": "X/Twitter",
-            "url": "https://x.com/0Zeusa0?s=20"
+            "url": "https://x.com/cristehn?s=20"
           },
           {
             "label": "Twitch",
-            "url": "https://www.twitch.tv/zeusa_ow"
-          },
-          {
-            "label": "TikTok",
-            "url": "https://www.tiktok.com/@zeusa_ow"
+            "url": "https://www.twitch.tv/cristehn"
           }
         ],
         "signature": {
-          "name": "Ana",
-          "image": "assets/uploads/Ana_Hero.webp"
+          "name": "Tracer",
+          "image": "assets/uploads/Icon-Tracer.webp"
         },
-        "image": "assets/uploads/zeus-pfp.jpeg"
+        "image": "assets/uploads/cristehn-pfp.jpg"
       }
     ]
   },

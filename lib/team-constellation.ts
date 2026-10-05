@@ -5,7 +5,6 @@ import contours from '../assets/constellations/contours.json';
 const houses: Record<string, [keyof typeof points, string]> = {
   Zodiac: ['zodiac', 'The flagship constellation'],
   Piggies: ['pig', 'House of the Pig'],
-  Ox: ['ox', 'House of the Ox'],
   Goats: ['goat', 'House of the Goat'],
   Monkeys: ['monkey', 'House of the Monkey'],
   Tigers: ['tiger', 'House of the Tiger'],
