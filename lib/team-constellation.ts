@@ -1,4 +1,5 @@
 import type { Team } from './types';
+import { comparePlayerRoles } from './player-order';
 import points from '../assets/constellations/points.json';
 import contours from '../assets/constellations/contours.json';
 
@@ -81,7 +82,7 @@ export function teamConstellation(team: Team) {
   const split = Math.ceil(assigned.length / 2);
   const labels = [assigned.slice(0, split), assigned.slice(split)].flatMap((members, side) =>
     members
-      .sort((a, b) => a.point[1] - b.point[1])
+      .sort((a, b) => comparePlayerRoles(a.player, b.player) || a.point[1] - b.point[1])
       .map((member, index) => ({
         ...member,
         side: side === 0 ? 'left' : 'right',

@@ -1,5 +1,6 @@
 import type { TeamPage } from '../../lib/types';
 import { asset } from '../../lib/paths';
+import { playersByRole } from '../../lib/player-order';
 import Roster from '../Roster';
 import TeamConstellation from '../TeamConstellation';
 
@@ -18,7 +19,7 @@ export default function TeamContent({ page: { team } }: { page: TeamPage }) {
       {team.players.length ? (
         <>
           <h3>Roster</h3>
-          <Roster players={team.players} />
+          <Roster players={playersByRole(team.players)} />
         </>
       ) : (
         <section className="coming-soon">
