@@ -26,3 +26,9 @@ The neighboring logo orbit below the muzzle is excluded, removing the stray
 fire-like strokes. The head is enlarged to 360 units and shared by the homepage.
 Dragons uses #4898B8 on both maps. Its SVG logo embeds the original Zodiac mark
 and recolors its alpha silhouette.
+
+The matching 240 x 240 transparent PNG marks for monkey, dragon, and zodiac are
+exported from the existing vector contours by
+`python scripts/export_constellation_marks.py` (Playwright and Edge required).
+The exporter skips existing PNGs. These are source-shape assets; page-specific
+star spacing and detail reduction remain in lib/team-constellation.ts.

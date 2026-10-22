@@ -41,12 +41,12 @@ function outlineStars(contour: string) {
 
 // Banner-derived marks have narrow strokes: sample both layers together so
 // tracing stars cannot pile up on the main stars along eyes, horns and curls.
-function spacedStars(dust: number[][], detail: number[][]) {
+function spacedStars(dust: number[][], detail: number[][], minimumSpacing = 3) {
   const placed: number[][] = [];
   const retain = (stars: number[][]) =>
     stars.filter((star) => {
       const overlaps = placed.some((other) => {
-        const spacing = Math.max(3, (star[2] + other[2]) * 1.2);
+        const spacing = Math.max(minimumSpacing, (star[2] + other[2]) * 1.2);
         return distance(star, other) < spacing ** 2;
       });
       if (overlaps) return false;
@@ -54,6 +54,19 @@ function spacedStars(dust: number[][], detail: number[][]) {
       return true;
     });
   return { dust: retain(dust), detail: retain(detail) };
+}
+
+// Remove ornamental curls inside the original mark, keeping its facial strokes,
+// horns and outer neck. These masks select existing stars, not a new outline.
+function dragonSilhouette([x, y]: number[]) {
+  const ornaments = [
+    [447, 288, 31, 27], // inner cheek spiral
+    [507, 421, 42, 29], // lower neck curls
+    [560, 349, 24, 27], // small mane curl
+    [566, 302, 24, 19], // inner mane flourish
+    [469, 211, 18, 23], // secondary temple arc
+  ];
+  return !ornaments.some(([cx, cy, rx, ry]) => ((x - cx) / rx) ** 2 + ((y - cy) / ry) ** 2 < 1);
 }
 
 // Runs in a Server Component at build time; artwork and roster geometry stay off the client.
@@ -126,12 +139,18 @@ export function teamConstellation(team: Team) {
   });
   const stars =
     shape === 'dragon'
-      ? spacedStars(
-          dragonOutline,
-          dust.map(([x, y, r]) => [x, y, Math.min(r, 1), 0.65]),
-        )
+      ? spacedStars(dragonOutline.filter(dragonSilhouette), [], 4)
       : bannerShape
         ? spacedStars(dust, detail)
         : { dust, detail };
-  return { shape, house, edges, labels, ...stars };
+  const visibleEdges =
+    shape === 'dragon'
+      ? edges.filter(
+          ([a, b]) =>
+            dragonSilhouette(a) &&
+            dragonSilhouette(b) &&
+            dragonSilhouette([(a[0] + b[0]) / 2, (a[1] + b[1]) / 2]),
+        )
+      : edges;
+  return { shape, house, edges: visibleEdges, labels, ...stars };
 }
