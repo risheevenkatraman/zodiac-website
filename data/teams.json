@@ -52,5 +52,14 @@
     "eyebrow": "VALORANT · Academy team",
     "description": "A competitive VALORANT roster representing Zodiac Esports.",
     "title": "Tigers — VALORANT | Zodiac Esports"
+  },
+  {
+    "page": "teams/valorant-team3.html",
+    "name": "Zodiac Dragons",
+    "game": "VALORANT",
+    "image": "assets/uploads/dragons-logo.svg",
+    "eyebrow": "VALORANT · Game Changers",
+    "description": "Our VALORANT Game Changers team. Roster announcements coming soon.",
+    "title": "Zodiac Dragons — VALORANT Game Changers | Zodiac Esports"
   }
 ]

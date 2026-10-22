@@ -9,6 +9,7 @@ const houses: Record<string, [keyof typeof points, string]> = {
   Goats: ['goat', 'House of the Goat'],
   Monkeys: ['monkey', 'House of the Monkey'],
   Tigers: ['tiger', 'House of the Tiger'],
+  'Zodiac Dragons': ['dragon', 'House of the Dragon'],
 };
 const distance = (a: number[], b: number[]) => (a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2;
 

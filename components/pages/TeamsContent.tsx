@@ -5,7 +5,7 @@ export default function TeamsContent() {
   return (
     <>
       <h1>Our Teams</h1>
-      <p>Our flagship and academy rosters across Overwatch and VALORANT.</p>
+      <p>Our flagship, academy, and Game Changers rosters across Overwatch and VALORANT.</p>
 
       <section>
         <h3>Overwatch</h3>
@@ -40,6 +40,11 @@ export default function TeamsContent() {
             <img src={asset('assets/uploads/zodiac-logo.png')} alt="Zodiac team logo" />
             <h4>Zodiac</h4>
             <p>Flagship team</p>
+          </PageLink>
+          <PageLink className="team-card" href="teams/valorant-team3.html">
+            <img src={asset('assets/uploads/dragons-logo.svg')} alt="Zodiac Dragons team logo" />
+            <h4>Zodiac Dragons</h4>
+            <p>Game Changers team</p>
           </PageLink>
           <PageLink className="team-card" href="teams/valorant-team2.html">
             <img src={asset('assets/uploads/tigers-logo.png')} alt="Tigers team logo" />

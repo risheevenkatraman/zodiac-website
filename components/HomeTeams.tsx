@@ -33,6 +33,15 @@ const teams = [
     rx: 36,
     ry: 39,
   },
+  {
+    name: 'Zodiac Dragons',
+    route: 'valorant-team3',
+    color: '#4898B8',
+    x: 617,
+    y: 192,
+    rx: 38,
+    ry: 41,
+  },
   { name: 'Tigers', route: 'valorant-team2', color: '#ff7000', x: 446, y: 100, rx: 39, ry: 35 },
 ];
 const clusters = Array.from({ length: 16 }, (): Record<string, string> => ({}));

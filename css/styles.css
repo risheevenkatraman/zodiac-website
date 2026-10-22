@@ -1470,6 +1470,10 @@ main:has(.team-constellation[data-house='monkey']) {
   --house-color: #dc143c;
   --house-light: #ff91a7;
 }
+main:has(.team-constellation[data-house='dragon']) {
+  --house-color: #4898b8;
+  --house-light: #a5d6e8;
+}
 main:has(.team-constellation[data-house='tiger']) {
   --house-color: #ff7000;
 }
