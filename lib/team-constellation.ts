@@ -117,6 +117,21 @@ export function teamConstellation(team: Team) {
     Number((0.55 + (i % 6) / 12).toFixed(2)),
   ]);
   const detail = outlineStars(contours[shape]);
-  const stars = bannerShape ? spacedStars(dust, detail) : { dust, detail };
+  // Retain the original dragon's silhouette before adding background dust.
+  // Prioritizing sampled dust erased small facial strokes; inventing new facial
+  // outlines changed the mark. Both layers now follow the source artwork.
+  const dragonOutline = detail.map(([x, y], i) => {
+    const variation = ((i * 73 + 19) % 101) / 100;
+    return [x, y, 0.8 + variation * variation * 1.05, 0.8 + variation * 0.2];
+  });
+  const stars =
+    shape === 'dragon'
+      ? spacedStars(
+          dragonOutline,
+          dust.map(([x, y, r]) => [x, y, Math.min(r, 1), 0.65]),
+        )
+      : bannerShape
+        ? spacedStars(dust, detail)
+        : { dust, detail };
   return { shape, house, edges, labels, ...stars };
 }

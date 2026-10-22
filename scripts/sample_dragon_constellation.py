@@ -36,7 +36,7 @@ def main():
                 // Keep the original dragon face, horns, mane and curled neck.
                 if ((x < 48 && y > 100) || (x < 25 && y > 85)) continue;
                 const i = (y * 160 + x) * 4;
-                if (data[i+3] > 100 && Math.max(...data.slice(i, i+3)) - Math.min(...data.slice(i, i+3)) > 40)
+                if (data[i+3] > 100 && Math.max(...data.slice(i, i+3)) - Math.min(...data.slice(i, i+3)) > 15)
                     pixels.push([x, y]);
             }
             return pixels;
@@ -66,4 +66,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
