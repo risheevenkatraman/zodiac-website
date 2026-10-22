@@ -45,10 +45,22 @@ const teams = [
   },
   { name: 'Tigers', route: 'valorant-team2', color: '#ff7000', x: 446, y: 100, rx: 39, ry: 35 },
 ];
-// Replace the original banner dragon with the same head used on its team page.
+// The enlarged dragon starts from denser team-page samples. Separate its stars
+// at the homepage scale while retaining the fine facial strokes.
+const dragonStars: number[][] = [];
+for (const [x, y, r] of animalPoints.dragon) {
+  const star = [617 + (x - 450) * 0.23, 192 + (y - 280) * 0.23, r, 0];
+  if (dragonStars.every(([sx, sy]) => (star[0] - sx) ** 2 + (star[1] - sy) ** 2 >= 1.2 ** 2)) {
+    dragonStars.push(star);
+  }
+}
+// Replace the banner dragon, preserving the logo's orbit where the regions overlap.
+// Carry source ownership so restored logo stars don't inherit the dragon's color.
 const points = [
-  ...bannerPoints.filter(([x, y]) => !(((x - 617) / 38) ** 2 + ((y - 192) / 41) ** 2 < 1.25)),
-  ...animalPoints.dragon.map(([x, y, r]) => [617 + (x - 450) * 0.23, 192 + (y - 280) * 0.23, r]),
+  ...bannerPoints
+    .filter(([x, y]) => insideLogo(x, y) || !(((x - 617) / 38) ** 2 + ((y - 192) / 41) ** 2 < 1.25))
+    .map(([x, y, r]) => [x, y, r, Number(insideLogo(x, y))]),
+  ...dragonStars,
 ];
 const clusters = Array.from({ length: 16 }, (): Record<string, string> => ({}));
 const anchorCells = new Set();
@@ -65,12 +77,12 @@ const sampleCell = (x: number, y: number) => [
   Math.floor((y - 60) / 1.76 + 0.01),
 ];
 const occupied = new Set(points.map(([x, y]) => sampleCell(x, y).join(',')));
-points.forEach(([x, y, r], i) => {
-  const animal = teams
-    .slice(2)
-    .find((t) => ((x - t.x) / t.rx) ** 2 + ((y - t.y) / t.ry) ** 2 < 1.25);
+points.forEach(([x, y, r, logo], i) => {
+  const central = Boolean(logo);
+  const animal = central
+    ? undefined
+    : teams.slice(2).find((t) => ((x - t.x) / t.rx) ** 2 + ((y - t.y) / t.ry) ** 2 < 1.25);
   const goat = animal?.name === 'Goats';
-  const central = !animal && insideLogo(x, y);
   if (central) {
     const [cx, cy] = sampleCell(x, y);
     const edge = [
