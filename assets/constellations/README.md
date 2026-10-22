@@ -20,7 +20,9 @@ from the local marks with `python scripts/trace_constellations.py` (requires
 Playwright and Edge), then run the normal player generator. House colors in
 `css/styles.css` match the existing logos: pink, blue, silver, orange, and purple.
 
-The dragon is sampled from the upper-right dragon mark in the local Zodiac banner
-with `python scripts/sample_dragon_constellation.py` (Playwright and Edge required).
-Zodiac Dragons uses #4898B8 on its team page and the matching homepage star cluster.
-Its SVG logo embeds the original Zodiac mark and recolors its alpha silhouette.
+The dragon uses the original banner artwork, sampled with
+`scripts/sample_dragon_constellation.py` (Playwright and Edge required).
+The neighboring logo orbit below the muzzle is excluded, removing the stray
+fire-like strokes. The head is enlarged to 360 units and shared by the homepage.
+Dragons uses #4898B8 on both maps. Its SVG logo embeds the original Zodiac mark
+and recolors its alpha silhouette.

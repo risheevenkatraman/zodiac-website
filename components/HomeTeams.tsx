@@ -1,5 +1,6 @@
 import { insideLogo } from '../lib/constellation-shape';
-import points from '../assets/constellations/banner-stars-dense.json';
+import bannerPoints from '../assets/constellations/banner-stars-dense.json';
+import animalPoints from '../assets/constellations/points.json';
 import { basePath } from '../lib/paths';
 import HomeTeamsMotion from './HomeTeamsMotion';
 
@@ -34,7 +35,7 @@ const teams = [
     ry: 39,
   },
   {
-    name: 'Zodiac Dragons',
+    name: 'Dragons',
     route: 'valorant-team3',
     color: '#4898B8',
     x: 617,
@@ -43,6 +44,11 @@ const teams = [
     ry: 41,
   },
   { name: 'Tigers', route: 'valorant-team2', color: '#ff7000', x: 446, y: 100, rx: 39, ry: 35 },
+];
+// Replace the original banner dragon with the same head used on its team page.
+const points = [
+  ...bannerPoints.filter(([x, y]) => !(((x - 617) / 38) ** 2 + ((y - 192) / 41) ** 2 < 1.25)),
+  ...animalPoints.dragon.map(([x, y, r]) => [617 + (x - 450) * 0.23, 192 + (y - 280) * 0.23, r]),
 ];
 const clusters = Array.from({ length: 16 }, (): Record<string, string> => ({}));
 const anchorCells = new Set();

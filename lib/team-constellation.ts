@@ -9,7 +9,7 @@ const houses: Record<string, [keyof typeof points, string]> = {
   Goats: ['goat', 'House of the Goat'],
   Monkeys: ['monkey', 'House of the Monkey'],
   Tigers: ['tiger', 'House of the Tiger'],
-  'Zodiac Dragons': ['dragon', 'House of the Dragon'],
+  Dragons: ['dragon', 'House of the Dragon'],
 };
 const distance = (a: number[], b: number[]) => (a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2;
 
@@ -37,6 +37,23 @@ function outlineStars(contour: string) {
     });
   }
   return stars;
+}
+
+// Banner-derived marks have narrow strokes: sample both layers together so
+// tracing stars cannot pile up on the main stars along eyes, horns and curls.
+function spacedStars(dust: number[][], detail: number[][]) {
+  const placed: number[][] = [];
+  const retain = (stars: number[][]) =>
+    stars.filter((star) => {
+      const overlaps = placed.some((other) => {
+        const spacing = Math.max(3, (star[2] + other[2]) * 1.2);
+        return distance(star, other) < spacing ** 2;
+      });
+      if (overlaps) return false;
+      placed.push(star);
+      return true;
+    });
+  return { dust: retain(dust), detail: retain(detail) };
 }
 
 // Runs in a Server Component at build time; artwork and roster geometry stay off the client.
@@ -91,11 +108,15 @@ export function teamConstellation(team: Team) {
         labelY: 560 * (members.length > 1 ? 0.16 + (0.68 * index) / (members.length - 1) : 0.5),
       })),
   );
+  const bannerShape = shape === 'monkey' || shape === 'dragon';
   const dust = cloud.map(([x, y, r], i) => [
     x,
     y,
-    Number((r * 1.15).toFixed(2)),
+    // Keep most stars fine, with occasional larger anchors, like the other houses.
+    Number((bannerShape ? 0.6 + ((r - 0.5) / 1.3) ** 2 * 1.45 : r * 1.15).toFixed(2)),
     Number((0.55 + (i % 6) / 12).toFixed(2)),
   ]);
-  return { shape, house, edges, labels, dust, detail: outlineStars(contours[shape]) };
+  const detail = outlineStars(contours[shape]);
+  const stars = bannerShape ? spacedStars(dust, detail) : { dust, detail };
+  return { shape, house, edges, labels, ...stars };
 }

@@ -11,6 +11,13 @@ from trace_constellations import trace
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def enlarged_contour(pixels):
+    import re
+    return re.sub(r'(-?[\d.]+),(-?[\d.]+)',
+                  lambda m: f'{450 + (float(m[1]) - 450) * 360 / 330:.1f},{280 + (float(m[2]) - 280) * 360 / 330:.1f}',
+                  trace(pixels))
+
+
 def main():
     source = base64.b64encode((ROOT / 'assets/uploads/zodiac-banner.png').read_bytes()).decode()
     with sync_playwright() as p:
@@ -25,6 +32,9 @@ def main():
             ctx.drawImage(image, 910, 105, 85, 90, 0, 0, 160, 160);
             const {data} = ctx.getImageData(0, 0, 160, 160), pixels = [];
             for (let y = 0; y < 160; y++) for (let x = 0; x < 160; x++) {
+                // Exclude the neighboring Zodiac logo's orbit below the muzzle.
+                // Keep the original dragon face, horns, mane and curled neck.
+                if ((x < 48 && y > 100) || (x < 25 && y > 85)) continue;
                 const i = (y * 160 + x) * 4;
                 if (data[i+3] > 100 && Math.max(...data.slice(i, i+3)) - Math.min(...data.slice(i, i+3)) > 40)
                     pixels.push([x, y]);
@@ -33,7 +43,7 @@ def main():
         }''', source)
         browser.close()
     xs, ys = zip(*pixels)
-    scale = 330 / max(max(xs) - min(xs), max(ys) - min(ys))
+    scale = 360 / max(max(xs) - min(xs), max(ys) - min(ys))
     cx, cy = (min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2
     # Match the other houses' scattered dust and varied radii, rather than
     # plotting identical stars on every second pixel of a regular grid.
@@ -46,7 +56,7 @@ def main():
     points = [[round(450 + (x-cx)*scale, 1), round(280 + (y-cy)*scale, 1),
                round(rng.uniform(0.5, 1.8), 2)]
               for x, y in weighted[:850]]
-    for filename, value in [('points.json', points), ('contours.json', trace(pixels))]:
+    for filename, value in [('points.json', points), ('contours.json', enlarged_contour(pixels))]:
         path = ROOT / 'assets/constellations' / filename
         data = json.loads(path.read_text())
         data['dragon'] = value
@@ -56,3 +66,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
