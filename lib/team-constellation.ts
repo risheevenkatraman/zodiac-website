@@ -56,6 +56,16 @@ function spacedStars(dust: number[][], detail: number[][], minimumSpacing = 3) {
   return { dust: retain(dust), detail: retain(detail) };
 }
 
+// Shared by the team page and homepage so the dragon's fine strokes stay identical.
+export const dragonStars = spacedStars(
+  outlineStars(contours.dragon).map(([x, y], i) => {
+    const variation = ((i * 73 + 19) % 101) / 100;
+    return [x, y, 0.8 + variation * variation * 1.05, 0.8 + variation * 0.2];
+  }),
+  [],
+  4,
+).dust;
+
 // Runs in a Server Component at build time; artwork and roster geometry stay off the client.
 export function teamConstellation(team: Team) {
   const [shape, house] = houses[team.name];
@@ -117,14 +127,9 @@ export function teamConstellation(team: Team) {
     Number((0.55 + (i % 6) / 12).toFixed(2)),
   ]);
   const detail = outlineStars(contours[shape]);
-  // Trace the PNG details with separated stars, preserving its curls and facial strokes.
-  const dragonOutline = detail.map(([x, y], i) => {
-    const variation = ((i * 73 + 19) % 101) / 100;
-    return [x, y, 0.8 + variation * variation * 1.05, 0.8 + variation * 0.2];
-  });
   const stars =
     shape === 'dragon'
-      ? spacedStars(dragonOutline, [], 4)
+      ? { dust: dragonStars, detail: [] }
       : bannerShape
         ? spacedStars(dust, detail)
         : { dust, detail };

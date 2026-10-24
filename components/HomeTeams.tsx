@@ -1,6 +1,6 @@
 import { insideLogo } from '../lib/constellation-shape';
 import bannerPoints from '../assets/constellations/banner-stars-dense.json';
-import animalPoints from '../assets/constellations/points.json';
+import { dragonStars } from '../lib/team-constellation';
 import { basePath } from '../lib/paths';
 import HomeTeamsMotion from './HomeTeamsMotion';
 
@@ -45,22 +45,21 @@ const teams = [
   },
   { name: 'Tigers', route: 'valorant-team2', color: '#ff7000', x: 446, y: 100, rx: 39, ry: 35 },
 ];
-// The enlarged dragon starts from denser team-page samples. Separate its stars
-// at the homepage scale while retaining the fine facial strokes.
-const dragonStars: number[][] = [];
-for (const [x, y, r] of animalPoints.dragon) {
-  const star = [617 + (x - 450) * 0.23, 192 + (y - 280) * 0.23, r, 0];
-  if (dragonStars.every(([sx, sy]) => (star[0] - sx) ** 2 + (star[1] - sy) ** 2 >= 1.2 ** 2)) {
-    dragonStars.push(star);
-  }
-}
+// Scale the team-page outline, including star sizes and brightness, into the atlas.
+const homeDragonStars = dragonStars.map(([x, y, r, opacity]) => [
+  617 + (x - 450) * 0.23,
+  192 + (y - 280) * 0.23,
+  r * 0.23,
+  0,
+  opacity,
+]);
 // Replace the banner dragon, preserving the logo's orbit where the regions overlap.
 // Carry source ownership so restored logo stars don't inherit the dragon's color.
 const points = [
   ...bannerPoints
     .filter(([x, y]) => insideLogo(x, y) || !(((x - 617) / 38) ** 2 + ((y - 192) / 41) ** 2 < 1.25))
     .map(([x, y, r]) => [x, y, r, Number(insideLogo(x, y))]),
-  ...dragonStars,
+  ...homeDragonStars,
 ];
 const clusters = Array.from({ length: 16 }, (): Record<string, string> => ({}));
 const anchorCells = new Set();
@@ -77,11 +76,14 @@ const sampleCell = (x: number, y: number) => [
   Math.floor((y - 60) / 1.76 + 0.01),
 ];
 const occupied = new Set(points.map(([x, y]) => sampleCell(x, y).join(',')));
-points.forEach(([x, y, r, logo], i) => {
+points.forEach(([x, y, r, logo, dragonOpacity], i) => {
+  const dragon = dragonOpacity !== undefined;
   const central = Boolean(logo);
-  const animal = central
-    ? undefined
-    : teams.slice(2).find((t) => ((x - t.x) / t.rx) ** 2 + ((y - t.y) / t.ry) ** 2 < 1.25);
+  const animal = dragon
+    ? teams.find((t) => t.name === 'Dragons')
+    : central
+      ? undefined
+      : teams.slice(2).find((t) => ((x - t.x) / t.rx) ** 2 + ((y - t.y) / t.ry) ** 2 < 1.25);
   const goat = animal?.name === 'Goats';
   if (central) {
     const [cx, cy] = sampleCell(x, y);
@@ -99,12 +101,12 @@ points.forEach(([x, y, r, logo], i) => {
       (central ? 'url(#home-logo-purple)' : ['#b78adf', '#f8f5ff', '#d9c7f1'][i % 3]);
   const size = starNoise(x, y, 17);
   const cell = `${Math.floor(x / 12)},${Math.floor(y / 12)}`;
-  const anchor = size > 0.985 && !anchorCells.has(cell);
+  const anchor = !dragon && size > 0.985 && !anchorCells.has(cell);
   if (anchor) anchorCells.add(cell);
   // Fine tracing stars retain the silhouettes; a few larger stars add depth.
-  r = anchor ? 1.15 + starNoise(x, y, 83) * 0.35 : 0.35 + size * 0.4;
+  if (!dragon) r = anchor ? 1.15 + starNoise(x, y, 83) * 0.35 : 0.35 + size * 0.4;
   if (goat) r *= 1.15;
-  const opacity = anchor ? 1 : size < 0.3 ? 0.4 : size < 0.7 ? 0.65 : 0.85;
+  const opacity = dragonOpacity ?? (anchor ? 1 : size < 0.3 ? 0.4 : size < 0.7 ? 0.65 : 0.85);
   const key = `${color}|${opacity}|${animal?.route || (central ? 'flagship' : 'unassigned')}`;
   // Scatter each animation group across the artwork so individual stars
   // regroup into the teams instead of arriving as preformed pieces.
