@@ -45,7 +45,7 @@ const teams = [
   },
   { name: 'Tigers', route: 'valorant-team2', color: '#ff7000', x: 446, y: 100, rx: 39, ry: 35 },
 ];
-// Scale the team-page outline, including star sizes and brightness, into the atlas.
+// Scale the team-page outline into the atlas; apply homepage star sizing below.
 const homeDragonStars = dragonStars.map(([x, y, r, opacity]) => [
   617 + (x - 450) * 0.23,
   192 + (y - 280) * 0.23,
@@ -101,10 +101,10 @@ points.forEach(([x, y, r, logo, dragonOpacity], i) => {
       (central ? 'url(#home-logo-purple)' : ['#b78adf', '#f8f5ff', '#d9c7f1'][i % 3]);
   const size = starNoise(x, y, 17);
   const cell = `${Math.floor(x / 12)},${Math.floor(y / 12)}`;
-  const anchor = !dragon && size > 0.985 && !anchorCells.has(cell);
+  const anchor = size > 0.985 && !anchorCells.has(cell);
   if (anchor) anchorCells.add(cell);
   // Fine tracing stars retain the silhouettes; a few larger stars add depth.
-  if (!dragon) r = anchor ? 1.15 + starNoise(x, y, 83) * 0.35 : 0.35 + size * 0.4;
+  r = anchor ? 1.15 + starNoise(x, y, 83) * 0.35 : 0.35 + size * 0.4;
   if (goat) r *= 1.15;
   const opacity = dragonOpacity ?? (anchor ? 1 : size < 0.3 ? 0.4 : size < 0.7 ? 0.65 : 0.85);
   const key = `${color}|${opacity}|${animal?.route || (central ? 'flagship' : 'unassigned')}`;
