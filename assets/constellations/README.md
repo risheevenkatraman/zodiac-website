@@ -20,10 +20,11 @@ from the local marks with `python scripts/trace_constellations.py` (requires
 Playwright and Edge), then run the normal player generator. House colors in
 `css/styles.css` match the existing logos: pink, blue, silver, orange, and purple.
 
-The dragon uses the original banner artwork, sampled with
+The dragon uses `assets/constellations/dragon.png`, sampled with
 `scripts/sample_dragon_constellation.py` (Playwright and Edge required).
-The neighboring logo orbit below the muzzle is excluded, removing the stray
-fire-like strokes. The head is enlarged to 360 units and shared by the homepage.
+The complete PNG outline, including its facial strokes and neck curls, is
+scaled to 360 units and shared by the homepage. Team-page stars retain a
+4-unit minimum spacing; homepage samples retain a 1.2-unit minimum spacing.
 Dragons uses #4898B8 on both maps. Its SVG logo embeds the original Zodiac mark
 and recolors its alpha silhouette.
 

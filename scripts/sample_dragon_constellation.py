@@ -1,4 +1,4 @@
-"""Sample the dragon in the local Zodiac banner (requires Playwright/Edge)."""
+"""Sample the local dragon PNG (requires Playwright/Edge)."""
 import base64
 import json
 import math
@@ -19,7 +19,7 @@ def enlarged_contour(pixels):
 
 
 def main():
-    source = base64.b64encode((ROOT / 'assets/uploads/zodiac-banner.png').read_bytes()).decode()
+    source = base64.b64encode((ROOT / 'assets/constellations/dragon.png').read_bytes()).decode()
     with sync_playwright() as p:
         browser = p.chromium.launch(channel='msedge', headless=True)
         page = browser.new_page()
@@ -27,15 +27,12 @@ def main():
             const image = new Image();
             image.src = 'data:image/png;base64,' + source; await image.decode();
             const canvas = document.createElement('canvas');
-            canvas.width = canvas.height = 160;
+            canvas.width = canvas.height = 240;
             const ctx = canvas.getContext('2d');
-            ctx.drawImage(image, 910, 105, 85, 90, 0, 0, 160, 160);
-            const {data} = ctx.getImageData(0, 0, 160, 160), pixels = [];
-            for (let y = 0; y < 160; y++) for (let x = 0; x < 160; x++) {
-                // Exclude the neighboring Zodiac logo's orbit below the muzzle.
-                // Keep the original dragon face, horns, mane and curled neck.
-                if ((x < 48 && y > 100) || (x < 25 && y > 85)) continue;
-                const i = (y * 160 + x) * 4;
+            ctx.drawImage(image, 0, 0, 240, 240);
+            const {data} = ctx.getImageData(0, 0, 240, 240), pixels = [];
+            for (let y = 0; y < 240; y++) for (let x = 0; x < 240; x++) {
+                const i = (y * 240 + x) * 4;
                 if (data[i+3] > 100 && Math.max(...data.slice(i, i+3)) - Math.min(...data.slice(i, i+3)) > 15)
                     pixels.push([x, y]);
             }
@@ -48,7 +45,7 @@ def main():
     # Match the other houses' scattered dust and varied radii, rather than
     # plotting identical stars on every second pixel of a regular grid.
     rng = random.Random(73)
-    concentrations = [(48, 35, 21), (89, 74, 18), (112, 125, 24)]
+    concentrations = [(72, 52, 31), (133, 111, 27), (168, 187, 36)]
     def density(x, y):
         return 0.35 + sum(math.exp(-((x-a)**2 + (y-b)**2) / (2 * spread**2))
                           for a, b, spread in concentrations)
@@ -66,5 +63,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 

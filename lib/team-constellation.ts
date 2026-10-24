@@ -56,19 +56,6 @@ function spacedStars(dust: number[][], detail: number[][], minimumSpacing = 3) {
   return { dust: retain(dust), detail: retain(detail) };
 }
 
-// Remove ornamental curls inside the original mark, keeping its facial strokes,
-// horns and outer neck. These masks select existing stars, not a new outline.
-function dragonSilhouette([x, y]: number[]) {
-  const ornaments = [
-    [447, 288, 31, 27], // inner cheek spiral
-    [507, 421, 42, 29], // lower neck curls
-    [560, 349, 24, 27], // small mane curl
-    [566, 302, 24, 19], // inner mane flourish
-    [469, 211, 18, 23], // secondary temple arc
-  ];
-  return !ornaments.some(([cx, cy, rx, ry]) => ((x - cx) / rx) ** 2 + ((y - cy) / ry) ** 2 < 1);
-}
-
 // Runs in a Server Component at build time; artwork and roster geometry stay off the client.
 export function teamConstellation(team: Team) {
   const [shape, house] = houses[team.name];
@@ -130,27 +117,16 @@ export function teamConstellation(team: Team) {
     Number((0.55 + (i % 6) / 12).toFixed(2)),
   ]);
   const detail = outlineStars(contours[shape]);
-  // Retain the original dragon's silhouette before adding background dust.
-  // Prioritizing sampled dust erased small facial strokes; inventing new facial
-  // outlines changed the mark. Both layers now follow the source artwork.
+  // Trace the PNG details with separated stars, preserving its curls and facial strokes.
   const dragonOutline = detail.map(([x, y], i) => {
     const variation = ((i * 73 + 19) % 101) / 100;
     return [x, y, 0.8 + variation * variation * 1.05, 0.8 + variation * 0.2];
   });
   const stars =
     shape === 'dragon'
-      ? spacedStars(dragonOutline.filter(dragonSilhouette), [], 4)
+      ? spacedStars(dragonOutline, [], 4)
       : bannerShape
         ? spacedStars(dust, detail)
         : { dust, detail };
-  const visibleEdges =
-    shape === 'dragon'
-      ? edges.filter(
-          ([a, b]) =>
-            dragonSilhouette(a) &&
-            dragonSilhouette(b) &&
-            dragonSilhouette([(a[0] + b[0]) / 2, (a[1] + b[1]) / 2]),
-        )
-      : edges;
-  return { shape, house, edges: visibleEdges, labels, ...stars };
+  return { shape, house, edges, labels, ...stars };
 }
