@@ -25,15 +25,22 @@ export function HomeIntroduction() {
 
 export function Announcement() {
   const announcement = readData('announcement');
+  const announcements = announcement.secondary
+    ? [announcement, announcement.secondary]
+    : [announcement];
   return (
-    <article id="pinned-announcement" className="announcement-card">
-      <img src={asset(announcement.image)} alt="" loading="lazy" />
-      <div>
-        <p className="eyebrow">Pinned update</p>
-        <h4>{announcement.title}</h4>
-        <p className="announcement-message">{announcement.message}</p>
-      </div>
-    </article>
+    <div id="pinned-announcement" className="pinned-announcements">
+      {announcements.map((item) => (
+        <article className="announcement-card" key={item.image}>
+          <img src={asset(item.image)} alt={item.title} loading="lazy" />
+          <div>
+            <p className="eyebrow">Pinned update</p>
+            <h4>{item.title}</h4>
+            <p className="announcement-message">{item.message}</p>
+          </div>
+        </article>
+      ))}
+    </div>
   );
 }
 

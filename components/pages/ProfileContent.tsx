@@ -29,6 +29,7 @@ export default function ProfileContent({ page }: { page: PlayerPage | StaffPage 
             {team ? `${team.game} · ${team.name}` : 'Zodiac Esports · Staff'}
           </p>
           <h1 id={heading}>{person.name}</h1>
+          {person.pronouns && <p className="player-pronouns">{person.pronouns}</p>}
           {page.kind === 'player' ? (
             <PlayerRole player={page.person} />
           ) : (

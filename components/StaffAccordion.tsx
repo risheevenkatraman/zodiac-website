@@ -28,6 +28,7 @@ export default function StaffAccordion({
             />
             <span className="staff-accordion-heading">
               <span className="staff-accordion-name">{person.name}</span>
+              {person.pronouns && <span className="player-pronouns">{person.pronouns}</span>}
               {players && 'signature' in person ? (
                 <PlayerRole player={person} as="span" />
               ) : (

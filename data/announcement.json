@@ -1,5 +1,10 @@
 {
-  "title": "Welcome Zodiacs",
-  "message": "We are happy to announce that we have signed our new flagship Overwatch roster! \n\n🛡️ Gap\n⚔️ Winter\n⚔️ M3WS\n⚔️ Ivory\n⛨ Ewan\n⛨ Hutch\n\n🧠 Legolaaaaa\n💼 izzys_ow\n \nPlease welcome them as the newest stars in our constellation!\nThey will be competing in FaceIt Masters S10, be sure to tune in for their matches and support them!",
-  "image": "assets/uploads/ZOD-Roster Announcement.png"
+  "title": "Zodiacs · VCT Open Qualifiers",
+  "message": "A different pantheon, the same celestial mission.\n\nIntroducing Zodiacs for VCT Open Qualifiers.\n\n💜 flasHH\n💜 snowing\n💜 klamran\n💜 ven\n💜 surge",
+  "image": "assets/uploads/VALORANT Roster.png",
+  "secondary": {
+    "title": "Zodiac Dragons · VCT Game Changers",
+    "message": "The dragon stirs, awakened in a foreign land.\n\nWelcome Zodiac Dragons for VCT Game Changers!\n\n🩵 Avery\n🩵 terror\n🩵 StarBound\n🩵 Australis\n🩵 Battison",
+    "image": "assets/uploads/GC ROSTER.png"
+  }
 }

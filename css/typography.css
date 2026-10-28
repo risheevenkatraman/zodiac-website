@@ -20,6 +20,14 @@ body {
   text-wrap: balance;
   overflow-wrap: anywhere;
 }
+.site-page .player-header #player-name {
+  text-transform: none;
+}
+.player-pronouns {
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-transform: none;
+}
 .site-page h1,
 .site-page .hero h1,
 .site-page .commerce-hero .commerce-hero-copy h1,

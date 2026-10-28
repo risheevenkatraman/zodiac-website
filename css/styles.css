@@ -394,6 +394,10 @@ h3 {
 .updates p {
   margin-bottom: 0;
 }
+.pinned-announcements {
+  display: grid;
+  gap: 2rem;
+}
 .announcement-card {
   display: flex;
   gap: 1.4rem;

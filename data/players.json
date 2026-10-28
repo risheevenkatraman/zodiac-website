@@ -501,5 +501,238 @@
     "name": "Monkeys",
     "game": "Overwatch",
     "players": []
+  },
+  {
+    "page": "teams/valorant-team1.html",
+    "name": "Zodiac",
+    "game": "VALORANT",
+    "players": [
+      {
+        "id": "valorant-team1-flashh",
+        "name": "flasHH",
+        "role": "Duelist",
+        "introduction": "Hello!! My name is flasHH, or Anthony, and I am a current aspiring Tier 1 Duelist. After quitting hockey in college I have put my entire dream in the hands of this game. You'll see me on the stage soon enough.",
+        "socials": [
+          {
+            "label": "X/Twitter",
+            "url": "https://www.x.com/flashhval"
+          },
+          {
+            "label": "TikTok",
+            "url": "https://www.tiktok.com/@flashhval"
+          },
+          {
+            "label": "YouTube",
+            "url": "https://www.youtube.com/flashhval"
+          },
+          {
+            "label": "Twitch",
+            "url": "https://www.twitch.tv/flashhval"
+          }
+        ],
+        "signature": {
+          "name": "Jett",
+          "image": "assets/uploads/Jett_icon.webp"
+        },
+        "image": "assets/uploads/flashh-pfp.png"
+      },
+      {
+        "id": "valorant-team1-klamran",
+        "name": "klamran",
+        "role": "Controller",
+        "introduction": "I'm Kamran, a 21-year-old university student and aspiring VALORANT pro. I primarily play Controller but can flex to other roles. I'm motivated to improve and compete at the highest level.",
+        "socials": [
+          {
+            "label": "X/Twitter",
+            "url": "https://x.com/Klamran"
+          },
+          {
+            "label": "Twitch",
+            "url": "https://www.twitch.tv/klamran"
+          },
+          {
+            "label": "YouTube",
+            "url": "https://www.youtube.com/@Klamran"
+          }
+        ],
+        "signature": {
+          "name": "Omen",
+          "image": "assets/uploads/Omen_icon.webp"
+        },
+        "image": "assets/uploads/klamran-pfp.jpg"
+      },
+      {
+        "id": "valorant-team1-snowing",
+        "name": "snowing",
+        "role": "Initiator",
+        "introduction": "My name is Steven AKA \"snowing\", I'm aspiring valorant pro, and student studying psychology at college. I'm from New York and am 21.",
+        "socials": [
+          {
+            "label": "X/Twitter",
+            "url": "https://x.com/snowingfps"
+          },
+          {
+            "label": "Twitch",
+            "url": "https://www.twitch.tv/snowingval"
+          }
+        ],
+        "signature": {
+          "name": "Sova",
+          "image": "assets/uploads/Sova_icon.png"
+        },
+        "image": "assets/uploads/snowing-pfp.jpg"
+      },
+      {
+        "id": "valorant-team1-surge",
+        "name": "surge",
+        "role": "Flex",
+        "introduction": "I?m currently a senior in high school with a passion for gaming, soccer, and cars. Outside of Valorant, I enjoy spending quality time with my family and friends.",
+        "socials": [
+          {
+            "label": "X/Twitter",
+            "url": "https://x.com/surgeval_?s=11"
+          }
+        ],
+        "signature": {
+          "name": "Waylay",
+          "image": "assets/uploads/Waylay_icon.png"
+        },
+        "image": "assets/uploads/surge-pfp.jpg"
+      },
+      {
+        "id": "valorant-team1-ven",
+        "name": "ven",
+        "role": "Sentinel",
+        "introduction": "Hello I'm ven, the sentinel player for Zodiac Esports. I love playing Valorant and making montages.",
+        "socials": [
+          {
+            "label": "X/Twitter",
+            "url": "https://x.com/wendaces"
+          },
+          {
+            "label": "YouTube",
+            "url": "https://www.youtube.com/vendaces"
+          }
+        ],
+        "signature": {
+          "name": "Viper",
+          "image": "assets/uploads/Viper_icon.png"
+        },
+        "image": "assets/uploads/ven-pfp.png"
+      }
+    ]
+  },
+  {
+    "page": "teams/valorant-team3.html",
+    "name": "Dragons",
+    "game": "VALORANT",
+    "players": [
+      {
+        "id": "valorant-team3-battison",
+        "name": "Battison",
+        "role": "Duelist",
+        "introduction": "Hello all, welcome aboard, my name is Battison and I'm a player for Zodiac Dragons. I was previously on Sentinels, and now I'm excited for this new journey with Zodiac :3",
+        "socials": [
+          {
+            "label": "X/Twitter",
+            "url": "https://x.com/battisonval"
+          },
+          {
+            "label": "Twitch",
+            "url": "https://www.twitch.tv/battison"
+          },
+          {
+            "label": "TikTok",
+            "url": "https://www.tiktok.com/@battisonval"
+          }
+        ],
+        "signature": {
+          "name": "Neon",
+          "image": "assets/uploads/Neon_icon.png"
+        },
+        "image": "assets/uploads/battison-pfp.jpg",
+        "pronouns": "She/Her"
+      },
+      {
+        "id": "valorant-team3-starbound",
+        "name": "StarBound",
+        "role": "Sentinel",
+        "introduction": "Hello, I'm StarBound, the Sentinel player for Zodiac Dragons. Before joining Zodiac I have played on teams such as Wadadaa, FlyQuest Red, and Evil Geniuses GC. I've been playing tac-fps games for almost over a decade now from Counter-Strike to Valorant and I still can't put them down. Whatever game I'm playing you'll probably see me with the OP/AWP and I doubt that's ever going to change LOL",
+        "socials": [
+          {
+            "label": "X/Twitter",
+            "url": "https://x.com/StarBoundVal"
+          }
+        ],
+        "signature": {
+          "name": "Chamber",
+          "image": "assets/uploads/Chamber_icon.png"
+        },
+        "image": "assets/uploads/starbound-pfp.png",
+        "pronouns": "They/Them"
+      },
+      {
+        "id": "valorant-team3-australis",
+        "name": "Australis",
+        "role": "Flex",
+        "introduction": "My names Aurora i'm the flex player for Zodiac Dragons. I have been playing on a PC since I was 2 years old. I am in school to be an Exotic Veterinarian. My father gave up competing to raise me and I want to finish what my dad wasnt able to and prove that women can compete in the highest levels of coed.",
+        "socials": [
+          {
+            "label": "X/Twitter",
+            "url": "https://x.com/Australissss"
+          },
+          {
+            "label": "Twitch",
+            "url": "https://twitch.tv/Australissss"
+          }
+        ],
+        "signature": {
+          "name": "Hush",
+          "image": "assets/uploads/Hush_icon.png"
+        },
+        "image": "assets/uploads/australis-pfp.jpg",
+        "pronouns": "She/Her"
+      },
+      {
+        "id": "valorant-team3-avery",
+        "name": "Avery",
+        "role": "Initiator",
+        "introduction": "Long time VALORANT competitor as an Initiator and Controller player, previously competed in Fortnite. Enjoys playing (or used to) Deadlock, Dark and Darker, Rust, and Counter-Strike on the side.",
+        "socials": [
+          {
+            "label": "X/Twitter",
+            "url": "https://x.com/avwwy"
+          }
+        ],
+        "signature": {
+          "name": "Fade",
+          "image": "assets/uploads/Fade_icon.webp"
+        },
+        "image": "assets/uploads/avery-pfp.jpg",
+        "pronouns": "They/Them"
+      },
+      {
+        "id": "valorant-team3-terror",
+        "name": "terror",
+        "role": "Controller",
+        "introduction": "Cat mom (3 cats). Long time gamer. Siberian supersoldier.",
+        "socials": [
+          {
+            "label": "X/Twitter",
+            "url": "https://x.com/iriscantaim"
+          },
+          {
+            "label": "Twitch",
+            "url": "https://www.twitch.tv/terrorvlr"
+          }
+        ],
+        "signature": {
+          "name": "Clove",
+          "image": "assets/uploads/Clove_icon.png"
+        },
+        "image": "assets/uploads/terror-pfp.jpg",
+        "pronouns": "She/It"
+      }
+    ]
   }
 ]

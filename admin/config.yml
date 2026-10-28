@@ -86,6 +86,31 @@
               "name": "image",
               "label": "Image",
               "widget": "image"
+            },
+            {
+              "name": "secondary",
+              "label": "Second pinned announcement (optional)",
+              "widget": "object",
+              "required": false,
+              "collapsed": true,
+              "hint": "Remove this optional announcement to return to a single pinned update.",
+              "fields": [
+                {
+                  "name": "title",
+                  "label": "Headline",
+                  "widget": "string"
+                },
+                {
+                  "name": "message",
+                  "label": "Message",
+                  "widget": "text"
+                },
+                {
+                  "name": "image",
+                  "label": "Image",
+                  "widget": "image"
+                }
+              ]
             }
           ]
         },

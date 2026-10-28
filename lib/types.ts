@@ -6,6 +6,7 @@ export interface Person {
   id: string;
   name: string;
   role: string;
+  pronouns?: string;
   image?: string;
   introduction?: string;
   socials?: SocialLink[];
@@ -80,7 +81,12 @@ export interface ContentData {
     homeIntroduction: string;
     socials: (SocialLink & { description: string; image?: string })[];
   };
-  announcement: { title: string; message: string; image: string };
+  announcement: {
+    title: string;
+    message: string;
+    image: string;
+    secondary?: { title: string; message: string; image: string };
+  };
   events: CalendarEvent[];
   players: RosterData[];
   staff: Person[];
