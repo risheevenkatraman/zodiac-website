@@ -43,7 +43,6 @@ const teams = [
     rx: 38,
     ry: 41,
   },
-  { name: 'Tigers', route: 'valorant-team2', color: '#ff7000', x: 446, y: 100, rx: 39, ry: 35 },
 ];
 // Scale the team-page outline into the atlas; apply homepage star sizing below.
 const homeDragonStars = dragonStars.map(([x, y, r, opacity]) => [

@@ -13,15 +13,17 @@ try {
   const write = (name, data) =>
     fs.writeFileSync(path.join(root, 'data', `${name}.json`), JSON.stringify(data));
   const rosters = JSON.parse(fs.readFileSync('data/players.json', 'utf8'));
+  const roster = rosters.find((team) => team.players.length);
+  assert.ok(roster, 'Content checks need a populated roster fixture');
   const staff = JSON.parse(fs.readFileSync('data/staff.json', 'utf8'));
   const before = pageCatalog(root);
   const player = {
-    ...rosters[0].players[0],
+    ...roster.players[0],
     id: 'cms-test-player',
     name: 'CMS <player> & name',
     introduction: 'Published biography update.',
   };
-  rosters[0].players.push(player);
+  roster.players.push(player);
   staff.push({ id: 'cms-test-staff', name: 'New staff', role: 'Coach' });
   write('players', rosters);
   write('staff', staff);
@@ -39,16 +41,16 @@ try {
       .introduction,
     'Second edit',
   );
-  rosters[0].players.pop();
+  roster.players.pop();
   staff.pop();
   write('players', rosters);
   write('staff', staff);
   assert.deepEqual(pageCatalog(root), before);
-  rosters[0].players.push(rosters[0].players[0]);
+  roster.players.push(roster.players[0]);
   write('players', rosters);
   assert.throws(() => pageCatalog(root), /Duplicate page/);
-  rosters[0].players.pop();
-  rosters[0].players[0].id = '../invalid';
+  roster.players.pop();
+  roster.players[0].id = '../invalid';
   write('players', rosters);
   assert.throws(() => pageCatalog(root), /Invalid player ID/);
   console.log(

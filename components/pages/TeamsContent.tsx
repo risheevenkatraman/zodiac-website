@@ -46,11 +46,6 @@ export default function TeamsContent() {
             <h4>Dragons</h4>
             <p>Game Changers team</p>
           </PageLink>
-          <PageLink className="team-card" href="teams/valorant-team2.html">
-            <img src={asset('assets/uploads/tigers-logo.png')} alt="Tigers team logo" />
-            <h4>Tigers</h4>
-            <p>Academy team</p>
-          </PageLink>
         </div>
       </section>
     </>
